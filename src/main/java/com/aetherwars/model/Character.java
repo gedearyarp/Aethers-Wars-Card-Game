@@ -1,5 +1,6 @@
 package com.aetherwars.model;
 
+
 public class Character extends Card {
   private Integer attack;
   private Type type;
@@ -12,7 +13,7 @@ public class Character extends Card {
   private static final Integer maxLevel = 10;
 
   public Character() {
-    super();
+    super(0, "", "", 0, "", "Character");
     this.attack = 0;
     this.type = Type.OVERWORLD; //default type overworld
     this.health = 0;
@@ -25,7 +26,7 @@ public class Character extends Card {
 
   public Character(Integer id, String name, String description, Integer manaCost, String imagePath, Integer attack, Type type, Integer health, Integer attackUp, Integer healthUp) {
     
-    super(id,name,description,manaCost,imagePath);
+    super(id,name,description,manaCost,imagePath,"Character");
     this.attack = attack;
     this.type = type;
     this.health = health;

@@ -4,5 +4,6 @@ public enum SpellType {
     PTN, 
     LVL, 
     SWAP, 
-    MORPH
+    MORPH,
+    NONE
 };

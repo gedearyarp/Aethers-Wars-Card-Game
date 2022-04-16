@@ -61,7 +61,6 @@ public class Player {
     public Integer getHp(){
         return this.hp;
     }
-
     public ArrayList<Card> getDeckCard(){
         return this.deckCard;
     }

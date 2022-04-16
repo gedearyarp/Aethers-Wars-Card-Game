@@ -1,19 +1,20 @@
 package com.aetherwars.model;
 
+// TODO GEDEARYA DHIKAARTHA: KELARKEUN ANAK KELAS DARI IEU ATUH
 public class Spell extends Card {
     protected SpellType spellType;
     protected StatusType statusType;
     protected Integer duration;
 
     public Spell(){
-        super();
+        super(0, "", "", 0, "", "Spell");
         this.spellType = SpellType.PTN;
         this.statusType = StatusType.PERM;
         this.duration = 0;
     }
 
     public Spell(Integer id, String name, String description, Integer manaCost, String imagePath, Integer duration, SpellType spellType, StatusType statusType){
-        super(id,name, description, manaCost, imagePath);
+        super(id,name, description, manaCost, imagePath, "Spell");
         this.spellType = spellType;
         this.statusType = statusType;
         this.duration = duration;
