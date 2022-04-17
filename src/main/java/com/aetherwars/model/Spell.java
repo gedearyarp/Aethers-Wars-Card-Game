@@ -7,14 +7,14 @@ public class Spell extends Card {
     protected Integer duration;
 
     public Spell(){
-        super(0, "", "", 0, "", "Spell");
+        super(0, "", "", 0, "", CardType.SPELL);
         this.spellType = SpellType.PTN;
         this.statusType = StatusType.PERM;
         this.duration = 0;
     }
 
-    public Spell(Integer id, String name, String description, Integer manaCost, String imagePath, Integer duration, SpellType spellType, StatusType statusType){
-        super(id,name, description, manaCost, imagePath, "Spell");
+    public Spell(Integer id, String name, String description, Integer manaCost, String imagePath, SpellType spellType, StatusType statusType, Integer duration){
+        super(id,name, description, manaCost, imagePath, CardType.SPELL);
         this.spellType = spellType;
         this.statusType = statusType;
         this.duration = duration;
@@ -36,6 +36,10 @@ public class Spell extends Card {
         this.statusType = statusType;
     }
 
+    public void use(SummonedCharacter sumcharacter){
+        //dioverride child class
+    }
+
     public Integer getDuration() {
         return duration;
     }
@@ -44,9 +48,10 @@ public class Spell extends Card {
         this.duration = duration;
     }
 
+    
+
     @Override
     public String toString() {
-        super.toString();
-        return "Spell Type : " + this.spellType.name() + " Status Type : " + this.statusType.name() + " Duration : " + this.duration; 
+        return super.toString() + "\nSpell Type : " + this.spellType.name() + " Status Type : " + this.statusType.name(); 
     }
 }

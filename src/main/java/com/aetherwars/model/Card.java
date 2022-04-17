@@ -6,7 +6,7 @@ public class Card {
     protected String description;
     protected Integer manaCost;
     protected String imagePath;
-    protected String cardType;  //Character, Spell
+    protected CardType cardType;
 
     public Card() {
         this.id = 0;
@@ -14,10 +14,10 @@ public class Card {
         this.description = "";
         this.manaCost = 0;
         this.imagePath = "";
-        this.cardType = "";
+        this.cardType = CardType.CHARACTER;
     }
 
-    public Card(Integer id, String name, String description, Integer manaCost, String imagePath, String cardType) {
+    public Card(Integer id, String name, String description, Integer manaCost, String imagePath, CardType cardType) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -32,23 +32,23 @@ public class Card {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getCardType() {
-        return cardType;
+    public CardType getCardType() {
+        return this.cardType;
     }
     
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -56,7 +56,7 @@ public class Card {
     }
 
     public Integer getmanaCost() {
-        return manaCost;
+        return this.manaCost;
     }
 
     public void setmanaCost(Integer manaCost) {
@@ -72,5 +72,13 @@ public class Card {
 
     public Integer getDuration() {
         return 0;
+    }
+
+    public String getImagePath() {
+        return this.imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
