@@ -15,14 +15,14 @@ public class Services {
     // 2. pilih dari hasil getTop3Deck
     // 3. Masukin ke hand
     public void drawPhase(GamePlay gamePlay) {
-        ArrayList<Card> drawCards =  gamePlay.players[gamePlay.currPlayerIndex].getTop3Deck();
+        ArrayList<Card> drawCards =  gamePlay.players[gamePlay.currPlayerIndex].getDeck().getTop3();
         // input drawCards yang dipilih dari frontend
         // remove selected card from drawCards and input to Hand
         gamePlay.players[gamePlay.currPlayerIndex].addHandCard(drawCards.get((int) handleInput()));
         drawCards.remove((int) handleInput());
         // input ulang drawCards ke Deck
         for (Card card : drawCards) {
-            gamePlay.players[gamePlay.currPlayerIndex].putCardOnDeckRandomly(card);
+            gamePlay.players[gamePlay.currPlayerIndex].getDeck().putCardOnDeckRandomly(card);
         }
         if (gamePlay.players[gamePlay.currPlayerIndex].getHandCard().size() > 5) {
             // input kartu buangan dari frontend
