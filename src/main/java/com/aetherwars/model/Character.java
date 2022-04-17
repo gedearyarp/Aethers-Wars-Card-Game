@@ -18,7 +18,6 @@ public class Character extends Card {
   }
 
   public Character(Integer id, String name, String description, Integer manaCost, String imagePath, Integer attack, Type type, Integer health, Integer attackUp, Integer healthUp) {
-    
     super(id, name, description, manaCost, imagePath, CardType.CHARACTER);
     this.attack = attack;
     this.type = type;
@@ -81,6 +80,4 @@ public class Character extends Card {
   public void setHealthUp(Integer healthUp) {
     this.healthUp = healthUp;
   }
-
-  //main
 }

@@ -12,6 +12,8 @@ public class SummonedCharacter{
     private List<Spell> activePtnSpells;
     private Integer swapDuration;
     private Boolean isSwapped;
+    private Integer baseHealth;
+    private Integer baseAttack;
 
     public SummonedCharacter() {
         this.character = null;
@@ -22,6 +24,8 @@ public class SummonedCharacter{
         this.activePtnSpells = new ArrayList<Spell>();
         this.swapDuration = 0;
         this.isSwapped = false;
+        this.baseHealth = null;
+        this.baseAttack = null;
     }
     
     public SummonedCharacter(Character character, Integer level, Integer experience) {
@@ -33,6 +37,8 @@ public class SummonedCharacter{
         this.hpAdd = 0;
         this.swapDuration = 0;
         this.isSwapped = false;
+        this.baseHealth = character.getHealth();
+        this.baseAttack = character.getAttack();
     }
 
     //copy constructor
@@ -45,6 +51,24 @@ public class SummonedCharacter{
         this.activePtnSpells = character.getActivePtnSpells();
         this.swapDuration = character.getSwapDuration();
         this.isSwapped = character.getIsSwapped();
+        this.baseHealth = character.getBaseHealth();
+        this.baseAttack = character.getBaseAttack();
+    }
+
+    public Integer getBaseHealth(){
+        return this.baseHealth;
+    }
+
+    public void setBaseHealth(Integer baseHealth){
+        this.baseHealth = baseHealth;
+    }
+
+    public Integer getBaseAttack(){
+        return this.baseAttack;
+    }
+
+    public void setBaseAttack(Integer baseAttack){
+        this.baseAttack = baseAttack;
     }
 
     public Character getCharacter() {

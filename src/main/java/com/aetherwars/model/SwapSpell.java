@@ -1,6 +1,6 @@
 package com.aetherwars.model;
 
-public class SwapSpell extends Spell {
+public class SwapSpell extends Spell implements ISpell{
     public SwapSpell() {
         super(0, "", "", 0, "", SpellType.SWAP, StatusType.TEMP, 0);
     }

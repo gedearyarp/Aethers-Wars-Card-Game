@@ -1,6 +1,6 @@
 package com.aetherwars.model;
 
-public class PtnSpell extends Spell {
+public class PtnSpell extends Spell implements ISpell{
     private Integer boostAttack;
     private Integer boostHP;
     

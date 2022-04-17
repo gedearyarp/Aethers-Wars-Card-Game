@@ -2,12 +2,10 @@ package com.aetherwars.model;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
+import com.aetherwars.util.CSVReader;
 
-
-
-public class MorphSpell extends Spell {
+public class MorphSpell extends Spell implements ISpell {
         private Integer targetID;
 
         public MorphSpell() {
@@ -28,11 +26,37 @@ public class MorphSpell extends Spell {
             this.targetID = targetID;
         }
 
-
-
         @Override
-        public void use(SummonedCharacter sumcharacter) {
-            //TODO : nyari karakted dari ID
+        public void use(SummonedCharacter sumcharacter) throws IOException { 
+            CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
+            List<String[]> character_data = csvreader_character.read();
+            String[] targetCharacterData = character_data.get(this.targetID - 1);
+
+            Integer targetId = Integer.parseInt(targetCharacterData[0]);
+            String targetName = targetCharacterData[1];
+            String targetDescription = targetCharacterData[3];
+            Integer targetManaCost = Integer.parseInt(targetCharacterData[7]);
+            String targetImagePath = targetCharacterData[4];
+            Integer targetAttack  = Integer.parseInt(targetCharacterData[5]);
+            Type targetType = Type.valueOf(targetCharacterData[2]);
+            Integer targetHealth = Integer.parseInt(targetCharacterData[6]);
+            Integer targetAttackUp = Integer.parseInt(targetCharacterData[8]);
+            Integer targetHealthUp = Integer.parseInt(targetCharacterData[9]);
+
+            Character targetCharacter = new Character(
+                targetId,
+                targetName,
+                targetDescription,
+                targetManaCost,
+                targetImagePath,
+                targetAttack,
+                targetType,
+                targetHealth,
+                targetAttackUp,
+                targetHealthUp
+            );
+
+            sumcharacter = new SummonedCharacter(targetCharacter, 1, 0);
         }
 }
     

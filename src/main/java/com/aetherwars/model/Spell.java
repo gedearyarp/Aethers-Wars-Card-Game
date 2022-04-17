@@ -1,6 +1,7 @@
 package com.aetherwars.model;
 
-// TODO GEDEARYA DHIKAARTHA: KELARKEUN ANAK KELAS DARI IEU ATUH
+import java.io.IOException;
+
 public class Spell extends Card {
     protected SpellType spellType;
     protected StatusType statusType;
@@ -34,10 +35,6 @@ public class Spell extends Card {
 
     public void setStatusType(StatusType statusType) {
         this.statusType = statusType;
-    }
-
-    public void use(SummonedCharacter sumcharacter){
-        //dioverride child class
     }
 
     public Integer getDuration() {
