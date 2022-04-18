@@ -52,10 +52,9 @@ public class Services {
         gamePlay.board.removeCardFromBoard(gamePlay.currPlayerIndex, (String) handleInput());
         // 5. Menggunakan 0 atau lebih mana untuk meningkatkan exp karakter di board.
         String choosenCharacter = (String) handleInput();
-        gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(0).setExperience(gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(0).getExperience() + (int) handleInput());
-        if (gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).size() > 1) {
-            gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(2).setExperience(gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(2).getExperience() + (int) handleInput());
+        //gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(0).setExperience(gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(0).getExperience() + (int) handleInput());
+        //if (gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).size() > 1) {
+          //  gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(2).setExperience(gamePlay.board.get(gamePlay.currPlayerIndex).get(choosenCharacter).get(2).getExperience() + (int) handleInput());
         }
 
     }
-}

@@ -9,7 +9,7 @@ public class SummonedCharacter{
     private Integer attackAdd; 
     private Integer hpAdd;
     private static final Integer maxLevel = 10;
-    private List<Spell> activePtnSpells;
+    private List<PtnSpell> activePtnSpells;
     private Integer swapDuration;
     private Boolean isSwapped;
     private Integer baseHealth;
@@ -21,7 +21,7 @@ public class SummonedCharacter{
         this.experience = 0;
         this.attackAdd = 0;
         this.hpAdd = 0;
-        this.activePtnSpells = new ArrayList<Spell>();
+        this.activePtnSpells = new ArrayList<PtnSpell>();
         this.swapDuration = 0;
         this.isSwapped = false;
         this.baseHealth = null;
@@ -32,7 +32,7 @@ public class SummonedCharacter{
         this.character = character; 
         this.level = level;
         this.experience = experience;
-        this.activePtnSpells = new ArrayList<Spell>();
+        this.activePtnSpells = new ArrayList<PtnSpell>();
         this.attackAdd = 0;
         this.hpAdd = 0;
         this.swapDuration = 0;
@@ -53,10 +53,6 @@ public class SummonedCharacter{
         this.isSwapped = character.getIsSwapped();
         this.baseHealth = character.getBaseHealth();
         this.baseAttack = character.getBaseAttack();
-    }
-
-    public Integer getBaseHealth(){
-        return this.baseHealth;
     }
 
     public void setBaseHealth(Integer baseHealth){
@@ -96,15 +92,15 @@ public class SummonedCharacter{
         this.experience = experience;
     }
 
-    public List<Spell> getActivePtnSpells() {
+    public List<PtnSpell> getActivePtnSpells() {
         return this.activePtnSpells;
     }
 
-    public void setActivePtnSpells(List<Spell> activePtnSpells) {
+    public void setActivePtnSpells(List<PtnSpell> activePtnSpells) {
         this.activePtnSpells = activePtnSpells;
     }
 
-    public void addSpell(Spell spell) {
+    public void addSpell(PtnSpell spell) {
         activePtnSpells.add(spell);
     }
 
@@ -155,13 +151,24 @@ public class SummonedCharacter{
     public void addSwapDuration(Integer swapDuration) {
         this.swapDuration += swapDuration;
     }
+
+    public Integer getBaseHealth() {
+        return this.baseHealth;
+    }
+
+
     
     public void reduceDurationPtnSpell() {
-        List<Spell> newActivePtnSpells = new ArrayList<Spell>();
-        for(Spell s : activePtnSpells){
+        List<PtnSpell> newActivePtnSpells = new ArrayList<PtnSpell>();
+        for(PtnSpell s : activePtnSpells){
             s.setDuration(s.getDuration() - 1);
             if (s.getDuration() != 0){
                 newActivePtnSpells.add(s);
+            }
+            else
+            {
+                attackAdd -= s.getBoostAttack();
+                hpAdd -= s.getBoostHP();
             }
         }
         setActivePtnSpells(newActivePtnSpells);
@@ -181,8 +188,10 @@ public class SummonedCharacter{
         if (this.level < maxLevel) {
             this.level++;
             this.experience = remainder;
-            character.setHealth(character.getHealth() + character.getHealthUp());
-            character.setAttack(character.getAttack() + character.getAttackUp());
+            character.setHealth(this.baseHealth + character.getHealthUp());
+            character.setAttack(this.baseAttack + character.getAttackUp());
+            this.baseHealth = character.getHealth();
+            this.baseAttack = character.getAttack();
         }
     }
 
