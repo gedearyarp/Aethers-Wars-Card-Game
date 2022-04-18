@@ -1,5 +1,8 @@
 package com.aetherwars.model;
 import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import com.aetherwars.util.CSVReader;
 
 public class Deck{
     private ArrayList<Card> deckCard;
@@ -19,6 +22,9 @@ public class Deck{
                 top3.add(this.deckCard.get(i));
             }
         }
+        for(int i = 0; i < 3; i++){
+            this.deckCard.remove(0);
+        }
         return top3;
     }
 
@@ -36,14 +42,14 @@ public class Deck{
         return this.deckCard.get(i);
     }
 
-    public void removeCard(Integer i){
+    public void removeCard(int i){
         if(this.deckCard.size() <= i || i < 0){
             return;
         }
         this.deckCard.remove(i);
     }
 
-    public Card takeCard(Integer i){
+    public Card takeCard(int i){
         if(this.deckCard.size() <= i || i < 0){
             return null;
         }
@@ -58,7 +64,125 @@ public class Deck{
         this.deckCard.add(i, card);
     }
 
-    public void generateDeck(){
-        // TODO: generate deck
+    public void generateCard(Integer deckSize) throws IOException {
+        CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
+        CSVReader csvreader_spell_morph = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
+        CSVReader csvreader_spell_ptn = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
+        CSVReader csvreader_spell_swap = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
+        
+        List<String[]> character_data = csvreader_character.read();
+        List<String[]> spell_morph_data = csvreader_spell_morph.read();
+        List<String[]> spell_ptn_data = csvreader_spell_ptn.read();
+        List<String[]> spell_swap_data = csvreader_spell_swap.read();
+
+        Integer characterSizeDeck = deckSize / 2;
+        Integer spellSizeDeck = deckSize - characterSizeDeck;
+        Random rd = new Random();
+
+        for(int i = 0; i < characterSizeDeck; i++){
+            Integer rd_c = rd.nextInt(character_data.size());
+            String[] character_data_i = character_data.get(rd_c);
+            Integer id = Integer.parseInt(character_data_i[0]);
+            String name = character_data_i[1];
+            String description = character_data_i[3];
+            Integer manaCost = Integer.parseInt(character_data_i[7]);
+            String imagePath = character_data_i[4];
+            Integer attack = Integer.parseInt(character_data_i[5]);
+            Type type = Type.valueOf(character_data_i[2]);
+            Integer health = Integer.parseInt(character_data_i[6]);
+            Integer attackUp = Integer.parseInt(character_data_i[8]);
+            Integer healthUp = Integer.parseInt(character_data_i[9]);
+
+            Character character = new Character(
+                id,
+                name,
+                description,
+                manaCost,
+                imagePath,
+                attack,
+                type,
+                health,
+                attackUp,
+                healthUp
+            );
+
+            this.addCard(character);
+        }
+
+        for(int i=0; i < spellSizeDeck; i++){
+            Integer rd_s = rd.nextInt(3);
+            if (rd_s == 0){
+                Integer rd_s_m = rd.nextInt(spell_morph_data.size());
+                String[] spell_morph_data_i = spell_morph_data.get(rd_s_m);
+                
+                Integer id = Integer.parseInt(spell_morph_data_i[0]);
+                String name = spell_morph_data_i[1];
+                String description = spell_morph_data_i[2];
+                Integer manaCost = Integer.parseInt(spell_morph_data_i[5]);
+                String imagePath = spell_morph_data_i[3];
+                Integer targetId = Integer.parseInt(spell_morph_data_i[4]);
+
+                MorphSpell spell = new MorphSpell(
+                    id,
+                    name,
+                    description,
+                    manaCost,
+                    imagePath,
+                    targetId
+                );
+
+                this.addCard(spell);
+            }
+            else if (rd_s == 1){
+                Integer rd_s_p = rd.nextInt(spell_ptn_data.size());
+                String[] spell_ptn_data_i = spell_ptn_data.get(rd_s_p);
+                
+                Integer id = Integer.parseInt(spell_ptn_data_i[0]);
+                String name = spell_ptn_data_i[1];
+                String description = spell_ptn_data_i[2];
+                Integer manaCost = Integer.parseInt(spell_ptn_data_i[6]);
+                String imagePath = spell_ptn_data_i[3];
+                Integer duration = Integer.parseInt(spell_ptn_data_i[7]);
+                Integer boostAttack = Integer.parseInt(spell_ptn_data_i[4]);
+                Integer boostHp = Integer.parseInt(spell_ptn_data_i[5]);
+
+                PtnSpell spell = new PtnSpell(
+                    id,
+                    name,
+                    description,
+                    manaCost,
+                    imagePath,
+                    duration,
+                    boostAttack,
+                    boostHp
+                );
+
+                this.addCard(spell);
+            }
+            else if (rd_s == 2){
+                Integer rd_s_s = rd.nextInt(spell_swap_data.size());
+                String[] spell_swap_data_i = spell_swap_data.get(rd_s_s);
+                
+                Integer id = Integer.parseInt(spell_swap_data_i[0]);
+                String name = spell_swap_data_i[1];
+                String description = spell_swap_data_i[2];
+                Integer manaCost = Integer.parseInt(spell_swap_data_i[5]);
+                String imagePath = spell_swap_data_i[3];
+                Integer duration = Integer.parseInt(spell_swap_data_i[4]);
+                
+                SwapSpell spell = new SwapSpell(
+                    id,
+                    name,
+                    description,
+                    manaCost,
+                    imagePath,
+                    duration
+                );
+
+                this.addCard(spell);
+            }
+        }
+
+        Collections.shuffle(this.deckCard);
     }
 }

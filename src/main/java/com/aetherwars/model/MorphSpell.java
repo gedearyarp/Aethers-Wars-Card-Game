@@ -9,12 +9,12 @@ public class MorphSpell extends Spell implements ISpell {
         private Integer targetID;
 
         public MorphSpell() {
-            super(0, "", "", 0, "", SpellType.MORPH, StatusType.TEMP, 0);
+            super(0, "", "", 0, "", SpellType.MORPH, StatusType.PERM, -1);
             this.targetID = 0;
         }
 
-        public MorphSpell(Integer id, String name, String description, Integer manaCost, String imagePath, Integer duration, Integer targetID) {
-            super(id, name, description, manaCost, imagePath, SpellType.MORPH, StatusType.TEMP, duration);
+        public MorphSpell(Integer id, String name, String description, Integer manaCost, String imagePath, Integer targetID) {
+            super(id, name, description, manaCost, imagePath, SpellType.MORPH, StatusType.PERM, -1);
             this.targetID = targetID;
         }
 
