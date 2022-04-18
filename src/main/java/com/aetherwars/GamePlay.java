@@ -1,7 +1,6 @@
 package com.aetherwars;
 
 import com.aetherwars.model.*;
-import java.util.*;
 
 public class GamePlay {
     public Integer round;
@@ -41,11 +40,18 @@ public class GamePlay {
     }
 
     public void nextPhase() {
-        if (this.phase == Phase.END) {
+        if (this.phase == Phase.DRAW) {
+            this.phase = Phase.PLANNING;
+        }
+        else if (this.phase == Phase.PLANNING) {
+            this.phase = Phase.ATTACK;
+        }
+        else if (this.phase == Phase.ATTACK) {
+            this.phase = Phase.END;
+        }
+        else if (this.phase == Phase.END) {
             this.round++;
             this.phase = Phase.DRAW;
-        } else if (this.phase == Phase.DRAW) {
-            
         }
     }
 }

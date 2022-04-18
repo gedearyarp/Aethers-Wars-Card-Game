@@ -45,7 +45,9 @@ public class Spell extends Card {
         this.duration = duration;
     }
 
-    
+    public void use(SummonedCharacter sumcharacter) throws IOException {
+
+    }
 
     @Override
     public String toString() {

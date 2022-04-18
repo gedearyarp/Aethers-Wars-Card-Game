@@ -20,7 +20,7 @@ public class PtnSpell extends Spell implements ISpell{
         sumcharacter.setAttackAdd(sumcharacter.getAttackAdd() + boostAttack);
         sumcharacter.setHpAdd(sumcharacter.getHpAdd() + boostHP);
         sumcharacter.addSpell(this);
-    } 
+    }
     
     public Integer getBoostAttack() {
         return boostAttack;
