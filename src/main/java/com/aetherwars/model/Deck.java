@@ -17,6 +17,10 @@ public class Deck{
         return this.deckCard;
     }
 
+    public boolean isDeckEmpty(){
+        return this.deckCard.isEmpty();
+    }
+
     public ArrayList<Card> getTop3(){
         ArrayList<Card> top3 = new ArrayList<Card>();
         for(int i = 0; i < 3; i++){

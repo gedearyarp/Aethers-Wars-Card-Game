@@ -24,6 +24,10 @@ public class GamePlay {
         return currPlayerIndex;
     }
 
+    public Integer getOtherPlayerIndex() {
+        return (currPlayerIndex == 0) ? 1 : 0;
+    }
+
     public Player[] getPlayers() {
         return players;
     }
