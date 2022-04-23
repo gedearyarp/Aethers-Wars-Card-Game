@@ -155,8 +155,6 @@ public class SummonedCharacter{
     public Integer getBaseHealth() {
         return this.baseHealth;
     }
-
-
     
     public void reduceDurationPtnSpell() {
         List<PtnSpell> newActivePtnSpells = new ArrayList<PtnSpell>();

@@ -1,4 +1,4 @@
-package com.aetherwars.services;
+package com.aetherwars.service;
 
 import com.aetherwars.GamePlay;
 

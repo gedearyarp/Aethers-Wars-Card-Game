@@ -1,4 +1,4 @@
-package com.aetherwars.services;
+package com.aetherwars.service;
 
 public class AttackPhase {
     

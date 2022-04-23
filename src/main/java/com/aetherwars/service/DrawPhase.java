@@ -1,4 +1,4 @@
-package com.aetherwars.services;
+package com.aetherwars.service;
 
 import com.aetherwars.*;
 import com.aetherwars.model.*;
@@ -22,11 +22,11 @@ public class DrawPhase {
         }
     }
 
-    public void removeHandCardIfMoreThanFive(GamePlay gamePlay, Integer selectedCardIndex) {
+    public void removeHandCardIfMoreThanFive(GamePlay gamePlay, Integer selectedCardIndex) throws Exception {
         gamePlay.players[gamePlay.currPlayerIndex].removeHandCard(selectedCardIndex);
     }
 
-    public void resetMana(GamePlay gamePlay) {
+    public void resetMana(GamePlay gamePlay) throws Exception {
         // reset mana
         int newMana = gamePlay.round;
         if (newMana > 10){

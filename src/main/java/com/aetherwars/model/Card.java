@@ -1,5 +1,7 @@
 package com.aetherwars.model;
 
+import com.aetherwars.type.*;
+
 public class Card {
     protected Integer id;
     protected String name;

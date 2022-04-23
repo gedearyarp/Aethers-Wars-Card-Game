@@ -1,47 +1,52 @@
 package com.aetherwars.model;
 
-public class LvlSpell extends Spell implements ISpell{
+import com.aetherwars.type.*;
+
+public class LvlSpell extends Spell {
+    private Integer boostLevel;
+    private LvlSpellType lvlSpellType;
+
     public LvlSpell() {
-        super(0, "", "", 0, "", SpellType.MORPH, StatusType.TEMP, 0);
+        super(0, "", "", 0, "", SpellType.MORPH, StatusType.TEMP);
+        this.boostLevel = 0;
+        this.lvlSpellType = LvlSpellType.LVLUP;
+    }
+
+    public LvlSpell(Integer id, String name, String description, Integer manaCost, String imagePath, Integer duration, Integer boostLevel, LvlSpellType lvlSpellType) {
+        super(id, name, description, manaCost, imagePath, SpellType.MORPH, StatusType.TEMP);
+        this.boostLevel = boostLevel;
+        this.lvlSpellType = lvlSpellType;
     }
 
     @Override
     public void use(SummonedCharacter sumcharacter) {
-        if(sumcharacter.getLevel() == 10) {
+        if(lvlSpellType == LvlSpellType.LVLUP && sumcharacter.getLevel() == 10) {
             return;
         }
-        sumcharacter.setLevel(sumcharacter.getLevel() + 1);
+        if(lvlSpellType == LvlSpellType.LVLDOWN && sumcharacter.getLevel() == 1) {
+            return;
+        }
+        sumcharacter.setLevel(sumcharacter.getLevel() + boostLevel);
         sumcharacter.setExperience(0);
 
-        Integer baseAttack = sumcharacter.getBaseAttack() + sumcharacter.getCharacter().getAttackUp();
-        sumcharacter.setBaseAttack(baseAttack);
-        sumcharacter.getCharacter().setAttack(baseAttack);
-
-        Integer baseHealth = sumcharacter.getBaseHealth() + sumcharacter.getCharacter().getHealthUp();
-        sumcharacter.setBaseHealth(baseHealth);
-        sumcharacter.getCharacter().setHealth(baseHealth);
-    }
-
-    public void use(SummonedCharacter sumcharacter, Boolean isEnemy){
-        if (isEnemy) {
-            if(sumcharacter.getLevel() == 1) {
-                return;
-            }
-            sumcharacter.setLevel(sumcharacter.getLevel() - 1);
-            sumcharacter.setExperience(0);
-
+        if(lvlSpellType == LvlSpellType.LVLUP) {
+            Integer baseAttack = sumcharacter.getBaseAttack() + sumcharacter.getCharacter().getAttackUp();
+            sumcharacter.setBaseAttack(baseAttack);
+            sumcharacter.getCharacter().setAttack(baseAttack);
+    
+            Integer baseHealth = sumcharacter.getBaseHealth() + sumcharacter.getCharacter().getHealthUp();
+            sumcharacter.setBaseHealth(baseHealth);
+            sumcharacter.getCharacter().setHealth(baseHealth); 
+        }
+        if(lvlSpellType == LvlSpellType.LVLDOWN) {
             Integer baseAttack = sumcharacter.getBaseAttack() - sumcharacter.getCharacter().getAttackUp();
             sumcharacter.setBaseAttack(baseAttack);
             sumcharacter.getCharacter().setAttack(baseAttack);
-
+    
             Integer baseHealth = sumcharacter.getBaseHealth() - sumcharacter.getCharacter().getHealthUp();
             sumcharacter.setBaseHealth(baseHealth);
-            if(sumcharacter.getCharacter().getHealth() > baseHealth) {
-                sumcharacter.getCharacter().setHealth(baseHealth);
-            }
-        }
-        else {
-            use(sumcharacter);
+            sumcharacter.getCharacter().setHealth(baseHealth); 
         }
     }
+
 }

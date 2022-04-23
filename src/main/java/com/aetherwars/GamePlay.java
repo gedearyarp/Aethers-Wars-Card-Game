@@ -1,6 +1,7 @@
 package com.aetherwars;
 
 import com.aetherwars.model.*;
+import com.aetherwars.type.*;
 
 public class GamePlay {
     public Integer round;

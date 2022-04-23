@@ -1,8 +1,10 @@
 package com.aetherwars.model;
+
 import java.util.*;
 import java.io.File;
-import java.io.IOException;
+
 import com.aetherwars.util.CSVReader;
+import com.aetherwars.type.*;
 
 public class Deck{
     private ArrayList<Card> deckCard;
@@ -28,30 +30,30 @@ public class Deck{
         return top3;
     }
 
-    public void addCard(Card newCard){
+    public void addCard(Card newCard) throws Exception{
         if(this.deckCard.size() >= 60){
-            return;
+            throw new IndexOutOfBoundsException("Deck");
         }
         this.deckCard.add(newCard);
     }
 
-    public Card getCard(Integer i){
+    public Card getCard(Integer i) throws Exception{
         if(this.deckCard.size() <= i || i < 0){
-            return null;
+            throw new IndexOutOfBoundsException("Deck");
         }
         return this.deckCard.get(i);
     }
 
-    public void removeCard(int i){
+    public void removeCard(int i) throws Exception{
         if(this.deckCard.size() <= i || i < 0){
-            return;
+            throw new IndexOutOfBoundsException("Deck");
         }
         this.deckCard.remove(i);
     }
 
-    public Card takeCard(int i){
+    public Card takeCard(int i) throws Exception{
         if(this.deckCard.size() <= i || i < 0){
-            return null;
+            throw new IndexOutOfBoundsException("Deck");
         }
         Card card = this.deckCard.get(i);
         this.deckCard.remove(i);
@@ -64,7 +66,7 @@ public class Deck{
         this.deckCard.add(i, card);
     }
 
-    public void generateCard(Integer deckSize) throws IOException {
+    public void generateCard(Integer deckSize) throws Exception {
         CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
         CSVReader csvreader_spell_morph = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
         CSVReader csvreader_spell_ptn = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");

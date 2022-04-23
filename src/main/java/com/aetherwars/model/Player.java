@@ -1,5 +1,9 @@
 package com.aetherwars.model;
+
 import java.util.*;
+
+import com.aetherwars.exception.InvalidHpException;
+import com.aetherwars.exception.InvalidManaException;
 
 public class Player {
     private String name;
@@ -49,21 +53,15 @@ public class Player {
     public void setName(String newName){
         this.name = newName;
     }
-    public void setMana(Integer newMana){
-        if(newMana <= 0){
-            this.mana = 0;
-            return;
-        }
-        if(newMana >= 10){
-            this.mana = 10;
-            return;
+    public void setMana(Integer newMana) throws Exception {
+        if(newMana < 0 || newMana > 10){
+            throw new InvalidManaException(mana);
         }
         this.mana = newMana;
     }
-    public void setHp(Integer newHp){
-        if(newHp <= 0){
-            this.hp = 0;
-            return;
+    public void setHp(Integer newHp) throws Exception {
+        if(newHp < 0){
+            throw new InvalidHpException(newHp);
         }
         this.hp = newHp;
     }
@@ -75,23 +73,23 @@ public class Player {
         this.handCard.add(newCard);
     }
 
-    public Card getHandCard(Integer i){
+    public Card getHandCard(int i) throws Exception{
         if(this.handCard.size() <= i || i < 0){
-            return null;
+            throw new IndexOutOfBoundsException("Hand");
         }
         return this.handCard.get(i);
     }
 
-    public void removeHandCard(Integer i){
+    public void removeHandCard(int i) throws Exception {
         if(this.handCard.size() <= i || i < 0){
-            return;
+            throw new IndexOutOfBoundsException("Hand");
         }
         this.handCard.remove(i);
     }
 
-    public Card takeHandCard(Integer i){
+    public Card takeHandCard(int i) throws Exception {
         if(this.handCard.size() <= i || i < 0){
-            return null;
+            throw new IndexOutOfBoundsException("Hand");
         }
         Card card = this.handCard.get(i);
         this.handCard.remove(i);

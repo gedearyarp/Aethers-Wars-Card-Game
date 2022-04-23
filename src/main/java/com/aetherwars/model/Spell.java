@@ -1,24 +1,21 @@
 package com.aetherwars.model;
 
-import java.io.IOException;
+import com.aetherwars.type.*;
 
-public class Spell extends Card {
+public abstract class Spell extends Card {
     protected SpellType spellType;
     protected StatusType statusType;
-    protected Integer duration;
 
     public Spell(){
         super(0, "", "", 0, "", CardType.SPELL);
         this.spellType = SpellType.PTN;
         this.statusType = StatusType.PERM;
-        this.duration = 0;
     }
 
-    public Spell(Integer id, String name, String description, Integer manaCost, String imagePath, SpellType spellType, StatusType statusType, Integer duration){
+    public Spell(Integer id, String name, String description, Integer manaCost, String imagePath, SpellType spellType, StatusType statusType) {
         super(id,name, description, manaCost, imagePath, CardType.SPELL);
         this.spellType = spellType;
         this.statusType = statusType;
-        this.duration = duration;
     }
 
     public SpellType getSpellType() {
@@ -37,17 +34,7 @@ public class Spell extends Card {
         this.statusType = statusType;
     }
 
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    public void use(SummonedCharacter sumcharacter) throws IOException {
-
-    }
+    abstract void use(SummonedCharacter sumcharacter) throws Exception;
 
     @Override
     public String toString() {

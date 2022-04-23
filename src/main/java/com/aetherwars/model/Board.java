@@ -1,5 +1,5 @@
 package com.aetherwars.model;
-import java.io.IOException;
+
 import java.util.*;
 
 public class Board {
@@ -37,7 +37,7 @@ public class Board {
         }
     }
 
-    public void putSpellOnBoard(int player, Spell spell, String dest) throws IOException{
+    public void putSpellOnBoard(int player, Spell spell, String dest) throws Exception{
         if (!this.isBoardEmpty(player,dest)){
             spell.use(this.board.get(player).get(dest));
         }

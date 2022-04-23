@@ -1,5 +1,6 @@
 package com.aetherwars.model;
 
+import com.aetherwars.type.*;
 
 public class Character extends Card {
   private Integer attack;
