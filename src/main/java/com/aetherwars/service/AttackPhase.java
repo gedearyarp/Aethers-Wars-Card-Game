@@ -98,5 +98,13 @@ public class AttackPhase {
         }
     }
 
+    public void attackOtherPlayer(GamePlay gamePlay,String attackingCharacter, String selectedPlayer){
+        SummonedCharacter attackingChar = gamePlay.board.get(gamePlay.currPlayerIndex).getCardFromBoard(gamePlay.currPlayerIndex, attackingCharacter);
+        Player selectedPlayer = gamePlay.board.get(gamePlay.getOtherPlayerIndex());
+        selectedPlayer.setHp(selectedPlayer.getHp() - attackingChar.getAttack());
+        if (selectedPlayer.getHp() <= 0){
+            // MENANG
+        }
+    }
     
 }
