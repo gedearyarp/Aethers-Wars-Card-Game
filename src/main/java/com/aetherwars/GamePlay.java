@@ -4,11 +4,11 @@ import com.aetherwars.model.*;
 import com.aetherwars.type.*;
 
 public class GamePlay {
-    public Integer round;
-    public Integer currPlayerIndex;
-    public Phase phase;
-    public Player[] players;
-    public Board board;
+    private Integer round;
+    private Integer currPlayerIndex;
+    private Phase phase;
+    private Player[] players;
+    private Board board;
 
     public GamePlay(Player playerA, Player playerB) {
         this.round = 0;
@@ -42,6 +42,14 @@ public class GamePlay {
 
     public Board getBoard() {
         return board;
+    }
+
+    public void setCurrPlayerIndex(Integer currPlayerIndex) {
+        this.currPlayerIndex = currPlayerIndex;
+    }
+
+    public void setRound(Integer round) {
+        this.round = round;
     }
 
     public void nextPhase() {

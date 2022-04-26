@@ -10,7 +10,7 @@ public class AttackPhase {
     // 4. bikin fungsi naik level karakter
 
     public void attackOtherCharacter(GamePlay gamePlay, String attackingCharPos, String selectedCharPos){
-        SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.currPlayerIndex, attackingCharPos);
+        SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.getCurrPlayerIndex(), attackingCharPos);
         SummonedCharacter selectedChar = gamePlay.getBoard().getCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharPos);
 
         attackingChar.attack(selectedChar);
@@ -24,7 +24,7 @@ public class AttackPhase {
             }
         }
         if (attackingChar.getTotalHp() <= 0){
-            gamePlay.getBoard().removeCardFromBoard(gamePlay.currPlayerIndex, attackingCharPos);
+            gamePlay.getBoard().removeCardFromBoard(gamePlay.getCurrPlayerIndex(), attackingCharPos);
             if(selectedChar.getTotalHp() > 0){
                 selectedChar.setExperience(selectedChar.getExperience() + attackingChar.getExperience());
                 selectedChar.checkLevelUp();
@@ -34,7 +34,7 @@ public class AttackPhase {
 
     public void attackOtherPlayer(GamePlay gamePlay, String attackingCharPos){
         if (gamePlay.getBoard().isBoardEmpty(gamePlay.getOtherPlayerIndex())){
-            SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.currPlayerIndex, attackingCharPos);
+            SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.getCurrPlayerIndex(), attackingCharPos);
             Player selectedPlayer = gamePlay.getPlayers()[gamePlay.getOtherPlayerIndex()];
             try {
                 selectedPlayer.setHp(selectedPlayer.getHp() - attackingChar.getTotalAttack());

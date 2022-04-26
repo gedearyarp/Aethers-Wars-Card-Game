@@ -4,11 +4,11 @@ import com.aetherwars.GamePlay;
 
 public class EndPhase {
     public void changeTurn(GamePlay gamePlay) {
-        if (gamePlay.currPlayerIndex == 0) {
-            gamePlay.currPlayerIndex = 1;
+        if (gamePlay.getCurrPlayerIndex() == 0) {
+            gamePlay.setCurrPlayerIndex(1);
         } else {
-            gamePlay.currPlayerIndex = 0;
-            gamePlay.round++;
+            gamePlay.setCurrPlayerIndex(0);
+            gamePlay.setRound(gamePlay.getRound() + 1);
         }
         gamePlay.nextPhase();
     }
