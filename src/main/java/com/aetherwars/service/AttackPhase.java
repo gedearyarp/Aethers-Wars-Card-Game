@@ -2,7 +2,6 @@ package com.aetherwars.service;
 
 import com.aetherwars.*;
 import com.aetherwars.model.*;
-import com.aetherwars.type.*;
 
 public class AttackPhase {
     // 1. iterate tiap karakter yang player punya buat nyerang TODO : ini buat di main kali ya (?)
@@ -10,59 +9,40 @@ public class AttackPhase {
     // 3. bikin fungsi karakter mati
     // 4. bikin fungsi naik level karakter
 
-    // public void attackOtherCharacter(GamePlay gamePlay, String attackingCharacter, String selectedCharacter){
-    //     SummonedCharacter attackingChar = gamePlay.board.get(gamePlay.currPlayerIndex).getCardFromBoard(gamePlay.currPlayerIndex, attackingCharacter);
-    //     SummonedCharacter selectedChar = gamePlay.board.get(gamePlay.getOtherPlayerIndex()).getCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharacter);
-    //     selectedChar.setHealth(selectedChar.getHealth() - attackingChar.getAttack());
-    //     attackingChar.setHealth(attackingChar.getHealth() - selectedChar.getAttack());
-    //     if (selectedChar.getHealth() <= 0){
-    //         gamePlay.board.get(gamePlay.getOtherPlayerIndex()).removeCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharacter);
-    //         if (attackingChar.getHealth() > 0){
-    //             attackingChar.setExperience(attackingChar.getExperience() + selectedChar.getExperience());
-    //             attackingChar.checkLevelUp();
-    //         }
-    //     }
-    //     if (attackingChar.getHealth() <= 0){
-    //         gamePlay.board.get(gamePlay.currPlayerIndex).removeCardFromBoard(gamePlay.currPlayerIndex, attackingCharacter);
-    //         if(selectedChar.getHealth() > 0){
-    //             selectedChar.setExperience(selectedChar.getExperience() + attackingChar.getExperience());
-    //             selectedChar.checkLevelUp();
-    //         }
-    //     }
-    // }
-
-    public void attackOtherCharacter(GamePlay gamePlay, String attackingCharacter, String selectedCharacter){
-        SummonedCharacter attackingChar = gamePlay.board.get(gamePlay.currPlayerIndex).getCardFromBoard(gamePlay.currPlayerIndex, attackingCharacter);
-        SummonedCharacter selectedChar = gamePlay.board.get(gamePlay.getOtherPlayerIndex()).getCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharacter);
-        
-        //   OVERWORLD
-        //   NETHER
-        //   END
+    public void attackOtherCharacter(GamePlay gamePlay, String attackingCharPos, String selectedCharPos){
+        SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.currPlayerIndex, attackingCharPos);
+        SummonedCharacter selectedChar = gamePlay.getBoard().getCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharPos);
 
         attackingChar.attack(selectedChar);
         selectedChar.attack(attackingChar);
 
-        if (selectedChar.getCharacter().getHealth() <= 0){
-            gamePlay.board.get(gamePlay.getOtherPlayerIndex()).removeCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharacter);
-            if (attackingChar.getCharacter().getHealth() > 0){
+        if (selectedChar.getTotalHp() <= 0){
+            gamePlay.getBoard().removeCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharPos);
+            if (attackingChar.getTotalHp() > 0){
                 attackingChar.setExperience(attackingChar.getExperience() + selectedChar.getExperience());
                 attackingChar.checkLevelUp();
             }
         }
-        if (attackingChar.getCharacter().getHealth() <= 0){
-            gamePlay.board.get(gamePlay.currPlayerIndex).removeCardFromBoard(gamePlay.currPlayerIndex, attackingCharacter);
-            if(selectedChar.getCharacter().getHealth() > 0){
+        if (attackingChar.getTotalHp() <= 0){
+            gamePlay.getBoard().removeCardFromBoard(gamePlay.currPlayerIndex, attackingCharPos);
+            if(selectedChar.getTotalHp() > 0){
                 selectedChar.setExperience(selectedChar.getExperience() + attackingChar.getExperience());
                 selectedChar.checkLevelUp();
             }
         }
     }
 
-    public void attackOtherPlayer(GamePlay gamePlay,String attackingCharacter, String selectedPlayer){
-        if (gamePlay.board.get(gamePlay.getOtherPlayerIndex().isBoardEmpty())){
-            SummonedCharacter attackingChar = gamePlay.board.get(gamePlay.currPlayerIndex).getCardFromBoard(gamePlay.currPlayerIndex, attackingCharacter);
-            Player selectedPlayer = gamePlay.board.get(gamePlay.getOtherPlayerIndex());
-            selectedPlayer.setHp(selectedPlayer.getHp() - attackingChar.getCharacter().getAttack());
+    public void attackOtherPlayer(GamePlay gamePlay, String attackingCharPos){
+        if (gamePlay.getBoard().isBoardEmpty(gamePlay.getOtherPlayerIndex())){
+            SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.currPlayerIndex, attackingCharPos);
+            Player selectedPlayer = gamePlay.getPlayers()[gamePlay.getOtherPlayerIndex()];
+            try {
+                selectedPlayer.setHp(selectedPlayer.getHp() - attackingChar.getTotalAttack());
+            } catch (Exception e) {
+                try {
+                    selectedPlayer.setHp(0);
+                } catch (Exception e1) {}
+            }
             if (selectedPlayer.getHp() <= 0){
                 // MENANG
             }

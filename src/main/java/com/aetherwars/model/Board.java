@@ -27,6 +27,15 @@ public class Board {
         return this.board.get(player);
     }
 
+
+    public boolean isBoardEmpty(int player){
+        return this.board.get(player).get("A").getCharacter() == null &&
+                this.board.get(player).get("B").getCharacter() == null &&
+                this.board.get(player).get("C").getCharacter() == null &&
+                this.board.get(player).get("D").getCharacter() == null &&
+                this.board.get(player).get("E").getCharacter() == null;
+    }
+
     public boolean isBoardEmpty(int player, String position){
         return this.board.get(player).get(position).getCharacter() == null;
     }
