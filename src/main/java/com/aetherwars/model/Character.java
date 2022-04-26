@@ -81,4 +81,8 @@ public class Character extends Card {
   public void setHealthUp(Integer healthUp) {
     this.healthUp = healthUp;
   }
+
+public void setHealth(double d) {
+  this.health = (int) d;
+}
 }

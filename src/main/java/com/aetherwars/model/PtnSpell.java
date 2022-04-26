@@ -49,5 +49,8 @@ public class PtnSpell extends Spell implements ITempSpell{
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+    public void setBoostHP(double d) {
+        this.boostHP = (int)d;
     }  
 }
