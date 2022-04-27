@@ -71,11 +71,14 @@ public class Deck{
     }
 
     public void generateCard(Integer deckSize) throws Exception {
-        CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
-        CSVReader csvreader_spell_morph = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
-        CSVReader csvreader_spell_ptn = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
-        CSVReader csvreader_spell_swap = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
-        
+        CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), "\t");
+        CSVReader csvreader_spell_morph = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/spell_morph.csv"), "\t");
+        CSVReader csvreader_spell_ptn = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/spell_ptn.csv"), "\t");
+        CSVReader csvreader_spell_swap = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/spell_swap.csv"), "\t");
+        csvreader_character.setSkipHeader(true);
+        csvreader_spell_morph.setSkipHeader(true);
+        csvreader_spell_ptn.setSkipHeader(true);
+        csvreader_spell_swap.setSkipHeader(true);
         List<String[]> character_data = csvreader_character.read();
         List<String[]> spell_morph_data = csvreader_spell_morph.read();
         List<String[]> spell_ptn_data = csvreader_spell_ptn.read();
@@ -84,10 +87,11 @@ public class Deck{
         Integer characterSizeDeck = deckSize / 2;
         Integer spellSizeDeck = deckSize - characterSizeDeck;
         Random rd = new Random();
-
+        
         for(int i = 0; i < characterSizeDeck; i++){
             Integer rd_c = rd.nextInt(character_data.size());
             String[] character_data_i = character_data.get(rd_c);
+            System.out.println(character_data_i[0]);
             Integer id = Integer.parseInt(character_data_i[0]);
             String name = character_data_i[1];
             String description = character_data_i[3];

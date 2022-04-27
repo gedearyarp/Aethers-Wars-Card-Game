@@ -17,9 +17,10 @@ public class SummonedCharacter {
     private Integer baseHealth;
     private Integer baseAttack;
     private Integer damageTaken = 0;
+    private boolean hasAttacked = false;
 
-    public SummonedCharacter() {
-        this.character = null;
+    public  SummonedCharacter() {
+        this.character = new Character();
         this.level = 0;
         this.experience = 0;
         this.attackAdd = 0;
@@ -59,6 +60,14 @@ public class SummonedCharacter {
         this.baseHealth = character.getBaseHealth();
         this.baseAttack = character.getBaseAttack();
         this.damageTaken = character.getDamageTaken();
+    }
+
+    public void setHasAttacked(boolean hasAttacked) {
+        this.hasAttacked = hasAttacked;
+    }
+
+    public boolean getHasAttacked() {
+        return this.hasAttacked;
     }
 
     public void setBaseHealth(Integer baseHealth) {
@@ -250,7 +259,7 @@ public class SummonedCharacter {
         Integer[] required = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
         Integer i = this.level;
         if (this.experience > required[i - 1]) {
-            Integer remainder = this.experience - (this.experience & required[i - 1]);
+            Integer remainder = this.experience - (required[i - 1]);
             levelUp(remainder);
             checkLevelUp();
         }
@@ -258,8 +267,8 @@ public class SummonedCharacter {
 
     @Override
     public String toString() {
-        character.toString();
-        return "Level: " + this.level + "\nExperience: " + this.experience;
+        
+        return character.toString() + "\n" + "Level: " + this.level + "\nExperience: " + this.experience;
     }
 
     public void attack(SummonedCharacter enemy) {

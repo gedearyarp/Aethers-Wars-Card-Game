@@ -28,7 +28,8 @@ public class DrawPhase {
 
     public void resetMana(GamePlay gamePlay) throws Exception {
         // reset mana
-        int newMana = gamePlay.getRound();
+        //int newMana = (int) Math.ceil((double)gamePlay.getRound()/2);
+        int newMana = 10;
         if (newMana > 10){
             newMana = 10;
         }

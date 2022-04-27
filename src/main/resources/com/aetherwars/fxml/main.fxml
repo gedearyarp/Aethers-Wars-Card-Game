@@ -71,71 +71,72 @@
                </rowConstraints>
                <children>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-                     <children>
-                        <ImageView fx:id="playerTwoCardC" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerTwoCardB" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerTwoCardBAtkLabel" layoutX="10.0" layoutY="7.0" text="Atk" />
+                        <Label fx:id="playerTwoCardBHpLabel" layoutX="73.0" layoutY="7.0" text="Hp" />
+                        <Label fx:id="playerTwoCardBExpLabel" layoutX="35.0" layoutY="79.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardBAtkCount" layoutX="11.0" layoutY="23.0" text="1" />
+                        <Label fx:id="playerTwoCardBHpCount" layoutX="74.0" layoutY="22.0" text="2" />
+                     </children>
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-                     <children>
-                        <ImageView fx:id="playerTwoCardA" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerTwoCardA" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerTwoCardAAtkLabel" layoutX="9.0" layoutY="7.0" text="Atk" />
+                        <Label fx:id="playerTwoCardAHpLabel" layoutX="72.0" layoutY="7.0" text="Hp" />
+                        <Label fx:id="playerTwoCardAExpLabel" layoutX="34.0" layoutY="79.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardAAtkCount" layoutX="8.0" layoutY="23.0" text="1" />
+                        <Label fx:id="playerTwoCardAHpCount" layoutX="72.0" layoutY="22.0" text="2" />
+                     </children>
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <children>
-                        <ImageView fx:id="playerTwoCardD" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerTwoCardD" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerTwoCardDAtkLabel" layoutX="9.0" layoutY="7.0" text="Atk" />
+                        <Label fx:id="playerTwoCardDHpLabel" layoutX="72.0" layoutY="7.0" text="Hp" />
+                        <Label fx:id="playerTwoCardDExpLabel" layoutX="34.0" layoutY="79.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardDAtkCount" layoutX="8.0" layoutY="21.0" text="1" />
+                        <Label fx:id="playerTwoCardDHpCount" layoutX="73.0" layoutY="21.0" text="2" />
+                     </children>
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <children>
-                        <ImageView fx:id="playerTwoCardB" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerTwoCardC" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerTwoCardCAtkLabel" layoutX="9.0" layoutY="6.0" text="Atk" />
+                        <Label fx:id="playerTwoCardCHpLabel" layoutX="72.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerTwoCardCExpLabel" layoutX="34.0" layoutY="78.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardCAtkCount" layoutX="10.0" layoutY="20.0" text="1" />
+                        <Label fx:id="playerTwoCardCHpCount" layoutX="72.0" layoutY="21.0" text="2" />
+                     </children>
                   </Pane>
                </children>
             </GridPane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <children>
-                  <ImageView fx:id="playerTwoCardE" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../../../../Pictures/landingPage.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="playerTwoCardE" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                  <Label fx:id="playerTwoCardEAtkLabel" layoutX="9.0" layoutY="7.0" text="Atk" />
+                  <Label fx:id="playerTwoCardEHpLabel" layoutX="72.0" layoutY="7.0" text="Hp" />
+                  <Label fx:id="playerTwoCardEExpLabel" layoutX="34.0" layoutY="79.0" text="0/1[1]" />
+                  <Label fx:id="playerTwoCardEAtkCount" layoutX="10.0" layoutY="23.0" text="1" />
+                  <Label fx:id="playerTwoCardEHpCount" layoutX="73.0" layoutY="21.0" text="2" />
                </children>
             </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
+            <Pane fx:id="playerTwoImageRectangle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
                <children>
-                  <ImageView fx:id="playerTwoImage" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../../../../Pictures/landingPage.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="playerTwoAvatar" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
                </children>
             </Pane>
          </children>
@@ -163,70 +164,71 @@
                <children>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
                      <children>
-                        <ImageView fx:id="playerOneCardA" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="playerOneCardA" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerOneCardAAtkLabel" layoutX="8.0" layoutY="6.0" text="Atk" />
+                        <Label fx:id="playerOneCardAHpLabel" layoutX="71.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerOneCardAExpLabel" layoutX="33.0" layoutY="78.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardAAtkCount" layoutX="8.0" layoutY="22.0" text="1" />
+                        <Label fx:id="playerOneCardAHpCount" layoutX="72.0" layoutY="22.0" text="2" />
                      </children>
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-                     <children>
-                        <ImageView fx:id="playerOneCardC" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerOneCardB" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerOneCardBAtkLabel" layoutX="8.0" layoutY="6.0" text="Atk" />
+                        <Label fx:id="playerOneCardBHpLabel" layoutX="71.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerOneCardBExpLabel" layoutX="33.0" layoutY="78.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardBAtkCount" layoutX="9.0" layoutY="22.0" text="1" />
+                        <Label fx:id="playerOneCardBHpCount" layoutX="71.0" layoutY="20.0" text="2" />
+                     </children>
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <children>
-                        <ImageView fx:id="playerOneCardB" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerOneCardC" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerOneCardCAtkLabel" layoutX="9.0" layoutY="5.0" text="Atk" />
+                        <Label fx:id="playerOneCardCHpLabel" layoutX="72.0" layoutY="5.0" text="Hp" />
+                        <Label fx:id="playerOneCardCExpLabel" layoutX="34.0" layoutY="77.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardCAtkCount" layoutX="9.0" layoutY="21.0" text="1" />
+                        <Label fx:id="playerOneCardCHpCount" layoutX="72.0" layoutY="19.0" text="2" />
+                     </children>
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <children>
-                        <ImageView fx:id="playerOneCardD" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                           <image>
-                              <Image url="@../../../../../../Pictures/landingPage.png" />
-                           </image>
-                        </ImageView>
-                     </children>
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
+                     <children>
+                        <Button fx:id="playerOneCardD" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Label fx:id="playerOneCardDAtkLabel" layoutX="11.0" layoutY="5.0" text="Atk" />
+                        <Label fx:id="playerOneCardDHpLabel" layoutX="74.0" layoutY="5.0" text="Hp" />
+                        <Label fx:id="playerOneCardDExpLabel" layoutX="36.0" layoutY="77.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardDAtkCount" layoutX="17.0" layoutY="21.0" text="1" />
+                        <Label fx:id="playerOneCardDHpCount" layoutX="77.0" layoutY="19.0" text="2" />
+                     </children>
                   </Pane>
                </children>
             </GridPane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Pane fx:id="playerOneImageRectangle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <children>
-                  <ImageView fx:id="playerOneImage" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../../../../Pictures/landingPage.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="playerOneAvatar" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
                </children>
             </Pane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
                <children>
-                  <ImageView fx:id="playerOneCardE" fitHeight="95.0" fitWidth="95.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../../../../Pictures/landingPage.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="playerOneCardE" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                  <Label fx:id="playerOneCardEAtkLabel" layoutX="9.0" layoutY="6.0" text="Atk" />
+                  <Label fx:id="playerOneCardEHpLabel" layoutX="72.0" layoutY="6.0" text="Hp" />
+                  <Label fx:id="playerOneCardEExpLabel" layoutX="34.0" layoutY="78.0" text="0/1[1]" />
+                  <Label fx:id="playerOneCardEAtkCount" layoutX="9.0" layoutY="22.0" text="1" />
+                  <Label fx:id="playerOneCardEHpCount" layoutX="72.0" layoutY="21.0" text="2" />
                </children>
             </Pane>
          </children>
@@ -284,6 +286,9 @@
                <image>
                   <Image url="@../../../../../../Pictures/2.png" />
                </image>
+               <GridPane.margin>
+                  <Insets left="8.0" />
+               </GridPane.margin>
             </ImageView>
             <Rectangle fx:id="hoveredCardDetail" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="180.0" stroke="BLACK" strokeType="INSIDE" width="150.0" GridPane.columnIndex="1" />
             <Rectangle fx:id="hoveredCardDescription" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="180.0" stroke="BLACK" strokeType="INSIDE" width="150.0" GridPane.columnIndex="2" />
@@ -360,7 +365,7 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="488.0" GridPane.columnIndex="1">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="500.0" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="15.0" />
          </GridPane.margin>
@@ -370,7 +375,7 @@
             <Insets left="15.0" />
          </GridPane.margin>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="488.0" GridPane.columnIndex="3">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="500.0" GridPane.columnIndex="3">
          <GridPane.margin>
             <Insets right="15.0" />
          </GridPane.margin>

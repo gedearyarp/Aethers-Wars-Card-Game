@@ -11,7 +11,7 @@ public class GamePlay {
     private Board board;
 
     public GamePlay(Player playerA, Player playerB) {
-        this.round = 0;
+        this.round = 1;
         this.phase = Phase.DRAW;
         this.currPlayerIndex = 0;
         this.players = new Player[2];
@@ -63,6 +63,11 @@ public class GamePlay {
             this.phase = Phase.END;
         }
         else if (this.phase == Phase.END) {
+            if (this.getCurrPlayerIndex() == 0) {
+                this.setCurrPlayerIndex(1);
+            } else {
+                this.setCurrPlayerIndex(0);
+            }
             this.round++;
             this.phase = Phase.DRAW;
         }

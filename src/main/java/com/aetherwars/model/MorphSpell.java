@@ -33,7 +33,8 @@ public class MorphSpell extends Spell {
 
         @Override
         public void use(SummonedCharacter sumcharacter) throws Exception {  
-            CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), " ");
+            CSVReader csvreader_character = new CSVReader(new File("src/main/resources/com/aetherwars/card/data/character.csv"), "\t");
+            csvreader_character.setSkipHeader(true);
             List<String[]> character_data = csvreader_character.read();
             if(this.targetID < 1 || this.targetID > 18){
                 throw new InvalidIDException(this.targetID);
@@ -64,7 +65,9 @@ public class MorphSpell extends Spell {
                 targetHealthUp
             );
 
-            sumcharacter = new SummonedCharacter(targetCharacter, 1, 0);
+            sumcharacter.setCharacter(targetCharacter);
+            sumcharacter.setLevel(1);
+            sumcharacter.setExperience(0);
         }
 }
     

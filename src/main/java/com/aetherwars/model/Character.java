@@ -26,7 +26,7 @@ public class Character extends Card {
     this.attackUp = attackUp;
     this.healthUp = healthUp;
   }
-
+  
   //copy constructor
   public Character(Character character) {
     super(character.getId(), character.getName(), character.getDescription(), character.getmanaCost(), character.getImagePath(), CardType.CHARACTER);

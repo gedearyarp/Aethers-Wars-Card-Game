@@ -17,14 +17,14 @@ public class Player {
         this.deck = new Deck();
         this.handCard = new ArrayList<Card>();
         this.mana = 0;
-        this.hp = 80;
+        this.hp = 100;
     }
     public Player(String name) {
         this.name = name;
         this.deck = new Deck();
         this.handCard = new ArrayList<Card>();
         this.mana = 0;
-        this.hp = 80;
+        this.hp = 100;
     }
     public Player(String name, Integer mana, Integer hp) {
         this.name = name;
@@ -84,7 +84,9 @@ public class Player {
         if(this.handCard.size() <= i || i < 0){
             throw new IndexOutOfBoundsException("Hand");
         }
+        //remove card i from arraylist
         this.handCard.remove(i);
+        this.handCard.trimToSize();
     }
 
     public Card takeHandCard(int i) throws Exception {

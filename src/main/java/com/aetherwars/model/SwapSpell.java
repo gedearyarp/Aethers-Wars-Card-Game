@@ -28,8 +28,12 @@ public class SwapSpell extends Spell implements ITempSpell{
         {
             Integer atk = sumcharacter.getCharacter().getAttack();
             Integer hp = sumcharacter.getCharacter().getHealth();
-            sumcharacter.getCharacter().setAttack(atk);
-            sumcharacter.getCharacter().setHealth(hp);
+            Integer atkAdd = sumcharacter.getAttackAdd();
+            Integer hpAdd = sumcharacter.getHpAdd();
+            sumcharacter.getCharacter().setAttack(hp);
+            sumcharacter.getCharacter().setHealth(atk);
+            sumcharacter.setAttackAdd(hpAdd);
+            sumcharacter.setHpAdd(atkAdd);
             sumcharacter.setIsSwapped(true);
         }
     }

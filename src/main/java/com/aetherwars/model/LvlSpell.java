@@ -18,6 +18,23 @@ public class LvlSpell extends Spell {
         this.lvlSpellType = lvlSpellType;
     }
 
+    public Integer getBoostLevel() {
+        return boostLevel;
+    }
+
+    public void setBoostLevel(Integer boostLevel) {
+        this.boostLevel = boostLevel;
+    }
+
+    public LvlSpellType getLvlSpellType() {
+        return lvlSpellType;
+    }
+
+    public void setLvlSpellType(LvlSpellType lvlSpellType) {
+        this.lvlSpellType = lvlSpellType;
+    }
+
+
     @Override
     public void use(SummonedCharacter sumcharacter) {
         if(lvlSpellType == LvlSpellType.LVLUP && sumcharacter.getLevel() == 10) {

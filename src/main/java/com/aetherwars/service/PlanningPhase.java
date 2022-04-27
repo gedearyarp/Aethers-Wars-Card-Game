@@ -8,16 +8,29 @@ public class PlanningPhase {
     // PLANNING PHASE
     // Pemain dapat melakukan beberapa aksi (atau tidak sama sekali) dalam Planning Phase, yaitu:
 
+    public boolean checkManaAndReduceMana(GamePlay gamePlay, Card card) throws Exception {
+        if (gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getMana() >= card.getmanaCost()) {
+            int newMana = gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getMana() - card.getmanaCost();
+            gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].setMana(newMana);
+            return true;
+        } else {
+            return false;
+        }
+    }
     public void placeCharCard(GamePlay gamePlay, Integer selectedHandIndex, String selectedBoardPosition) throws Exception {
         // 1. Meletakkan 0 atau lebih kartu karakter. Karakter yang baru saja diletakkan memiliki level 1 dan exp 0.
-        gamePlay.getBoard().putCharacterOnBoard(gamePlay.getCurrPlayerIndex(), (Character) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition);
-        gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
+        if (checkManaAndReduceMana(gamePlay, gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex))) {
+            gamePlay.getBoard().putCharacterOnBoard(gamePlay.getCurrPlayerIndex(), (Character) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition);
+            gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
+        }
     }
 
     public void placeSpell(GamePlay gamePlay, Integer selectedHandIndex, String selectedBoardPosition) throws Exception {
         // 2. Meletakkan 0 atau lebih kartu spell, lalu memilih karakter yang ditargetkan.
-        gamePlay.getBoard().putSpellOnBoard(gamePlay.getCurrPlayerIndex(), (Spell) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition);
-        gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
+        if (checkManaAndReduceMana(gamePlay, gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex))) {
+            gamePlay.getBoard().putSpellOnBoard(gamePlay.getCurrPlayerIndex(), (Spell) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition);
+            gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
+        }
     }
 
     public void removeCardFromHand(GamePlay gamePlay, Integer selectedHandIndex) throws Exception {
