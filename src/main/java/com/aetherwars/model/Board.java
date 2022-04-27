@@ -7,6 +7,8 @@ public class Board {
 
     public Board(){
         this.board = new ArrayList<HashMap<String, SummonedCharacter>>();
+        this.board.add(new HashMap<String, SummonedCharacter>());
+        this.board.add(new HashMap<String, SummonedCharacter>());
         this.board.get(0).put("A", new SummonedCharacter());
         this.board.get(0).put("B", new SummonedCharacter());
         this.board.get(0).put("C", new SummonedCharacter());

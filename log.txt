@@ -1,0 +1,6 @@
+
+> Configure project :
+Project : => no module-info.java found
+
+BUILD SUCCESSFUL in 1s
+6 actionable tasks: 3 executed, 3 up-to-date
