@@ -6,8 +6,8 @@ import java.net.URISyntaxException;
 // import java.util.List;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
@@ -31,10 +31,12 @@ public class AetherWars extends Application {
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH));
-            Parent root = loader.load();
+            Pane root = loader.load();
+            Controller controller = loader.getController();
+            controller.setParent(root);
             stage.setScene(new Scene(root));
             stage.getScene().setRoot(root);
             stage.setTitle("Aether Wars");

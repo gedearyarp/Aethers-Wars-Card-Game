@@ -13,21 +13,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller">
+<GridPane fx:id="mainPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller">
   <columnConstraints>
-    <ColumnConstraints />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="577.0" minWidth="10.0" prefWidth="523.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="431.0" minWidth="0.0" prefWidth="158.0" />
-      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="551.0" minWidth="10.0" prefWidth="519.0" />
+    <ColumnConstraints maxWidth="272.0" minWidth="0.0" prefWidth="0.0" />
+    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="780.3333740234375" minWidth="10.0" prefWidth="780.3333740234375" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="431.0" minWidth="0.0" prefWidth="138.6666259765625" />
+      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="785.3333740234375" minWidth="10.0" prefWidth="781.3333740234375" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="335.0" minHeight="10.0" prefHeight="274.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="208.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="241.0" minHeight="10.0" prefHeight="241.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="62.33333206176758" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="488.99999237060547" minHeight="10.0" prefHeight="363.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="208.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="387.66668701171875" minHeight="10.0" prefHeight="338.3333435058594" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="500.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+         <GridPane.margin>
+            <Insets left="15.0" />
+         </GridPane.margin></Rectangle>
       <GridPane GridPane.columnIndex="2">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -51,9 +55,9 @@
       </GridPane>
       <GridPane prefHeight="248.0" prefWidth="319.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="122.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.0" minWidth="10.0" prefWidth="222.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.0" minWidth="10.0" prefWidth="141.33331298828125" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="343.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="227.0" minWidth="0.0" prefWidth="140.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints vgrow="SOMETIMES" />
@@ -61,91 +65,121 @@
          <children>
             <GridPane GridPane.columnIndex="1">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="125.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="8.0" prefWidth="14.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.3333740234375" minWidth="10.0" prefWidth="163.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.3333740234375" minWidth="8.0" prefWidth="17.6666259765625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="168.3333740234375" minWidth="10.0" prefWidth="164.3333740234375" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="159.0" minHeight="0.0" prefHeight="151.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerTwoCardB" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerTwoCardB" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerTwoCardBAtkLabel" layoutX="10.0" layoutY="7.0" text="Atk" />
-                        <Label fx:id="playerTwoCardBHpLabel" layoutX="73.0" layoutY="7.0" text="Hp" />
-                        <Label fx:id="playerTwoCardBExpLabel" layoutX="35.0" layoutY="79.0" text="0/1[1]" />
-                        <Label fx:id="playerTwoCardBAtkCount" layoutX="11.0" layoutY="23.0" text="1" />
-                        <Label fx:id="playerTwoCardBHpCount" layoutX="74.0" layoutY="22.0" text="2" />
+                        <Label fx:id="playerTwoCardBHpLabel" layoutX="89.0" layoutY="7.0" text="Hp" />
+                        <Label fx:id="playerTwoCardBExpLabel" layoutX="42.0" layoutY="103.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardBAtkCount" layoutX="11.0" layoutY="23.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerTwoCardBHpCount" layoutX="88.0" layoutY="22.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerTwoCardA" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerTwoCardA" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerTwoCardAAtkLabel" layoutX="9.0" layoutY="7.0" text="Atk" />
-                        <Label fx:id="playerTwoCardAHpLabel" layoutX="72.0" layoutY="7.0" text="Hp" />
-                        <Label fx:id="playerTwoCardAExpLabel" layoutX="34.0" layoutY="79.0" text="0/1[1]" />
-                        <Label fx:id="playerTwoCardAAtkCount" layoutX="8.0" layoutY="23.0" text="1" />
-                        <Label fx:id="playerTwoCardAHpCount" layoutX="72.0" layoutY="22.0" text="2" />
+                        <Label fx:id="playerTwoCardAHpLabel" layoutX="89.0" layoutY="7.0" text="Hp" />
+                        <Label fx:id="playerTwoCardAExpLabel" layoutX="43.0" layoutY="103.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardAAtkCount" layoutX="8.0" layoutY="23.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerTwoCardAHpCount" layoutX="90.0" layoutY="22.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerTwoCardD" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerTwoCardD" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerTwoCardDAtkLabel" layoutX="9.0" layoutY="7.0" text="Atk" />
-                        <Label fx:id="playerTwoCardDHpLabel" layoutX="72.0" layoutY="7.0" text="Hp" />
-                        <Label fx:id="playerTwoCardDExpLabel" layoutX="34.0" layoutY="79.0" text="0/1[1]" />
-                        <Label fx:id="playerTwoCardDAtkCount" layoutX="8.0" layoutY="21.0" text="1" />
-                        <Label fx:id="playerTwoCardDHpCount" layoutX="73.0" layoutY="21.0" text="2" />
+                        <Label fx:id="playerTwoCardDHpLabel" layoutX="93.0" layoutY="7.0" text="Hp" />
+                        <Label fx:id="playerTwoCardDExpLabel" layoutX="51.0" layoutY="102.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardDAtkCount" layoutX="8.0" layoutY="21.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerTwoCardDHpCount" layoutX="97.0" layoutY="21.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerTwoCardC" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerTwoCardC" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerTwoCardCAtkLabel" layoutX="9.0" layoutY="6.0" text="Atk" />
-                        <Label fx:id="playerTwoCardCHpLabel" layoutX="72.0" layoutY="6.0" text="Hp" />
-                        <Label fx:id="playerTwoCardCExpLabel" layoutX="34.0" layoutY="78.0" text="0/1[1]" />
-                        <Label fx:id="playerTwoCardCAtkCount" layoutX="10.0" layoutY="20.0" text="1" />
-                        <Label fx:id="playerTwoCardCHpCount" layoutX="72.0" layoutY="21.0" text="2" />
+                        <Label fx:id="playerTwoCardCHpLabel" layoutX="87.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerTwoCardCExpLabel" layoutX="43.0" layoutY="103.0" text="0/1[1]" />
+                        <Label fx:id="playerTwoCardCAtkCount" layoutX="10.0" layoutY="20.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerTwoCardCHpCount" layoutX="90.0" layoutY="21.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
                </children>
             </GridPane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="playerTwoCardE" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                  <Button fx:id="playerTwoCardE" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                   <Label fx:id="playerTwoCardEAtkLabel" layoutX="9.0" layoutY="7.0" text="Atk" />
-                  <Label fx:id="playerTwoCardEHpLabel" layoutX="72.0" layoutY="7.0" text="Hp" />
-                  <Label fx:id="playerTwoCardEExpLabel" layoutX="34.0" layoutY="79.0" text="0/1[1]" />
-                  <Label fx:id="playerTwoCardEAtkCount" layoutX="10.0" layoutY="23.0" text="1" />
-                  <Label fx:id="playerTwoCardEHpCount" layoutX="73.0" layoutY="21.0" text="2" />
+                  <Label fx:id="playerTwoCardEHpLabel" layoutX="89.0" layoutY="7.0" text="Hp" />
+                  <Label fx:id="playerTwoCardEExpLabel" layoutX="45.0" layoutY="103.0" text="0/1[1]" />
+                  <Label fx:id="playerTwoCardEAtkCount" layoutX="10.0" layoutY="23.0" text="1">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+                  <Label fx:id="playerTwoCardEHpCount" layoutX="93.0" layoutY="23.0" text="2">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="playerTwoImageRectangle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
+            <Pane fx:id="playerTwoImageRectangle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="135.0" prefWidth="135.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
                <children>
-                  <Button fx:id="playerTwoAvatar" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                  <Button fx:id="playerTwoAvatar" layoutX="8.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                </children>
             </Pane>
          </children>
       </GridPane>
       <GridPane prefHeight="248.0" prefWidth="319.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="122.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.0" minWidth="10.0" prefWidth="222.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="160.3333282470703" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="506.0" minWidth="10.0" prefWidth="332.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.66665649414062" minWidth="0.0" prefWidth="175.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints vgrow="SOMETIMES" />
@@ -153,98 +187,131 @@
          <children>
             <GridPane GridPane.columnIndex="1">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="125.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="8.0" prefWidth="14.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="151.66665649414062" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="8.0" prefWidth="17.333343505859375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="154.66668701171875" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="159.0" minHeight="0.0" prefHeight="151.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
                      <children>
-                        <Button fx:id="playerOneCardA" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerOneCardA" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerOneCardAAtkLabel" layoutX="8.0" layoutY="6.0" text="Atk" />
-                        <Label fx:id="playerOneCardAHpLabel" layoutX="71.0" layoutY="6.0" text="Hp" />
-                        <Label fx:id="playerOneCardAExpLabel" layoutX="33.0" layoutY="78.0" text="0/1[1]" />
-                        <Label fx:id="playerOneCardAAtkCount" layoutX="8.0" layoutY="22.0" text="1" />
-                        <Label fx:id="playerOneCardAHpCount" layoutX="72.0" layoutY="22.0" text="2" />
+                        <Label fx:id="playerOneCardAHpLabel" layoutX="90.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerOneCardAExpLabel" layoutX="42.0" layoutY="102.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardAAtkCount" layoutX="8.0" layoutY="22.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerOneCardAHpCount" layoutX="92.0" layoutY="22.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets bottom="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerOneCardB" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerOneCardB" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerOneCardBAtkLabel" layoutX="8.0" layoutY="6.0" text="Atk" />
-                        <Label fx:id="playerOneCardBHpLabel" layoutX="71.0" layoutY="6.0" text="Hp" />
-                        <Label fx:id="playerOneCardBExpLabel" layoutX="33.0" layoutY="78.0" text="0/1[1]" />
-                        <Label fx:id="playerOneCardBAtkCount" layoutX="9.0" layoutY="22.0" text="1" />
-                        <Label fx:id="playerOneCardBHpCount" layoutX="71.0" layoutY="20.0" text="2" />
+                        <Label fx:id="playerOneCardBHpLabel" layoutX="86.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerOneCardBExpLabel" layoutX="45.0" layoutY="104.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardBAtkCount" layoutX="9.0" layoutY="22.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerOneCardBHpCount" layoutX="89.0" layoutY="20.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerOneCardC" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerOneCardC" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerOneCardCAtkLabel" layoutX="9.0" layoutY="5.0" text="Atk" />
-                        <Label fx:id="playerOneCardCHpLabel" layoutX="72.0" layoutY="5.0" text="Hp" />
-                        <Label fx:id="playerOneCardCExpLabel" layoutX="34.0" layoutY="77.0" text="0/1[1]" />
-                        <Label fx:id="playerOneCardCAtkCount" layoutX="9.0" layoutY="21.0" text="1" />
-                        <Label fx:id="playerOneCardCHpCount" layoutX="72.0" layoutY="19.0" text="2" />
+                        <Label fx:id="playerOneCardCHpLabel" layoutX="86.0" layoutY="5.0" text="Hp" />
+                        <Label fx:id="playerOneCardCExpLabel" layoutX="42.0" layoutY="104.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardCAtkCount" layoutX="9.0" layoutY="21.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerOneCardCHpCount" layoutX="87.0" layoutY="19.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
                      <children>
-                        <Button fx:id="playerOneCardD" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                        <Button fx:id="playerOneCardD" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                         <Label fx:id="playerOneCardDAtkLabel" layoutX="11.0" layoutY="5.0" text="Atk" />
-                        <Label fx:id="playerOneCardDHpLabel" layoutX="74.0" layoutY="5.0" text="Hp" />
-                        <Label fx:id="playerOneCardDExpLabel" layoutX="36.0" layoutY="77.0" text="0/1[1]" />
-                        <Label fx:id="playerOneCardDAtkCount" layoutX="17.0" layoutY="21.0" text="1" />
-                        <Label fx:id="playerOneCardDHpCount" layoutX="77.0" layoutY="19.0" text="2" />
+                        <Label fx:id="playerOneCardDHpLabel" layoutX="88.0" layoutY="6.0" text="Hp" />
+                        <Label fx:id="playerOneCardDExpLabel" layoutX="43.0" layoutY="103.0" text="0/1[1]" />
+                        <Label fx:id="playerOneCardDAtkCount" layoutX="17.0" layoutY="21.0" text="1">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
+                        <Label fx:id="playerOneCardDHpCount" layoutX="92.0" layoutY="21.0" text="2">
+                           <font>
+                              <Font size="10.0" />
+                           </font></Label>
                      </children>
                   </Pane>
                </children>
             </GridPane>
-            <Pane fx:id="playerOneImageRectangle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Pane fx:id="playerOneImageRectangle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="135.0" prefWidth="135.0" style="-fx-border-color: #000000;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <children>
-                  <Button fx:id="playerOneAvatar" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                  <Button fx:id="playerOneAvatar" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                </children>
             </Pane>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: #000000;" GridPane.columnIndex="2">
                <children>
-                  <Button fx:id="playerOneCardE" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="95.0" prefWidth="95.0" />
+                  <Button fx:id="playerOneCardE" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" />
                   <Label fx:id="playerOneCardEAtkLabel" layoutX="9.0" layoutY="6.0" text="Atk" />
-                  <Label fx:id="playerOneCardEHpLabel" layoutX="72.0" layoutY="6.0" text="Hp" />
-                  <Label fx:id="playerOneCardEExpLabel" layoutX="34.0" layoutY="78.0" text="0/1[1]" />
-                  <Label fx:id="playerOneCardEAtkCount" layoutX="9.0" layoutY="22.0" text="1" />
-                  <Label fx:id="playerOneCardEHpCount" layoutX="72.0" layoutY="21.0" text="2" />
+                  <Label fx:id="playerOneCardEHpLabel" layoutX="87.0" layoutY="6.0" text="Hp" />
+                  <Label fx:id="playerOneCardEExpLabel" layoutX="45.0" layoutY="103.0" text="0/1[1]" />
+                  <Label fx:id="playerOneCardEAtkCount" layoutX="9.0" layoutY="22.0" text="1">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+                  <Label fx:id="playerOneCardEHpCount" layoutX="90.0" layoutY="22.0" text="2">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
                </children>
             </Pane>
          </children>
       </GridPane>
       <GridPane GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="206.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="178.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="189.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="105.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="419.33331298828125" minWidth="10.0" prefWidth="304.33331298828125" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="195.66668701171875" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="366.3333740234375" minWidth="10.0" prefWidth="198.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.3333740234375" minWidth="5.6666259765625" prefWidth="193.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="230.0" stroke="BLACK" strokeType="INSIDE" width="170.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="291.0" stroke="BLACK" strokeType="INSIDE" width="238.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin></Rectangle>
             <GridPane GridPane.columnIndex="3">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -276,18 +343,21 @@
                   </Text>
                   <Text fx:id="deckCount" strokeType="OUTSIDE" strokeWidth="0.0" text="50/50" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets top="45.0" />
+                        <Insets top="100.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text fx:id="manaCount" strokeType="OUTSIDE" strokeWidth="0.0" text="50/50" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Text fx:id="manaCount" strokeType="OUTSIDE" strokeWidth="0.0" text="50/50" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="40.0" />
+                     </GridPane.margin></Text>
                </children>
             </GridPane>
-            <ImageView fx:id="hoveredCardImage" fitHeight="228.0" fitWidth="161.0" pickOnBounds="true" GridPane.halignment="LEFT">
+            <ImageView fx:id="hoveredCardImage" fitHeight="245.0" fitWidth="185.0" pickOnBounds="true" GridPane.halignment="LEFT">
                <image>
                   <Image url="@../../../../../../Pictures/2.png" />
                </image>
                <GridPane.margin>
-                  <Insets left="8.0" />
+                  <Insets left="60.0" />
                </GridPane.margin>
             </ImageView>
             <Rectangle fx:id="hoveredCardDetail" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="180.0" stroke="BLACK" strokeType="INSIDE" width="150.0" GridPane.columnIndex="1" />
@@ -308,27 +378,27 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="endPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #1c8ae1;" text="END" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="endPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="END" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="nextPhaseButton" mnemonicParsing="false" onAction="#handleNextPhase" prefHeight="33.0" prefWidth="200.0" text="&gt;&gt;&gt;&gt;" GridPane.columnIndex="4">
+            <Button fx:id="nextPhaseButton" mnemonicParsing="false" onAction="#handleNextPhase" prefHeight="33.0" prefWidth="250.0" text="&gt;&gt;&gt;&gt;" GridPane.columnIndex="4">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
-            <Label fx:id="drawPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #1c8ae1;" text="DRAW" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="drawPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="DRAW" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="planningPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #1c8ae1;" text="PLAN" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+            <Label fx:id="planningPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="PLAN" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="attackPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="200.0" style="-fx-background-color: #1c8ae1;" text="ATTACK" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+            <Label fx:id="attackPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="ATTACK" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
@@ -340,21 +410,22 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="95.0" />
-            <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="95.0" />
-            <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="95.0" />
-            <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="95.0" />
-            <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="95.0" />
+            <ColumnConstraints halignment="CENTER" maxWidth="190.0" minWidth="10.0" percentWidth="20.0" prefWidth="108.33332824707031" />
+            <ColumnConstraints halignment="CENTER" maxWidth="138.33334350585938" minWidth="0.0" percentWidth="20.0" prefWidth="120.33332824707031" />
+            <ColumnConstraints halignment="CENTER" maxWidth="161.66668701171875" minWidth="10.0" percentWidth="20.0" prefWidth="121.66667175292969" />
+            <ColumnConstraints halignment="CENTER" maxWidth="190.0" minWidth="10.0" percentWidth="20.0" prefWidth="107.66665649414062" />
+            <ColumnConstraints halignment="CENTER" maxWidth="218.0" minWidth="0.0" percentWidth="20.0" prefWidth="131.0" />
+            <ColumnConstraints halignment="CENTER" maxWidth="115.0" minWidth="0.0" prefWidth="0.0" />
          </columnConstraints>
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
          <children>
-            <Button fx:id="Card1" mnemonicParsing="false" prefHeight="160.0" prefWidth="88.0" />
-            <Button fx:id="Card3" mnemonicParsing="false" prefHeight="160.0" prefWidth="88.0" GridPane.columnIndex="2" />
-            <Button fx:id="Card4" mnemonicParsing="false" prefHeight="160.0" prefWidth="88.0" GridPane.columnIndex="3" />
-            <Button fx:id="Card2" mnemonicParsing="false" prefHeight="160.0" prefWidth="88.0" GridPane.columnIndex="1" />
-            <Button fx:id="Card5" mnemonicParsing="false" prefHeight="160.0" prefWidth="87.0" GridPane.columnIndex="4" />
+            <Button fx:id="Card1" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" />
+            <Button fx:id="Card3" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" GridPane.columnIndex="2" />
+            <Button fx:id="Card4" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" GridPane.columnIndex="3" />
+            <Button fx:id="Card2" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" GridPane.columnIndex="1" />
+            <Button fx:id="Card5" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" GridPane.columnIndex="4" />
          </children>
       </GridPane>
       <Label fx:id="playerOneName" text="STEVE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
@@ -365,11 +436,6 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="500.0" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets left="15.0" />
-         </GridPane.margin>
-      </Rectangle>
       <Rectangle fx:id="playerOneHealth" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" stroke="BLACK" strokeType="INSIDE" width="328.0" GridPane.columnIndex="1" GridPane.halignment="LEFT">
          <GridPane.margin>
             <Insets left="15.0" />
@@ -393,5 +459,13 @@
             <Insets right="15.0" />
          </GridPane.margin>
       </Label>
+      <Text fx:id="commandText" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO AETHERWARS!" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
    </children>
 </GridPane>

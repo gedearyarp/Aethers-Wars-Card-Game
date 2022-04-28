@@ -52,6 +52,18 @@ public class GamePlay {
         this.round = round;
     }
 
+    public void reduceSpellDuration() {
+        String[] arr = {"A", "B", "C", "D", "E"};
+        for(int i = 0; i <= 1; i++) {
+            for(String boardPos: arr) {
+                if(this.board.get(i).get(boardPos).getCharacter().getId() != 0) {
+                    this.board.get(i).get(boardPos).reduceDurationPtnSpell();
+                    this.board.get(i).get(boardPos).reduceSwap();
+                }
+            }
+        }
+    }
+
     public void nextPhase() {
         if (this.phase == Phase.DRAW) {
             this.phase = Phase.PLANNING;
@@ -70,6 +82,7 @@ public class GamePlay {
             }
             this.round++;
             this.phase = Phase.DRAW;
+            reduceSpellDuration();
         }
     }
 }

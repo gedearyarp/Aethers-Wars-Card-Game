@@ -1,6 +1,7 @@
 package com.aetherwars;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -20,6 +21,30 @@ import com.aetherwars.service.PlanningPhase;
 import com.aetherwars.type.*;
 
 public class Controller {
+
+    private Pane root;
+
+    public void setParent(Pane parent) {
+        this.root = parent;
+    }
+
+    public Integer toChild(ArrayList<Card> cards) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/aetherwars/fxml/child.fxml"));
+            Pane child = loader.load();
+            ControllerChild controllerChild = loader.getController();
+            controllerChild.setParent(root);
+            controllerChild.setCards(cards);
+            root.getChildren().add(child);
+            child.toFront();
+            root.toBack();
+            return controllerChild.getSelectedCard();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     @FXML
     private GridPane mainPage;
     @FXML
@@ -215,6 +240,9 @@ public class Controller {
     @FXML
     private Label endPhaseLabel;
 
+    @FXML
+    private Text commandText;
+
     private GamePlay game;
 
     private Player playerOne;
@@ -231,14 +259,25 @@ public class Controller {
 
     private int currentPhaseCount = 0; // 1 = draw, 2 = planning, 3 = attack, 4 = end
 
+    public void setCommandText(String text) {
+        try {
+            commandText.setText(text);
+        } catch(Exception e) {
+            System.out.println("Error in setCommandText");
+        }
+    }
+
     public void updatePlayer() {
         playerOne = game.getPlayers()[0];
         playerTwo = game.getPlayers()[1];
+        playerOneName.setText(playerOne.getName() + " (" + playerOne.getHp() + "/100)");
+        playerTwoName.setText(playerTwo.getName() + " (" + playerTwo.getHp() + "/100)");
         playerOneHealth.setWidth(playerOne.getHp() * 5);
         playerTwoHealth.setWidth(playerTwo.getHp() * 5);
     }
 
     public void drawPhase() {
+        setCommandText("Select 1 card to draw! \n(if you have more than 5 card, you will discard the leftmost card)");
         updatePlayer();
         unplanningPhase();
         unattackPhase();
@@ -247,7 +286,10 @@ public class Controller {
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         endPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         DrawPhase dPhase = new DrawPhase();
+        // ArrayList<Card> topThreeCards = dPhase.getTopThreeFromCurrPlayersDeck(game);
+        // Integer selectedCard = toChild(topThreeCards);
         try {
+            // dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards, selectedCard);
             dPhase.resetMana(game);
         } catch (Exception e) {
             System.out.println("Draw Phase Error");
@@ -328,6 +370,7 @@ public class Controller {
     public void planningPhase() {
         updatePlayer();
         unattackPhase();
+        setCommandText("Put your card to the board!");
 
         PlanningPhase pPhase = new PlanningPhase();
 
@@ -915,6 +958,8 @@ public class Controller {
 
     public void attackPhase() {
         unplanningPhase();
+        setCommandText("Attack your opponent by clicking on your card(attacker) and your opponent's card(defender). \nAttacker card can only attack once per round");
+
         clickedCardInHandIndex = -1;
         attackPhaseLabel.setStyle("-fx-background-color: #00ff00");
         planningPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
@@ -927,35 +972,95 @@ public class Controller {
             playerOneCardA.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "A";
                 if (!game.getBoard().get(0).get("A").getHasAttacked()) {
-                    playerOneCardA.setStyle("-fx-border-color: red");
+                    playerOneCardA.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(0).get("B").getHasAttacked()) {
+                    playerOneCardB.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("C").getHasAttacked()) {
+                    playerOneCardC.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("D").getHasAttacked()) {
+                    playerOneCardD.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("E").getHasAttacked()) {
+                    playerOneCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerOneCardB.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "B";
+                if (!game.getBoard().get(0).get("A").getHasAttacked()) {
+                    playerOneCardA.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(0).get("B").getHasAttacked()) {
-                    playerOneCardB.setStyle("-fx-border-color: red");
+                    playerOneCardB.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(0).get("C").getHasAttacked()) {
+                    playerOneCardC.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("D").getHasAttacked()) {
+                    playerOneCardD.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("E").getHasAttacked()) {
+                    playerOneCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerOneCardC.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "C";
+                if (!game.getBoard().get(0).get("A").getHasAttacked()) {
+                    playerOneCardA.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("B").getHasAttacked()) {
+                    playerOneCardB.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(0).get("C").getHasAttacked()) {
-                    playerOneCardC.setStyle("-fx-border-color: red");
+                    playerOneCardC.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(0).get("D").getHasAttacked()) {
+                    playerOneCardD.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("E").getHasAttacked()) {
+                    playerOneCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerOneCardD.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "D";
+                if (!game.getBoard().get(0).get("A").getHasAttacked()) {
+                    playerOneCardA.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("B").getHasAttacked()) {
+                    playerOneCardB.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("C").getHasAttacked()) {
+                    playerOneCardC.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(0).get("D").getHasAttacked()) {
-                    playerOneCardD.setStyle("-fx-border-color: red");
+                    playerOneCardD.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(0).get("E").getHasAttacked()) {
+                    playerOneCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerOneCardE.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "E";
+                if (!game.getBoard().get(0).get("A").getHasAttacked()) {
+                    playerOneCardA.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("B").getHasAttacked()) {
+                    playerOneCardB.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("C").getHasAttacked()) {
+                    playerOneCardC.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(0).get("D").getHasAttacked()) {
+                    playerOneCardD.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(0).get("E").getHasAttacked()) {
-                    playerOneCardE.setStyle("-fx-border-color: red");
+                    playerOneCardE.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
                 }
             });
 
@@ -964,11 +1069,13 @@ public class Controller {
                     if (game.getBoard().isBoardEmpty(1)) {
                         try {
                             aPhase.attackOtherPlayer(game, clickedCardInBoardPlayerOne.toString());
+                            updateBoardBackground(clickedCardInBoardPlayerOne);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else {
+                        setCommandText("You can only attack when the board is empty");
                     }
-                    updateBoardBackground(clickedCardInBoardPlayerOne);
                 }
                 updatePlayer();
                 connectBoard();
@@ -984,11 +1091,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "A");
+                        updateBoardBackground(clickedCardInBoardPlayerOne);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerOne);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1003,11 +1110,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "B");
+                        updateBoardBackground(clickedCardInBoardPlayerOne);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerOne);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1022,22 +1129,30 @@ public class Controller {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "C");
+                        updateBoardBackground(clickedCardInBoardPlayerOne);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
                 updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
             });
 
             playerTwoCardD.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "D");
+                        updateBoardBackground(clickedCardInBoardPlayerOne);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerOne);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1052,11 +1167,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "E");
+                        updateBoardBackground(clickedCardInBoardPlayerOne);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerOne);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1071,36 +1186,88 @@ public class Controller {
             playerTwoCardA.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "A";
                 if (!game.getBoard().get(1).get("A").getHasAttacked()) {
-                    playerTwoCardA.setStyle("-fx-border-color: red");
+                    playerTwoCardA.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(1).get("B").getHasAttacked()) {
+                    playerTwoCardB.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("C").getHasAttacked()) {
+                    playerTwoCardC.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("D").getHasAttacked()) {
+                    playerTwoCardD.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("E").getHasAttacked()) {
+                    playerTwoCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerTwoCardB.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "B";
+                if (!game.getBoard().get(1).get("A").getHasAttacked()) {
+                    playerTwoCardA.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(1).get("B").getHasAttacked()) {
-                    playerTwoCardB.setStyle("-fx-border-color: red");
+                    playerTwoCardB.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(1).get("C").getHasAttacked()) {
+                    playerTwoCardC.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("D").getHasAttacked()) {
+                    playerTwoCardD.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("E").getHasAttacked()) {
+                    playerTwoCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerTwoCardC.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "C";
+                if (!game.getBoard().get(1).get("A").getHasAttacked()) {
+                    playerTwoCardA.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("B").getHasAttacked()) {
+                    playerTwoCardB.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(1).get("C").getHasAttacked()) {
-                    playerTwoCardC.setStyle("-fx-border-color: red");
+                    playerTwoCardC.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(1).get("D").getHasAttacked()) {
+                    playerTwoCardD.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("E").getHasAttacked()) {
+                    playerTwoCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerTwoCardD.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "D";
+                if (!game.getBoard().get(1).get("A").getHasAttacked()) {
+                    playerTwoCardA.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("B").getHasAttacked()) {
+                    playerTwoCardB.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("C").getHasAttacked()) {
+                    playerTwoCardC.setStyle("-fx-background-color: #ffffff");
+                }
                 if (!game.getBoard().get(1).get("D").getHasAttacked()) {
-                    playerTwoCardD.setStyle("-fx-border-color: red");
+                    playerTwoCardD.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
+                }
+                if (!game.getBoard().get(1).get("E").getHasAttacked()) {
+                    playerTwoCardE.setStyle("-fx-background-color: #ffffff");
                 }
             });
 
             playerTwoCardE.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "E";
                 if (!game.getBoard().get(1).get("E").getHasAttacked()) {
-                    playerTwoCardE.setStyle("-fx-border-color: red");
+                    playerTwoCardE.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
                 }
+                playerTwoCardA.setStyle("-fx-background-color: #ffffff");
+                playerTwoCardB.setStyle("-fx-background-color: #ffffff");
+                playerTwoCardC.setStyle("-fx-background-color: #ffffff");
+                playerTwoCardD.setStyle("-fx-background-color: #ffffff");
             });
 
             playerOneAvatar.setOnMouseClicked(value -> {
@@ -1108,12 +1275,14 @@ public class Controller {
                     if (game.getBoard().isBoardEmpty(0)) {
                         try {
                             aPhase.attackOtherPlayer(game, clickedCardInBoardPlayerTwo.toString());
+                            updateBoardBackground(clickedCardInBoardPlayerTwo);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else {
+                        setCommandText("You can only attack when the board is empty");
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerTwo);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1128,12 +1297,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "A");
+                        updateBoardBackground(clickedCardInBoardPlayerTwo);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerTwo);
-
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -1146,11 +1314,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "B");
+                        updateBoardBackground(clickedCardInBoardPlayerTwo);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerTwo);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1165,11 +1333,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "C");
+                        updateBoardBackground(clickedCardInBoardPlayerTwo);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerTwo);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1184,11 +1352,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "D");
+                        updateBoardBackground(clickedCardInBoardPlayerTwo);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerTwo);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1203,11 +1371,11 @@ public class Controller {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "E");
+                        updateBoardBackground(clickedCardInBoardPlayerTwo);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updateBoardBackground(clickedCardInBoardPlayerTwo);
                 updatePlayer();
                 connectBoard();
                 connectHandInDeck();
@@ -1227,14 +1395,15 @@ public class Controller {
         planningPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         drawPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
+        setCommandText("");
     }
 
     public void handleNextPhase() {
         System.out.println("curr phase: " + currentPhaseCount);
-        nextPhaseButton.setText(">>>");
         if (currentPhaseCount == 0) {
+            setCommandText("Click DRAW to start the game");
+            nextPhaseButton.setText("DRAW!!");
             currentPhaseCount = 1;
-            drawPhase();
             updatePlayer();
             connectBoard();
             connectHandInDeck();
@@ -1244,6 +1413,7 @@ public class Controller {
             connectBoard();
             connectHoveredBoard();
         } else {
+            nextPhaseButton.setText(">>>");
             game.nextPhase();
             updatePlayer();
             connectBoard();
@@ -1260,10 +1430,10 @@ public class Controller {
                 connectRound();
                 System.out.println("CurrPlayer: " + currPlayer);
                 if (currPlayer == 0) {
-                    playerOneImageRectangle.setStyle("-fx-border-color: orange;");
+                    playerOneImageRectangle.setStyle("-fx-border-color: #1c8ae1; -fx-border-width:50");
                     playerTwoImageRectangle.setStyle("-fx-border-color: black");
                 } else {
-                    playerTwoImageRectangle.setStyle("-fx-border-color: orange;");
+                    playerTwoImageRectangle.setStyle("-fx-border-color: #1c8ae1;-fx-border-width:50");
                     playerOneImageRectangle.setStyle("-fx-border-color: black");
                 }
             } else if (currentPhaseCount == 2) {
