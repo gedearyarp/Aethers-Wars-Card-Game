@@ -47,8 +47,7 @@ public class SummonedCharacter {
         this.damageTaken = 0;
     }
 
-    // copy constructor
-    public SummonedCharacter(SummonedCharacter character) {
+    public void morphSummonedCharacter(SummonedCharacter character) {
         this.character = character.getCharacter();
         this.level = character.getLevel();
         this.experience = character.getExperience();
@@ -219,6 +218,7 @@ public class SummonedCharacter {
             } else if (remainder > s.getBoostHP()) {
                 remainder -= s.getBoostHP();
                 this.hpAdd -= s.getBoostHP();
+                this.attackAdd -= s.getBoostAttack();
                 activePtnSpells.remove(s);
                 index--;
             } else {

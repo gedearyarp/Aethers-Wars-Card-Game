@@ -33,6 +33,18 @@ public class PlanningPhase {
         }
     }
 
+    public void placeSpellEnemy(GamePlay gamePlay, Integer selectedHandIndex, String selectedBoardPosition)
+            throws Exception {
+        // 2. Meletakkan 0 atau lebih kartu spell, lalu memilih karakter yang
+        // ditargetkan.
+        if (checkManaAndReduceMana(gamePlay,gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex))) {
+            gamePlay.getBoard().putSpellOnBoard(gamePlay.getOtherPlayerIndex(),
+                    (Spell) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex),
+                    selectedBoardPosition);
+            gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
+        }
+    }
+
     public void removeCardFromHand(GamePlay gamePlay, Integer selectedHandIndex) throws Exception {
         // 3. Membuang 0 atau lebih kartu karakter atau kartu spell pada hand.
         gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);

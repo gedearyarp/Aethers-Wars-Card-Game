@@ -76,7 +76,6 @@ public class Controller {
     @FXML
     private Label playerOneCardBExpLabel;
 
-
     @FXML
     private Button playerOneCardC;
     @FXML
@@ -107,13 +106,13 @@ public class Controller {
     private Button playerOneCardE;
     @FXML
     private Label playerOneCardEAtkLabel;
-    @FXML    
+    @FXML
     private Label playerOneCardEAtkCount;
-    @FXML    
+    @FXML
     private Label playerOneCardEHpLabel;
-    @FXML    
+    @FXML
     private Label playerOneCardEHpCount;
-    @FXML    
+    @FXML
     private Label playerOneCardEExpLabel;
 
     @FXML
@@ -232,7 +231,6 @@ public class Controller {
 
     private int currentPhaseCount = 0; // 1 = draw, 2 = planning, 3 = attack, 4 = end
 
-
     public void updatePlayer() {
         playerOne = game.getPlayers()[0];
         playerTwo = game.getPlayers()[1];
@@ -287,19 +285,19 @@ public class Controller {
             playerOneCardA.setOnMouseClicked(value -> {
 
             });
-    
+
             playerOneCardB.setOnMouseClicked(value -> {
 
             });
-    
+
             playerOneCardC.setOnMouseClicked(value -> {
 
             });
-    
-            playerOneCardD.setOnMouseClicked(value -> {  
+
+            playerOneCardD.setOnMouseClicked(value -> {
 
             });
-    
+
             playerOneCardE.setOnMouseClicked(value -> {
 
             });
@@ -307,11 +305,11 @@ public class Controller {
             playerTwoCardA.setOnMouseClicked(value -> {
 
             });
-    
+
             playerTwoCardB.setOnMouseClicked(value -> {
 
             });
-    
+
             playerTwoCardC.setOnMouseClicked(value -> {
 
             });
@@ -321,7 +319,7 @@ public class Controller {
             });
 
             playerTwoCardE.setOnMouseClicked(value -> {
-                
+
             });
         }
 
@@ -332,7 +330,7 @@ public class Controller {
         unattackPhase();
 
         PlanningPhase pPhase = new PlanningPhase();
-        
+
         planningPhaseLabel.setStyle("-fx-background-color: #00ff00");
         drawPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
@@ -384,7 +382,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardB.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
                     if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
@@ -410,7 +408,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardC.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
                     if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
@@ -436,8 +434,8 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
-            playerOneCardD.setOnMouseClicked(value -> {  
+
+            playerOneCardD.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
                     if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
                         try {
@@ -462,7 +460,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardE.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
                     if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
@@ -488,6 +486,112 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
+
+            playerTwoCardA.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "A");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerTwoCardB.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "B");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerTwoCardC.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "C");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerTwoCardD.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "D");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerTwoCardE.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "E");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
         } else {
             playerTwoCardA.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
@@ -514,7 +618,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerTwoCardB.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
                     if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
@@ -540,7 +644,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerTwoCardC.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
                     if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
@@ -619,6 +723,111 @@ public class Controller {
                 connectHoveredBoard();
             });
 
+            playerOneCardA.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "A");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerOneCardB.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "B");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerOneCardC.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "C");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerOneCardD.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "D");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
+            playerOneCardE.setOnMouseClicked(value -> {
+                if (checkClickedCardInHand()) {
+                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    } else {
+                        try {
+                            pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "E");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                updatePlayer();
+                connectBoard();
+                connectHandInDeck();
+                connectMouseHover();
+                connectMana();
+                connectRound();
+                connectBoard();
+                connectHoveredBoard();
+            });
+
         }
     }
 
@@ -637,7 +846,6 @@ public class Controller {
         playerTwoCardC.setStyle("-fx-background-color: #ffffff");
         playerTwoCardD.setStyle("-fx-background-color: #ffffff");
         playerTwoCardE.setStyle("-fx-background-color: #ffffff");
-
 
         playerOneCardA.setOnMouseClicked(value -> {
         });
@@ -675,7 +883,6 @@ public class Controller {
         playerTwoCardE.setOnMouseClicked(value -> {
         });
     }
-
 
     public void updateBoardBackground(String pos) {
         if (currPlayer == 0) {
@@ -723,28 +930,28 @@ public class Controller {
                     playerOneCardA.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerOneCardB.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "B";
                 if (!game.getBoard().get(0).get("B").getHasAttacked()) {
                     playerOneCardB.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerOneCardC.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "C";
                 if (!game.getBoard().get(0).get("C").getHasAttacked()) {
                     playerOneCardC.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerOneCardD.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "D";
                 if (!game.getBoard().get(0).get("D").getHasAttacked()) {
                     playerOneCardD.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerOneCardE.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerOne = "E";
                 if (!game.getBoard().get(0).get("E").getHasAttacked()) {
@@ -772,7 +979,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerTwoCardA.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
@@ -791,7 +998,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerTwoCardB.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
@@ -810,7 +1017,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerTwoCardC.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
@@ -821,7 +1028,7 @@ public class Controller {
                 }
                 updatePlayer();
             });
-    
+
             playerTwoCardD.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
@@ -840,7 +1047,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerTwoCardE.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerOne != "") {
                     try {
@@ -867,28 +1074,28 @@ public class Controller {
                     playerTwoCardA.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerTwoCardB.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "B";
                 if (!game.getBoard().get(1).get("B").getHasAttacked()) {
                     playerTwoCardB.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerTwoCardC.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "C";
                 if (!game.getBoard().get(1).get("C").getHasAttacked()) {
                     playerTwoCardC.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerTwoCardD.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "D";
                 if (!game.getBoard().get(1).get("D").getHasAttacked()) {
                     playerTwoCardD.setStyle("-fx-border-color: red");
                 }
             });
-    
+
             playerTwoCardE.setOnMouseClicked(value -> {
                 clickedCardInBoardPlayerTwo = "E";
                 if (!game.getBoard().get(1).get("E").getHasAttacked()) {
@@ -917,7 +1124,6 @@ public class Controller {
                 connectHoveredBoard();
             });
 
-
             playerOneCardA.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
@@ -925,7 +1131,8 @@ public class Controller {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }                updateBoardBackground(clickedCardInBoardPlayerTwo);
+                }
+                updateBoardBackground(clickedCardInBoardPlayerTwo);
 
                 connectHandInDeck();
                 connectMouseHover();
@@ -934,7 +1141,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardB.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
@@ -953,7 +1160,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardC.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
@@ -972,7 +1179,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardD.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
@@ -991,7 +1198,7 @@ public class Controller {
                 connectBoard();
                 connectHoveredBoard();
             });
-    
+
             playerOneCardE.setOnMouseClicked(value -> {
                 if (clickedCardInBoardPlayerTwo != "") {
                     try {
@@ -1021,7 +1228,6 @@ public class Controller {
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         drawPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
     }
-
 
     public void handleNextPhase() {
         System.out.println("curr phase: " + currentPhaseCount);
@@ -1060,32 +1266,29 @@ public class Controller {
                     playerTwoImageRectangle.setStyle("-fx-border-color: orange;");
                     playerOneImageRectangle.setStyle("-fx-border-color: black");
                 }
-            }
-            else if (currentPhaseCount == 2) {
+            } else if (currentPhaseCount == 2) {
                 planningPhase();
                 currentPhaseCount++;
-            }
-            else if (currentPhaseCount == 3) {
+            } else if (currentPhaseCount == 3) {
                 attackPhase();
                 currentPhaseCount++;
-            }
-            else if (currentPhaseCount == 4) {
+            } else if (currentPhaseCount == 4) {
                 endPhase();
                 nextPhaseButton.setText("End Turn");
                 currentPhaseCount = 1;
                 currPlayer = game.getCurrPlayerIndex();
             }
 
-        } 
+        }
     }
 
-    public void connectHoveredBoard(){
+    public void connectHoveredBoard() {
         Board board = game.getBoard();
         if (currPlayer == 0) {
             String imagePathA = board.get(0).get("A").getCharacter().getImagePath();
             playerOneCardA.setOnMouseMoved(value -> {
                 if (imagePathA != "" && board.get(0).get("A").getCharacter().getHealth() > 0) {
-                    hoveredCardImage.setImage(new Image ("com/aetherwars/" + imagePathA));
+                    hoveredCardImage.setImage(new Image("com/aetherwars/" + imagePathA));
 
                     SummonedCharacter tempSum = board.get(0).get("A");
                     Character tempChar = tempSum.getCharacter();
@@ -1098,7 +1301,9 @@ public class Controller {
                     Integer atkAdd = tempSum.getAttackAdd();
                     Integer exp = tempSum.getExperience();
                     Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n" + "HP: " + hp + "(" + hpAdd + ")" +"\n" + "Attack: " + atk +  "(" + atkAdd + ")" + "\n" + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n" ;
+                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n"
+                            + "HP: " + hp + "(" + hpAdd + ")" + "\n" + "Attack: " + atk + "(" + atkAdd + ")" + "\n"
+                            + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
                     hoveredCardDescriptionText.setText(tempChar.getDescription());
@@ -1112,7 +1317,7 @@ public class Controller {
             String imagePathB = board.get(0).get("B").getCharacter().getImagePath();
             playerOneCardB.setOnMouseMoved(value -> {
                 if (imagePathB != "" && board.get(0).get("B").getCharacter().getHealth() > 0) {
-                    hoveredCardImage.setImage(new Image ("com/aetherwars/" + imagePathB));
+                    hoveredCardImage.setImage(new Image("com/aetherwars/" + imagePathB));
 
                     SummonedCharacter tempSum = board.get(0).get("B");
                     Character tempChar = tempSum.getCharacter();
@@ -1125,7 +1330,9 @@ public class Controller {
                     Integer atkAdd = tempSum.getAttackAdd();
                     Integer exp = tempSum.getExperience();
                     Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n" + "HP: " + hp + "(" + hpAdd + ")" +"\n" + "Attack: " + atk +  "(" + atkAdd + ")" + "\n" + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n" ;
+                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n"
+                            + "HP: " + hp + "(" + hpAdd + ")" + "\n" + "Attack: " + atk + "(" + atkAdd + ")" + "\n"
+                            + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
                     hoveredCardDescriptionText.setText(tempChar.getDescription());
@@ -1138,7 +1345,7 @@ public class Controller {
 
             String imagePathC = board.get(0).get("C").getCharacter().getImagePath();
             playerOneCardC.setOnMouseMoved(value -> {
-                if (imagePathC != "" && board.get(0).get("C").getCharacter().getHealth() > 0) {     
+                if (imagePathC != "" && board.get(0).get("C").getCharacter().getHealth() > 0) {
                     hoveredCardImage.setImage(new Image("com/aetherwars/" + imagePathC));
 
                     SummonedCharacter tempSum = board.get(0).get("C");
@@ -1157,8 +1364,8 @@ public class Controller {
                             + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
-                    hoveredCardDescriptionText.setText(tempChar.getDescription());   
-                    
+                    hoveredCardDescriptionText.setText(tempChar.getDescription());
+
                 }
             });
 
@@ -1187,7 +1394,7 @@ public class Controller {
                             + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
-                    hoveredCardDescriptionText.setText(tempChar.getDescription());   
+                    hoveredCardDescriptionText.setText(tempChar.getDescription());
                 }
             });
 
@@ -1240,7 +1447,9 @@ public class Controller {
                     Integer atkAdd = tempSum.getAttackAdd();
                     Integer exp = tempSum.getExperience();
                     Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n" + "HP: " + hp + "(" + hpAdd + ")" +"\n" + "Attack: " + atk +  "(" + atkAdd + ")" + "\n" + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n" ;
+                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n"
+                            + "HP: " + hp + "(" + hpAdd + ")" + "\n" + "Attack: " + atk + "(" + atkAdd + ")" + "\n"
+                            + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
                     hoveredCardDescriptionText.setText(tempChar.getDescription());
@@ -1267,7 +1476,9 @@ public class Controller {
                     Integer atkAdd = tempSum.getAttackAdd();
                     Integer exp = tempSum.getExperience();
                     Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n" + "HP: " + hp + "(" + hpAdd + ")" +"\n" + "Attack: " + atk +  "(" + atkAdd + ")" + "\n" + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n" ;
+                    String detailText = "Name: " + name + "\n" + "Type: " + type + "\n" + "Level: " + level + "\n"
+                            + "HP: " + hp + "(" + hpAdd + ")" + "\n" + "Attack: " + atk + "(" + atkAdd + ")" + "\n"
+                            + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
                     hoveredCardDescriptionText.setText(tempChar.getDescription());
@@ -1299,8 +1510,8 @@ public class Controller {
                             + "\n" + "Experience: " + exp + "/" + expMax[level - 1] + "\n";
                     hoveredCardDetailText.setText(detailText);
 
-                    hoveredCardDescriptionText.setText(tempChar.getDescription());   
-                    
+                    hoveredCardDescriptionText.setText(tempChar.getDescription());
+
                 }
             });
 
@@ -1365,7 +1576,7 @@ public class Controller {
             playerTwoCardE.setOnMouseExited(value -> {
                 backToNormalHovered();
             });
-            
+
         }
     }
 
@@ -1374,7 +1585,7 @@ public class Controller {
         playerOneCardAHpLabel.setText("");
         playerOneCardAAtkCount.setText("");
         playerOneCardAHpCount.setText("");
-        playerOneCardAExpLabel.setText("");  
+        playerOneCardAExpLabel.setText("");
 
         playerOneCardBAtkLabel.setText("");
         playerOneCardBHpLabel.setText("");
@@ -1387,7 +1598,7 @@ public class Controller {
         playerOneCardCAtkCount.setText("");
         playerOneCardCHpCount.setText("");
         playerOneCardCExpLabel.setText("");
-        
+
         playerOneCardDAtkLabel.setText("");
         playerOneCardDHpLabel.setText("");
         playerOneCardDAtkCount.setText("");
@@ -1399,7 +1610,7 @@ public class Controller {
         playerOneCardEAtkCount.setText("");
         playerOneCardEHpCount.setText("");
         playerOneCardEExpLabel.setText("");
-        
+
         playerTwoCardAAtkLabel.setText("");
         playerTwoCardAHpLabel.setText("");
         playerTwoCardAAtkCount.setText("");
@@ -1423,7 +1634,7 @@ public class Controller {
         playerTwoCardDAtkCount.setText("");
         playerTwoCardDHpCount.setText("");
         playerTwoCardDExpLabel.setText("");
-        
+
         playerTwoCardEAtkLabel.setText("");
         playerTwoCardEHpLabel.setText("");
         playerTwoCardEAtkCount.setText("");
@@ -1433,321 +1644,317 @@ public class Controller {
 
     public void connectBoard() {
         Board board = game.getBoard();
-        if (currPlayer == 0) {
-            String imagePathA = board.get(0).get("A").getCharacter().getImagePath();
-            if (imagePathA != "" && board.get(0).get("A").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathA));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerOneCardA.setGraphic(cardView);
+        String imagePathA = board.get(0).get("A").getCharacter().getImagePath();
+        if (imagePathA != "" && board.get(0).get("A").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathA));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerOneCardA.setGraphic(cardView);
 
-                SummonedCharacter tempSum = board.get(0).get("A");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerOneCardAAtkLabel.setText("Atk");
-                playerOneCardAAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerOneCardAHpLabel.setText("HP");
-                playerOneCardAHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerOneCardAExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");
-            } else {
-                playerOneCardA.setGraphic(null);
-                playerOneCardAAtkLabel.setText("");
-                playerOneCardAHpLabel.setText("");
-                playerOneCardAAtkCount.setText("");
-                playerOneCardAHpCount.setText("");
-                playerOneCardAExpLabel.setText("");                
-            }
-            String imagePathB = board.get(0).get("B").getCharacter().getImagePath();
-            if (imagePathB != "" && board.get(0).get("B").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathB));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerOneCardB.setGraphic(cardView);
-
-                SummonedCharacter tempSum = board.get(0).get("B");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerOneCardBAtkLabel.setText("Atk");
-                playerOneCardBAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerOneCardBHpLabel.setText("HP");
-                playerOneCardBHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerOneCardBExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");
-
-            } else {
-                playerOneCardB.setGraphic(null);
-                playerOneCardBAtkLabel.setText("");
-                playerOneCardBHpLabel.setText("");
-                playerOneCardBAtkCount.setText("");
-                playerOneCardBHpCount.setText("");
-                playerOneCardBExpLabel.setText("");
-            }
-            String imagePathC = board.get(0).get("C").getCharacter().getImagePath();
-            if (imagePathC != "" && board.get(0).get("C").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathC));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerOneCardC.setGraphic(cardView);
-
-                SummonedCharacter tempSum = board.get(0).get("C");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerOneCardCAtkLabel.setText("Atk");
-                playerOneCardCAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerOneCardCHpLabel.setText("HP");
-                playerOneCardCHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerOneCardCExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");
-
-            } else {
-                playerOneCardC.setGraphic(null);
-                playerOneCardCAtkLabel.setText("");
-                playerOneCardCHpLabel.setText("");
-                playerOneCardCAtkCount.setText("");
-                playerOneCardCHpCount.setText("");
-                playerOneCardCExpLabel.setText("");
-            }
-            String imagePathD = board.get(0).get("D").getCharacter().getImagePath();
-            if (imagePathD != "" && board.get(0).get("D").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathD));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerOneCardD.setGraphic(cardView);
-
-                SummonedCharacter tempSum = board.get(0).get("D");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerOneCardDAtkLabel.setText("Atk");
-                playerOneCardDAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerOneCardDHpLabel.setText("HP");
-                playerOneCardDHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerOneCardDExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");
-
-            } else {
-                playerOneCardD.setGraphic(null);
-                playerOneCardDAtkLabel.setText("");
-                playerOneCardDHpLabel.setText("");
-                playerOneCardDAtkCount.setText("");
-                playerOneCardDHpCount.setText("");
-                playerOneCardDExpLabel.setText("");
-            }
-            String imagePathE = board.get(0).get("E").getCharacter().getImagePath();
-            if (imagePathE != "" && board.get(0).get("E").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathE));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerOneCardE.setGraphic(cardView);
-
-                SummonedCharacter tempSum = board.get(0).get("E");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerOneCardEAtkLabel.setText("Atk");
-                playerOneCardEAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerOneCardEHpLabel.setText("HP");
-                playerOneCardEHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerOneCardEExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");
-
-            } else {
-                playerOneCardE.setGraphic(null);
-                playerOneCardEAtkLabel.setText("");
-                playerOneCardEHpLabel.setText("");
-                playerOneCardEAtkCount.setText("");
-                playerOneCardEHpCount.setText("");
-                playerOneCardEExpLabel.setText("");
-            }
+            SummonedCharacter tempSum = board.get(0).get("A");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerOneCardAAtkLabel.setText("Atk");
+            playerOneCardAAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerOneCardAHpLabel.setText("HP");
+            playerOneCardAHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerOneCardAExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
         } else {
-            String imagePathA = board.get(1).get("A").getCharacter().getImagePath();
-            if (imagePathA != "" && board.get(1).get("A").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathA));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerTwoCardA.setGraphic(cardView);
-
-                SummonedCharacter tempSum = board.get(1).get("A");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerTwoCardAAtkLabel.setText("Atk");
-                playerTwoCardAAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerTwoCardAHpLabel.setText("HP");
-                playerTwoCardAHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerTwoCardAExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");                
-
-            } else {
-                playerTwoCardA.setGraphic(null);
-                playerTwoCardAAtkLabel.setText("");
-                playerTwoCardAHpLabel.setText("");
-                playerTwoCardAAtkCount.setText("");
-                playerTwoCardAHpCount.setText("");
-                playerTwoCardAExpLabel.setText("");
-            }
-            String imagePathB = board.get(1).get("B").getCharacter().getImagePath();
-            if (imagePathB != "" && board.get(1).get("B").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathB));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerTwoCardB.setGraphic(cardView);
-
-
-                SummonedCharacter tempSum = board.get(1).get("B");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerTwoCardBAtkLabel.setText("Atk");
-                playerTwoCardBAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerTwoCardBHpLabel.setText("HP");
-                playerTwoCardBHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerTwoCardBExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");    
-
-            } else {
-                playerTwoCardB.setGraphic(null);
-                playerTwoCardBAtkLabel.setText("");
-                playerTwoCardBHpLabel.setText("");
-                playerTwoCardBAtkCount.setText("");
-                playerTwoCardBHpCount.setText("");
-                playerTwoCardBExpLabel.setText("");
-            }
-            String imagePathC = board.get(1).get("C").getCharacter().getImagePath();
-            if (imagePathC != "" && board.get(1).get("C").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathC));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerTwoCardC.setGraphic(cardView);
-
-                SummonedCharacter tempSum = board.get(1).get("C");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerTwoCardCAtkLabel.setText("Atk");
-                playerTwoCardCAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerTwoCardCHpLabel.setText("HP");
-                playerTwoCardCHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerTwoCardCExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
-
-            } else {
-                playerTwoCardC.setGraphic(null);
-                playerTwoCardCAtkLabel.setText("");
-                playerTwoCardCHpLabel.setText("");
-                playerTwoCardCAtkCount.setText("");
-                playerTwoCardCHpCount.setText("");
-                playerTwoCardCExpLabel.setText("");
-            }
-            String imagePathD = board.get(1).get("D").getCharacter().getImagePath();
-            if (imagePathD != "" && board.get(1).get("D").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathD));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerTwoCardD.setGraphic(cardView);
-
-
-                SummonedCharacter tempSum = board.get(1).get("D");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerTwoCardDAtkLabel.setText("Atk");
-                playerTwoCardDAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerTwoCardDHpLabel.setText("HP");
-                playerTwoCardDHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerTwoCardDExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");    
-
-            } else {
-                playerTwoCardD.setGraphic(null);
-                playerTwoCardDAtkLabel.setText("");
-                playerTwoCardDHpLabel.setText("");
-                playerTwoCardDAtkCount.setText("");
-                playerTwoCardDHpCount.setText("");
-                playerTwoCardDExpLabel.setText("");
-            }
-            String imagePathE = board.get(1).get("E").getCharacter().getImagePath();
-            if (imagePathE != "" && board.get(1).get("E").getCharacter().getHealth() > 0) {
-                ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathE));
-                cardView.setFitWidth(60);
-                cardView.setFitHeight(60);
-                cardView.setPreserveRatio(true);
-                playerTwoCardE.setGraphic(cardView);
-
-                
-                SummonedCharacter tempSum = board.get(1).get("E");
-                Character tempChar = tempSum.getCharacter();
-                Integer atk = tempChar.getAttack();
-                Integer hp = tempChar.getHealth();
-                Integer level = tempSum.getLevel();
-                Integer hpAdd = tempSum.getHpAdd();
-                Integer atkAdd = tempSum.getAttackAdd();
-                Integer exp = tempSum.getExperience();
-                Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                playerTwoCardEAtkLabel.setText("Atk");
-                playerTwoCardEAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
-                playerTwoCardEHpLabel.setText("HP");
-                playerTwoCardEHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
-                playerTwoCardEExpLabel.setText(exp.toString() + "/" + expMax[level-1] + "[" + level.toString() + "]");    
-                
-            } else {
-                playerTwoCardE.setGraphic(null);
-                playerTwoCardEAtkLabel.setText("");
-                playerTwoCardEHpLabel.setText("");
-                playerTwoCardEAtkCount.setText("");
-                playerTwoCardEHpCount.setText("");
-                playerTwoCardEExpLabel.setText("");
-            }
+            playerOneCardA.setGraphic(null);
+            playerOneCardAAtkLabel.setText("");
+            playerOneCardAHpLabel.setText("");
+            playerOneCardAAtkCount.setText("");
+            playerOneCardAHpCount.setText("");
+            playerOneCardAExpLabel.setText("");
         }
+        String imagePathB = board.get(0).get("B").getCharacter().getImagePath();
+        if (imagePathB != "" && board.get(0).get("B").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathB));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerOneCardB.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(0).get("B");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerOneCardBAtkLabel.setText("Atk");
+            playerOneCardBAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerOneCardBHpLabel.setText("HP");
+            playerOneCardBHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerOneCardBExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerOneCardB.setGraphic(null);
+            playerOneCardBAtkLabel.setText("");
+            playerOneCardBHpLabel.setText("");
+            playerOneCardBAtkCount.setText("");
+            playerOneCardBHpCount.setText("");
+            playerOneCardBExpLabel.setText("");
+        }
+        String imagePathC = board.get(0).get("C").getCharacter().getImagePath();
+        if (imagePathC != "" && board.get(0).get("C").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathC));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerOneCardC.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(0).get("C");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerOneCardCAtkLabel.setText("Atk");
+            playerOneCardCAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerOneCardCHpLabel.setText("HP");
+            playerOneCardCHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerOneCardCExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerOneCardC.setGraphic(null);
+            playerOneCardCAtkLabel.setText("");
+            playerOneCardCHpLabel.setText("");
+            playerOneCardCAtkCount.setText("");
+            playerOneCardCHpCount.setText("");
+            playerOneCardCExpLabel.setText("");
+        }
+        String imagePathD = board.get(0).get("D").getCharacter().getImagePath();
+        if (imagePathD != "" && board.get(0).get("D").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathD));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerOneCardD.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(0).get("D");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerOneCardDAtkLabel.setText("Atk");
+            playerOneCardDAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerOneCardDHpLabel.setText("HP");
+            playerOneCardDHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerOneCardDExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerOneCardD.setGraphic(null);
+            playerOneCardDAtkLabel.setText("");
+            playerOneCardDHpLabel.setText("");
+            playerOneCardDAtkCount.setText("");
+            playerOneCardDHpCount.setText("");
+            playerOneCardDExpLabel.setText("");
+        }
+        String imagePathE = board.get(0).get("E").getCharacter().getImagePath();
+        if (imagePathE != "" && board.get(0).get("E").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathE));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerOneCardE.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(0).get("E");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerOneCardEAtkLabel.setText("Atk");
+            playerOneCardEAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerOneCardEHpLabel.setText("HP");
+            playerOneCardEHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerOneCardEExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerOneCardE.setGraphic(null);
+            playerOneCardEAtkLabel.setText("");
+            playerOneCardEHpLabel.setText("");
+            playerOneCardEAtkCount.setText("");
+            playerOneCardEHpCount.setText("");
+            playerOneCardEExpLabel.setText("");
+        }
+
+        imagePathA = board.get(1).get("A").getCharacter().getImagePath();
+        if (imagePathA != "" && board.get(1).get("A").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathA));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerTwoCardA.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(1).get("A");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerTwoCardAAtkLabel.setText("Atk");
+            playerTwoCardAAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerTwoCardAHpLabel.setText("HP");
+            playerTwoCardAHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerTwoCardAExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerTwoCardA.setGraphic(null);
+            playerTwoCardAAtkLabel.setText("");
+            playerTwoCardAHpLabel.setText("");
+            playerTwoCardAAtkCount.setText("");
+            playerTwoCardAHpCount.setText("");
+            playerTwoCardAExpLabel.setText("");
+        }
+        imagePathB = board.get(1).get("B").getCharacter().getImagePath();
+        if (imagePathB != "" && board.get(1).get("B").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathB));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerTwoCardB.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(1).get("B");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerTwoCardBAtkLabel.setText("Atk");
+            playerTwoCardBAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerTwoCardBHpLabel.setText("HP");
+            playerTwoCardBHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerTwoCardBExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerTwoCardB.setGraphic(null);
+            playerTwoCardBAtkLabel.setText("");
+            playerTwoCardBHpLabel.setText("");
+            playerTwoCardBAtkCount.setText("");
+            playerTwoCardBHpCount.setText("");
+            playerTwoCardBExpLabel.setText("");
+        }
+        imagePathC = board.get(1).get("C").getCharacter().getImagePath();
+        if (imagePathC != "" && board.get(1).get("C").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathC));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerTwoCardC.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(1).get("C");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerTwoCardCAtkLabel.setText("Atk");
+            playerTwoCardCAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerTwoCardCHpLabel.setText("HP");
+            playerTwoCardCHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerTwoCardCExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerTwoCardC.setGraphic(null);
+            playerTwoCardCAtkLabel.setText("");
+            playerTwoCardCHpLabel.setText("");
+            playerTwoCardCAtkCount.setText("");
+            playerTwoCardCHpCount.setText("");
+            playerTwoCardCExpLabel.setText("");
+        }
+        imagePathD = board.get(1).get("D").getCharacter().getImagePath();
+        if (imagePathD != "" && board.get(1).get("D").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathD));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerTwoCardD.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(1).get("D");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerTwoCardDAtkLabel.setText("Atk");
+            playerTwoCardDAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerTwoCardDHpLabel.setText("HP");
+            playerTwoCardDHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerTwoCardDExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerTwoCardD.setGraphic(null);
+            playerTwoCardDAtkLabel.setText("");
+            playerTwoCardDHpLabel.setText("");
+            playerTwoCardDAtkCount.setText("");
+            playerTwoCardDHpCount.setText("");
+            playerTwoCardDExpLabel.setText("");
+        }
+        imagePathE = board.get(1).get("E").getCharacter().getImagePath();
+        if (imagePathE != "" && board.get(1).get("E").getCharacter().getHealth() > 0) {
+            ImageView cardView = new ImageView(new Image("com/aetherwars/" + imagePathE));
+            cardView.setFitWidth(60);
+            cardView.setFitHeight(60);
+            cardView.setPreserveRatio(true);
+            playerTwoCardE.setGraphic(cardView);
+
+            SummonedCharacter tempSum = board.get(1).get("E");
+            Character tempChar = tempSum.getCharacter();
+            Integer atk = tempChar.getAttack();
+            Integer hp = tempChar.getHealth();
+            Integer level = tempSum.getLevel();
+            Integer hpAdd = tempSum.getHpAdd();
+            Integer atkAdd = tempSum.getAttackAdd();
+            Integer exp = tempSum.getExperience();
+            Integer[] expMax = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+            playerTwoCardEAtkLabel.setText("Atk");
+            playerTwoCardEAtkCount.setText(atk.toString() + "(+" + atkAdd.toString() + ")");
+            playerTwoCardEHpLabel.setText("HP");
+            playerTwoCardEHpCount.setText(hp.toString() + "(+" + hpAdd.toString() + ")");
+            playerTwoCardEExpLabel.setText(exp.toString() + "/" + expMax[level - 1] + "[" + level.toString() + "]");
+
+        } else {
+            playerTwoCardE.setGraphic(null);
+            playerTwoCardEAtkLabel.setText("");
+            playerTwoCardEHpLabel.setText("");
+            playerTwoCardEAtkCount.setText("");
+            playerTwoCardEHpCount.setText("");
+            playerTwoCardEExpLabel.setText("");
+        }
+
     }
 
     public void connectMana() {
@@ -1757,9 +1964,9 @@ public class Controller {
         } else {
             mana = game.getPlayers()[1].getMana();
         }
-        manaCount.setText(mana.toString() + "/" + (int) Math.ceil((double)game.getRound()/2));
+        manaCount.setText(mana.toString() + "/" + (int) Math.ceil((double) game.getRound() / 2));
     }
-    
+
     public void connectRound() {
         updatePlayer();
         roundCount.setText(game.getRound().toString());
@@ -1810,7 +2017,7 @@ public class Controller {
                 Card4.setGraphic(null);
                 Card5.setGraphic(null);
             }
-    
+
             if (inHand.size() > 1) {
                 imagePath = inHand.get(1).getImagePath();
                 if (imagePath != "") {
@@ -1826,7 +2033,7 @@ public class Controller {
                 Card4.setGraphic(null);
                 Card5.setGraphic(null);
             }
-    
+
             if (inHand.size() > 2) {
                 imagePath = inHand.get(2).getImagePath();
                 if (imagePath != "") {
@@ -1841,7 +2048,7 @@ public class Controller {
                 Card4.setGraphic(null);
                 Card5.setGraphic(null);
             }
-            
+
             if (inHand.size() > 3) {
                 imagePath = inHand.get(3).getImagePath();
                 if (imagePath != "") {
@@ -1855,7 +2062,7 @@ public class Controller {
                 }
                 Card5.setGraphic(null);
             }
-    
+
             if (inHand.size() > 4) {
                 imagePath = inHand.get(4).getImagePath();
                 if (imagePath != "") {
@@ -1869,7 +2076,6 @@ public class Controller {
                 }
             }
         }
-        
 
     }
 
@@ -1877,7 +2083,7 @@ public class Controller {
         updatePlayer();
         String imagePath = inHand.get(pos).getImagePath();
         if (imagePath != "") {
-            hoveredCardImage.setImage(new Image ("com/aetherwars/" + imagePath));
+            hoveredCardImage.setImage(new Image("com/aetherwars/" + imagePath));
         }
         if (inHand.get(pos).getCardType().equals(CardType.CHARACTER)) {
             String name = inHand.get(pos).getName();
@@ -1896,17 +2102,22 @@ public class Controller {
                 String spellType = temp.getSpellType().toString();
                 Integer boostLevel = ((LvlSpell) temp).getBoostLevel();
                 String levelUpType = ((LvlSpell) temp).getLvlSpellType().toString();
-                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: " + spellType + "\nBoost Level: " + boostLevel + "\nLevel Up Type: " + levelUpType;
+                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: " + spellType + "\nBoost Level: "
+                        + boostLevel + "\nLevel Up Type: " + levelUpType;
             } else if (temp.getSpellType().equals(SpellType.MORPH)) {
-                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: " + temp.getSpellType().toString();
+                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: "
+                        + temp.getSpellType().toString();
             } else if ((temp.getSpellType().equals(SpellType.PTN))) {
                 String boostAttack = ((PtnSpell) temp).getBoostAttack().toString();
                 String boostHealth = ((PtnSpell) temp).getBoostHP().toString();
                 String duration = ((PtnSpell) temp).getDuration().toString();
-                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: " + temp.getSpellType().toString() + "\nBoost Attack: " + boostAttack + "\nBoost Health: " + boostHealth + "\nDuration: " + duration;
+                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: "
+                        + temp.getSpellType().toString() + "\nBoost Attack: " + boostAttack + "\nBoost Health: "
+                        + boostHealth + "\nDuration: " + duration;
             } else if ((temp.getSpellType().equals(SpellType.SWAP))) {
                 String duration = ((SwapSpell) temp).getDuration().toString();
-                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: " + temp.getSpellType().toString() + "\nDuration: " + duration;
+                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: "
+                        + temp.getSpellType().toString() + "\nDuration: " + duration;
             }
             hoveredCardDetailText.setText(detailText);
         }
@@ -2096,14 +2307,14 @@ public class Controller {
         playerTwo.setMana(9);
         game = new GamePlay(playerOne, playerTwo);
 
-        //TODO: player one and two avatar
+        // TODO: player one and two avatar
 
         currPlayer = game.getCurrPlayerIndex();
         playerOneName.setText(playerOne.getName());
         playerTwoName.setText(playerTwo.getName());
         playerOneHealth.setWidth(500);
         playerTwoHealth.setWidth(500);
-        //make new random variable Deck Number between 40-60
+        // make new random variable Deck Number between 40-60
         Integer deckNumber1 = (int) (Math.random() * (60 - 40 + 1)) + 40;
         Integer deckNumber2 = (int) (Math.random() * (60 - 40 + 1)) + 40;
         playerOne.getDeck().generateCard(deckNumber1);
@@ -2117,7 +2328,7 @@ public class Controller {
         }
         playerOneTotalDeck = playerOne.getDeck().getCard().size();
         playerTwoTotalDeck = playerTwo.getDeck().getCard().size();
-        
+
         connectBoard();
         initializeBoard();
         nextPhaseButton.setText("START");

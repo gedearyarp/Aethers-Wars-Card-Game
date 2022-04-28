@@ -65,9 +65,13 @@ public class MorphSpell extends Spell {
                 targetHealthUp
             );
 
-            sumcharacter.setCharacter(targetCharacter);
-            sumcharacter.setLevel(1);
-            sumcharacter.setExperience(0);
+            SummonedCharacter targetSummonedCharacter = new SummonedCharacter(
+                targetCharacter,
+                1,
+                0
+            );
+            sumcharacter.morphSummonedCharacter(targetSummonedCharacter);
+
         }
 }
     
