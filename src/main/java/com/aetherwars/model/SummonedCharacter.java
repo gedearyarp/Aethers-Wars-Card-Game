@@ -188,8 +188,16 @@ public class SummonedCharacter {
             if (s.getDuration() != 0) {
                 newActivePtnSpells.add(s);
             } else {
-                attackAdd -= s.getBoostAttack();
-                hpAdd -= s.getBoostHP();
+                if(this.isSwapped)
+                {
+                    this.hpAdd -= s.getBoostAttack();
+                    this.attackAdd -= s.getBoostHP();
+                }
+                else
+                {
+                    attackAdd -= s.getBoostAttack();
+                    hpAdd -= s.getBoostHP();
+                }
             }
         }
         setActivePtnSpells(newActivePtnSpells);
@@ -213,18 +221,35 @@ public class SummonedCharacter {
                 break;
             }
             PtnSpell s = activePtnSpells.get(index);
-            if (s.getBoostHP() < 0) {
-                index--;
-            } else if (remainder > s.getBoostHP()) {
-                remainder -= s.getBoostHP();
-                this.hpAdd -= s.getBoostHP();
-                this.attackAdd -= s.getBoostAttack();
-                activePtnSpells.remove(s);
-                index--;
-            } else {
-                s.setBoostHP(s.getBoostHP() - remainder);
-                this.setHpAdd(this.getHpAdd() - remainder);
-                remainder = (double) 0;
+            if(!this.isSwapped){
+                if (s.getBoostHP() < 0) {
+                    index--;
+                } else if (remainder > s.getBoostHP()) {
+                    remainder -= s.getBoostHP();
+                    this.hpAdd -= s.getBoostHP();
+                    this.attackAdd -= s.getBoostAttack();
+                    activePtnSpells.remove(s);
+                    index--;
+                } else {
+                    s.setBoostHP(s.getBoostHP() - remainder);
+                    this.setHpAdd(this.getHpAdd() - remainder);
+                    remainder = (double) 0;
+                }
+            }
+            else{
+                if (s.getBoostAttack() < 0) {
+                    index--;
+                } else if (remainder > s.getBoostAttack()) {
+                    remainder -= s.getBoostAttack();
+                    this.attackAdd -= s.getBoostHP();
+                    this.hpAdd -= s.getBoostAttack();
+                    activePtnSpells.remove(s);
+                    index--;
+                } else {
+                    s.setBoostAttack((int) (s.getBoostAttack() - remainder));
+                    this.setAttackAdd((int) (this.getAttackAdd() - remainder));
+                    remainder = (double) 0;
+                }
             }
         }
         return remainder;
@@ -235,12 +260,14 @@ public class SummonedCharacter {
     }
 
     public void reduceSwap() {
-        this.swapDuration--;
-        if (this.swapDuration == 0) {
-            this.isSwapped = false;
-            Integer temp = character.getAttack();
-            this.character.setAttack(this.character.getHealth());
-            this.character.setHealth(temp);
+        if(this.isSwapped) {
+            this.swapDuration--;
+            if (this.swapDuration == 0) {
+                this.isSwapped = false;
+                Integer temp = character.getAttack();
+                this.character.setAttack(this.character.getHealth());
+                this.character.setHealth(temp);
+            }
         }
     }
 
