@@ -50,7 +50,6 @@ public class AttackPhase {
         
         if(!attackingChar.getHasAttacked()) {
             attackingChar.attack(selectedChar);
-            selectedChar.attack(attackingChar);
 
             if (selectedChar.getTotalHp() <= 0){
                 gamePlay.getBoard().removeCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharPos);

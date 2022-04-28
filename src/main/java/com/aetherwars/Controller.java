@@ -286,10 +286,12 @@ public class Controller {
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         endPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         DrawPhase dPhase = new DrawPhase();
-        // ArrayList<Card> topThreeCards = dPhase.getTopThreeFromCurrPlayersDeck(game);
+        ArrayList<Card> topThreeCards = dPhase.getTopThreeFromCurrPlayersDeck(game);
+        //random integer selected card from 0 t0 2
+        int selectedCard = (int) (Math.random() * 3);
         // Integer selectedCard = toChild(topThreeCards);
         try {
-            // dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards, selectedCard);
+            dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards, selectedCard);
             dPhase.resetMana(game);
         } catch (Exception e) {
             System.out.println("Draw Phase Error");
@@ -2259,9 +2261,10 @@ public class Controller {
             String name = inHand.get(pos).getName();
             Character temp = (Character) inHand.get(pos);
             String health = temp.getHealth().toString();
+            Type charType = temp.getType();
             String attack = temp.getAttack().toString();
             String mana = temp.getmanaCost().toString();
-            String details = "Name: " + name + "\nHealth: " + health + "\nAttack: " + attack + "\nMana Cost: " + mana;
+            String details = "Name: " + name + "\nHealth: " + health + "\nType: " + charType + "\nAttack: " + attack + "\nMana Cost: " + mana;
             hoveredCardDetailText.setText(details);
         } else {
             Spell temp = (Spell) inHand.get(pos);
@@ -2270,10 +2273,8 @@ public class Controller {
             String mana = temp.getmanaCost().toString();
             if (temp.getSpellType().equals(SpellType.LVL)) {
                 String spellType = temp.getSpellType().toString();
-                Integer boostLevel = ((LvlSpell) temp).getBoostLevel();
                 String levelUpType = ((LvlSpell) temp).getLvlSpellType().toString();
-                detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: " + spellType + "\nBoost Level: "
-                        + boostLevel + "\nLevel Up Type: " + levelUpType;
+                detailText = "Name: " + name + "\nSpell Type: " + spellType + "\nLevel Up Type: " + levelUpType;
             } else if (temp.getSpellType().equals(SpellType.MORPH)) {
                 detailText = "Name: " + name + "\nMana Cost: " + mana + "\nSpell Type: "
                         + temp.getSpellType().toString();

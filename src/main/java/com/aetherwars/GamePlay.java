@@ -56,9 +56,11 @@ public class GamePlay {
         String[] arr = {"A", "B", "C", "D", "E"};
         for(int i = 0; i <= 1; i++) {
             for(String boardPos: arr) {
-                if(this.board.get(i).get(boardPos).getCharacter().getId() != 0) {
-                    this.board.get(i).get(boardPos).reduceDurationPtnSpell();
-                    this.board.get(i).get(boardPos).reduceSwap();
+                if(i == this.currPlayerIndex){
+                    if(this.board.get(i).get(boardPos).getCharacter().getId() != 0) {
+                        this.board.get(i).get(boardPos).reduceDurationPtnSpell();
+                        this.board.get(i).get(boardPos).reduceSwap();
+                    }
                 }
             }
         }

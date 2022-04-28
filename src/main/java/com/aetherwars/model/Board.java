@@ -55,6 +55,9 @@ public class Board {
     public void putSpellOnBoard(int player, Spell spell, String dest) throws Exception{
         if (!this.isBoardEmpty(player,dest)){
             spell.use(this.board.get(player).get(dest));
+            if(this.board.get(player).get(dest).getTotalHp() <= 0){
+                this.board.get(player).put(dest, new SummonedCharacter());
+            }
         }
         else {
             throw new InvalidBoardException(dest, "spell");

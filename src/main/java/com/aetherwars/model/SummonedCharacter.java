@@ -185,7 +185,7 @@ public class SummonedCharacter {
         List<PtnSpell> newActivePtnSpells = new ArrayList<PtnSpell>();
         for (PtnSpell s : activePtnSpells) {
             s.setDuration(s.getDuration() - 1);
-            if (s.getDuration() != 0) {
+            if (s.getDuration() > 0) {
                 newActivePtnSpells.add(s);
             } else {
                 if(this.isSwapped)
@@ -302,6 +302,11 @@ public class SummonedCharacter {
 
         double damageDone = this.getTotalAttack() * this.checkModifier(enemy);
         double damageReceived = enemy.getTotalAttack() * enemy.checkModifier(this);
+        //max between 0 and damage done
+        damageDone = Math.max(0, damageDone);
+        damageReceived = Math.max(0, damageReceived);
+        System.out.println(damageDone);
+        System.out.println(damageReceived);
         double thisRemainder = this.ptnSpellAttackHandler(damageReceived);
         double enemyRemainder = enemy.ptnSpellAttackHandler(damageDone);
 

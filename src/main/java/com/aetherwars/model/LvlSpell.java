@@ -3,27 +3,16 @@ package com.aetherwars.model;
 import com.aetherwars.type.*;
 
 public class LvlSpell extends Spell {
-    private Integer boostLevel;
     private LvlSpellType lvlSpellType;
 
     public LvlSpell() {
-        super(0, "", "", 0, "", SpellType.MORPH, StatusType.TEMP);
-        this.boostLevel = 0;
+        super(0, "", "", 0, "", SpellType.LVL, StatusType.PERM);
         this.lvlSpellType = LvlSpellType.LVLUP;
     }
 
-    public LvlSpell(Integer id, String name, String description, Integer manaCost, String imagePath, Integer duration, Integer boostLevel, LvlSpellType lvlSpellType) {
-        super(id, name, description, manaCost, imagePath, SpellType.MORPH, StatusType.TEMP);
-        this.boostLevel = boostLevel;
+    public LvlSpell(Integer id, String name, String description,String imagePath,LvlSpellType lvlSpellType) {
+        super(id, name, description, 0, imagePath, SpellType.LVL, StatusType.PERM);
         this.lvlSpellType = lvlSpellType;
-    }
-
-    public Integer getBoostLevel() {
-        return boostLevel;
-    }
-
-    public void setBoostLevel(Integer boostLevel) {
-        this.boostLevel = boostLevel;
     }
 
     public LvlSpellType getLvlSpellType() {
@@ -43,10 +32,10 @@ public class LvlSpell extends Spell {
         if(lvlSpellType == LvlSpellType.LVLDOWN && sumcharacter.getLevel() == 1) {
             return;
         }
-        sumcharacter.setLevel(sumcharacter.getLevel() + boostLevel);
-        sumcharacter.setExperience(0);
 
         if(lvlSpellType == LvlSpellType.LVLUP) {
+            sumcharacter.setLevel(sumcharacter.getLevel() + 1);
+            sumcharacter.setExperience(0);
             Integer baseAttack = sumcharacter.getBaseAttack() + sumcharacter.getCharacter().getAttackUp();
             sumcharacter.setBaseAttack(baseAttack);
             sumcharacter.getCharacter().setAttack(baseAttack);
@@ -56,6 +45,8 @@ public class LvlSpell extends Spell {
             sumcharacter.getCharacter().setHealth(baseHealth); 
         }
         if(lvlSpellType == LvlSpellType.LVLDOWN) {
+            sumcharacter.setLevel(sumcharacter.getLevel() - 1);
+            sumcharacter.setExperience(0);
             Integer baseAttack = sumcharacter.getBaseAttack() - sumcharacter.getCharacter().getAttackUp();
             sumcharacter.setBaseAttack(baseAttack);
             sumcharacter.getCharacter().setAttack(baseAttack);

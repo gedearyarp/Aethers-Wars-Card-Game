@@ -84,7 +84,7 @@ public class Deck{
         List<String[]> spell_ptn_data = csvreader_spell_ptn.read();
         List<String[]> spell_swap_data = csvreader_spell_swap.read();
 
-        Integer characterSizeDeck = deckSize / 2;
+        Integer characterSizeDeck = deckSize / 3;
         Integer spellSizeDeck = deckSize - characterSizeDeck;
         Random rd = new Random();
         
@@ -120,7 +120,7 @@ public class Deck{
         }
 
         for(int i=0; i < spellSizeDeck; i++){
-            Integer rd_s = rd.nextInt(3);
+            Integer rd_s = rd.nextInt(4);
             if (rd_s == 0){
                 Integer rd_s_m = rd.nextInt(spell_morph_data.size());
                 String[] spell_morph_data_i = spell_morph_data.get(rd_s_m);
@@ -191,8 +191,41 @@ public class Deck{
 
                 this.addCard(spell);
             }
+            else if(rd_s == 3){
+                //rd between 1 and 2
+                Integer rd_lvl = rd.nextInt(2);
+                if(rd_lvl == 0){
+                    Integer id = 401;
+                    String name = "I love you";
+                    String description = "This card will support you in your fight against the enemy until you level up";
+                    String imagepath = "card/image/spell/lvl/lvlup.png";
+                    LvlSpell spell = new LvlSpell(
+                        id,
+                        name,
+                        description,
+                        imagepath,
+                        LvlSpellType.LVLUP
+                    );
+                    this.addCard(spell);
+                }else{
+                    Integer id = 402;
+                    String name = "Crippling Depression";
+                    String description = "This card will give you crippling depression";
+                    String imagepath = "card/image/spell/lvl/lvldown.png";
+                    LvlSpell spell = new LvlSpell(
+                            id,
+                            name,
+                            description,
+                            imagepath,
+                            LvlSpellType.LVLDOWN);
+                    this.addCard(spell);
+                }
+                
+            }
         }
 
         Collections.shuffle(this.deckCard);
     }
+
+    
 }

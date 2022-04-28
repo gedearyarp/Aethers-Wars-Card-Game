@@ -3,12 +3,21 @@ package com.aetherwars.service;
 import com.aetherwars.*;
 import com.aetherwars.model.*;
 import com.aetherwars.model.Character;
+import com.aetherwars.type.*;
+import com.aetherwars.type.SpellType;
 
 public class PlanningPhase {
     // PLANNING PHASE
     // Pemain dapat melakukan beberapa aksi (atau tidak sama sekali) dalam Planning Phase, yaitu:
 
-    public boolean checkManaAndReduceMana(GamePlay gamePlay, Card card) throws Exception {
+    public boolean checkManaAndReduceMana(GamePlay gamePlay, Card card, String selectedBoardPosition) throws Exception {
+        if(card.getCardType() == CardType.SPELL){
+            if(card.getSpellType() == SpellType.LVL){
+                int[] manaCostLVL = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
+                int targetLVL = gamePlay.getBoard().getCardFromBoard(gamePlay.getCurrPlayerIndex(), selectedBoardPosition).getLevel();
+                card.setmanaCost(manaCostLVL[targetLVL]);
+            } 
+        }
         if (gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getMana() >= card.getmanaCost()) {
             int newMana = gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getMana() - card.getmanaCost();
             gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].setMana(newMana);
@@ -19,7 +28,7 @@ public class PlanningPhase {
     }
     public void placeCharCard(GamePlay gamePlay, Integer selectedHandIndex, String selectedBoardPosition) throws Exception {
         // 1. Meletakkan 0 atau lebih kartu karakter. Karakter yang baru saja diletakkan memiliki level 1 dan exp 0.
-        if (checkManaAndReduceMana(gamePlay, gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex))) {
+        if (checkManaAndReduceMana(gamePlay, gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition)) {
             gamePlay.getBoard().putCharacterOnBoard(gamePlay.getCurrPlayerIndex(), (Character) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition);
             gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
         }
@@ -27,17 +36,18 @@ public class PlanningPhase {
 
     public void placeSpell(GamePlay gamePlay, Integer selectedHandIndex, String selectedBoardPosition) throws Exception {
         // 2. Meletakkan 0 atau lebih kartu spell, lalu memilih karakter yang ditargetkan.
-        if (checkManaAndReduceMana(gamePlay, gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex))) {
+        if (checkManaAndReduceMana(gamePlay, gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition)) {
             gamePlay.getBoard().putSpellOnBoard(gamePlay.getCurrPlayerIndex(), (Spell) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition);
             gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].removeHandCard(selectedHandIndex);
         }
+        
     }
 
     public void placeSpellEnemy(GamePlay gamePlay, Integer selectedHandIndex, String selectedBoardPosition)
             throws Exception {
         // 2. Meletakkan 0 atau lebih kartu spell, lalu memilih karakter yang
         // ditargetkan.
-        if (checkManaAndReduceMana(gamePlay,gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex))) {
+        if (checkManaAndReduceMana(gamePlay,gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex), selectedBoardPosition)) {
             gamePlay.getBoard().putSpellOnBoard(gamePlay.getOtherPlayerIndex(),
                     (Spell) gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getHandCard(selectedHandIndex),
                     selectedBoardPosition);
