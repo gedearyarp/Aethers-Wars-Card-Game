@@ -8,8 +8,8 @@ Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi
 ## Table of Contents
 * [Authors](#authors)
 * [Data Structure](#data-structure)
-* [Features](#features)
-* [Setup](#setup)
+* [Program Requirement](#program-requirement)
+* [How To Run](#how-to-run)
 * [Usage](#usage)
 * [Project Status](#project-status)
 
