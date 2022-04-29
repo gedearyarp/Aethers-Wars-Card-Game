@@ -154,6 +154,8 @@ Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi
 ```
 
 ## Features
+![image](https://user-images.githubusercontent.com/71170262/165959218-ae6f354e-d9f7-4092-b37d-ed5714ff1573.png)
+![image](https://user-images.githubusercontent.com/71170262/165959234-c4ae8380-5264-47a8-9a0f-26e1d3d827b5.png)
 
 
 ## Screenshot
