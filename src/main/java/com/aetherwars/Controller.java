@@ -376,17 +376,22 @@ public class Controller {
         return addEXPbuttonClicked;
     }
 
-    public void planningPhase() {
+    public void updateAll() {
         updatePlayer();
-        unattackPhase();
-        setCommandText("Put your card to the board!");
-        
         connectHandInDeck();
         connectMouseHover();
         connectMana();
         connectRound();
         connectBoard();
         connectHoveredBoard();
+    }
+
+    public void planningPhase() {
+        updatePlayer();
+        unattackPhase();
+        setCommandText("Put your card to the board!");
+
+        updateAll();
 
         PlanningPhase pPhase = new PlanningPhase();
 
@@ -423,13 +428,7 @@ public class Controller {
             } else {
                 clickedCardInHandIndex = 0;
             }
-            updatePlayer();
-            connectHandInDeck();
-            connectMouseHover();
-            connectMana();
-            connectRound();
-            connectBoard();
-            connectHoveredBoard();
+            updateAll();
         });
 
         Card2.setOnMouseClicked(value -> {
@@ -447,13 +446,7 @@ public class Controller {
             } else {
                 clickedCardInHandIndex = 1;
             }
-            updatePlayer();
-            connectHandInDeck();
-            connectMouseHover();
-            connectMana();
-            connectRound();
-            connectBoard();
-            connectHoveredBoard();
+            updateAll();
         });
 
         Card3.setOnMouseClicked(value -> {
@@ -471,13 +464,7 @@ public class Controller {
             } else {
                 clickedCardInHandIndex = 2;
             }
-            updatePlayer();
-            connectHandInDeck();
-            connectMouseHover();
-            connectMana();
-            connectRound();
-            connectBoard();
-            connectHoveredBoard();
+            updateAll();
         });
 
         Card4.setOnMouseClicked(value -> {
@@ -495,13 +482,7 @@ public class Controller {
             } else {
                 clickedCardInHandIndex = 3;
             }
-            updatePlayer();
-            connectHandInDeck();
-            connectMouseHover();
-            connectMana();
-            connectRound();
-            connectBoard();
-            connectHoveredBoard();
+            updateAll();
         });
 
         Card5.setOnMouseClicked(value -> {
@@ -519,13 +500,7 @@ public class Controller {
             } else {
                 clickedCardInHandIndex = 4;
             }
-            updatePlayer();
-            connectHandInDeck();
-            connectMouseHover();
-            connectMana();
-            connectRound();
-            connectBoard();
-            connectHoveredBoard();
+            updateAll();
         });
 
         // ================ PLAYER ONE ======================
@@ -548,6 +523,7 @@ public class Controller {
                         if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "A");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "A");
@@ -556,6 +532,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "A");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "A");
@@ -564,13 +541,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -594,6 +565,7 @@ public class Controller {
                         if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "B");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "B");
@@ -602,6 +574,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "B");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "B");
@@ -610,13 +583,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -641,6 +608,7 @@ public class Controller {
                         if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "C");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "C");
@@ -649,6 +617,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "C");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "C");
@@ -657,13 +626,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -687,6 +650,7 @@ public class Controller {
                         if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "D");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "D");
@@ -695,6 +659,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "D");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "D");
@@ -703,13 +668,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -733,6 +692,7 @@ public class Controller {
                         if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "E");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "E");
@@ -741,6 +701,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "E");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "E");
@@ -749,13 +710,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -767,6 +722,7 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "A");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "A");
@@ -778,13 +734,7 @@ public class Controller {
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardB.setOnMouseClicked(value -> {
@@ -793,6 +743,7 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "B");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "B");
@@ -804,13 +755,7 @@ public class Controller {
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardC.setOnMouseClicked(value -> {
@@ -819,6 +764,7 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "C");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "C");
@@ -830,13 +776,7 @@ public class Controller {
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardD.setOnMouseClicked(value -> {
@@ -845,6 +785,7 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "D");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "D");
@@ -856,13 +797,7 @@ public class Controller {
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardE.setOnMouseClicked(value -> {
@@ -871,6 +806,7 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "E");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "E");
@@ -882,13 +818,7 @@ public class Controller {
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             // ====================== PLAYER TWO PLANNING PHASE INTERACTION ===============
@@ -902,7 +832,7 @@ public class Controller {
                     } else if (checkAddExpCommand()) {
                         addEXPbuttonClicked = false;
                         removeCardButtonClicked = false;
-                        if (playerOne.getMana() < 1) {
+                        if (playerTwo.getMana() < 1) {
                             setCommandText("Mana is not enough to use");
                         } else {
                             pPhase.useMana(game, "A", 1);
@@ -911,6 +841,7 @@ public class Controller {
                         if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "A");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "A");
@@ -919,6 +850,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "A");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "A");
@@ -927,13 +859,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -948,7 +874,7 @@ public class Controller {
                     } else if (checkAddExpCommand()) {
                         addEXPbuttonClicked = false;
                         removeCardButtonClicked = false;
-                        if (playerOne.getMana() < 1) {
+                        if (playerTwo.getMana() < 1) {
                             setCommandText("Mana is not enough to use");
                         } else {
                             pPhase.useMana(game, "B", 1);
@@ -957,6 +883,7 @@ public class Controller {
                         if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "B");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "B");
@@ -965,6 +892,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "B");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "B");
@@ -973,13 +901,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -994,7 +916,7 @@ public class Controller {
                     } else if (checkAddExpCommand()) {
                         addEXPbuttonClicked = false;
                         removeCardButtonClicked = false;
-                        if (playerOne.getMana() < 1) {
+                        if (playerTwo.getMana() < 1) {
                             setCommandText("Mana is not enough to use");
                         } else {
                             pPhase.useMana(game, "C", 1);
@@ -1003,6 +925,7 @@ public class Controller {
                         if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "C");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "C");
@@ -1011,6 +934,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "C");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "C");
@@ -1019,13 +943,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -1040,7 +958,7 @@ public class Controller {
                     } else if (checkAddExpCommand()) {
                         addEXPbuttonClicked = false;
                         removeCardButtonClicked = false;
-                        if (playerOne.getMana() < 1) {
+                        if (playerTwo.getMana() < 1) {
                             setCommandText("Mana is not enough to use");
                         } else {
                             pPhase.useMana(game, "D", 1);
@@ -1049,6 +967,7 @@ public class Controller {
                         if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "D");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "D");
@@ -1057,6 +976,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "D");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "D");
@@ -1065,13 +985,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -1086,7 +1000,7 @@ public class Controller {
                     } else if (checkAddExpCommand()) {
                         addEXPbuttonClicked = false;
                         removeCardButtonClicked = false;
-                        if (playerOne.getMana() < 1) {
+                        if (playerTwo.getMana() < 1) {
                             setCommandText("Mana is not enough to use");
                         } else {
                             pPhase.useMana(game, "E", 1);
@@ -1096,6 +1010,7 @@ public class Controller {
                         if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
                                 .equals(CardType.CHARACTER)) {
                             pPhase.placeCharCard(game, clickedCardInHandIndex, "E");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "E");
@@ -1104,6 +1019,7 @@ public class Controller {
                             }
                         } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "E");
+                            updateAll();
                             boolean state = pPhase.checkManaAndReduceMana(game,
                                     game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
                                     "E");
@@ -1112,13 +1028,7 @@ public class Controller {
                             }
                         }
                     }
-                    updatePlayer();
-                    connectHandInDeck();
-                    connectMouseHover();
-                    connectMana();
-                    connectRound();
-                    connectBoard();
-                    connectHoveredBoard();
+                    updateAll();
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -1130,18 +1040,13 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "A");
+                            updateAll();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardB.setOnMouseClicked(value -> {
@@ -1150,18 +1055,13 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "B");
+                            updateAll();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardC.setOnMouseClicked(value -> {
@@ -1170,18 +1070,13 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "C");
+                            updateAll();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardD.setOnMouseClicked(value -> {
@@ -1190,19 +1085,13 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "D");
+                            updateAll();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardE.setOnMouseClicked(value -> {
@@ -1211,18 +1100,13 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "E");
+                            updateAll();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
-                updatePlayer();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
         }
@@ -1425,21 +1309,15 @@ public class Controller {
                         try {
                             aPhase.attackOtherPlayer(game, clickedCardInBoardPlayerOne.toString());
                             updateBoardBackground(clickedCardInBoardPlayerOne);
-                        } catch (Exception e) {
+                            updateAll();
+                    } catch (Exception e) {
                             e.printStackTrace();
                         }
                     } else {
                         setCommandText("You can only attack when the board is empty");
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardA.setOnMouseClicked(value -> {
@@ -1447,18 +1325,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "A");
                         updateBoardBackground(clickedCardInBoardPlayerOne);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardB.setOnMouseClicked(value -> {
@@ -1466,18 +1338,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "B");
                         updateBoardBackground(clickedCardInBoardPlayerOne);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardC.setOnMouseClicked(value -> {
@@ -1485,18 +1351,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "C");
                         updateBoardBackground(clickedCardInBoardPlayerOne);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardD.setOnMouseClicked(value -> {
@@ -1504,18 +1364,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "D");
                         updateBoardBackground(clickedCardInBoardPlayerOne);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerTwoCardE.setOnMouseClicked(value -> {
@@ -1523,18 +1377,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerOne.toString(), "E");
                         updateBoardBackground(clickedCardInBoardPlayerOne);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
         } else {
@@ -1619,10 +1467,18 @@ public class Controller {
                 if (!game.getBoard().get(1).get("E").getHasAttacked()) {
                     playerTwoCardE.setStyle("-fx-border-color: red; -fx-background-color: #1c8ae1");
                 }
-                playerTwoCardA.setStyle("-fx-background-color: #ffffff");
-                playerTwoCardB.setStyle("-fx-background-color: #ffffff");
-                playerTwoCardC.setStyle("-fx-background-color: #ffffff");
-                playerTwoCardD.setStyle("-fx-background-color: #ffffff");
+                if (!game.getBoard().get(1).get("A").getHasAttacked()) {
+                    playerTwoCardA.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("B").getHasAttacked()) {
+                    playerTwoCardB.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("C").getHasAttacked()) {
+                    playerTwoCardC.setStyle("-fx-background-color: #ffffff");
+                }
+                if (!game.getBoard().get(1).get("D").getHasAttacked()) {
+                    playerTwoCardD.setStyle("-fx-background-color: #ffffff");
+                }
             });
 
             playerOneAvatar.setOnMouseClicked(value -> {
@@ -1638,14 +1494,7 @@ public class Controller {
                         setCommandText("You can only attack when the board is empty");
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardA.setOnMouseClicked(value -> {
@@ -1653,16 +1502,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "A");
                         updateBoardBackground(clickedCardInBoardPlayerTwo);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardB.setOnMouseClicked(value -> {
@@ -1670,18 +1515,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "B");
                         updateBoardBackground(clickedCardInBoardPlayerTwo);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardC.setOnMouseClicked(value -> {
@@ -1689,18 +1528,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "C");
                         updateBoardBackground(clickedCardInBoardPlayerTwo);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardD.setOnMouseClicked(value -> {
@@ -1708,18 +1541,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "D");
                         updateBoardBackground(clickedCardInBoardPlayerTwo);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
             playerOneCardE.setOnMouseClicked(value -> {
@@ -1727,18 +1554,12 @@ public class Controller {
                     try {
                         aPhase.attackOtherCharacter(game, clickedCardInBoardPlayerTwo.toString(), "E");
                         updateBoardBackground(clickedCardInBoardPlayerTwo);
+                        updateAll();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
+                updateAll();
             });
 
         }
@@ -2751,9 +2572,9 @@ public class Controller {
         connectHoveredBoard();
         ArrayList<Card> inHand;
         if (currPlayer == 0) {
-            inHand = playerOne.getHandCard();
+            inHand = game.getPlayers()[0].getHandCard();
         } else {
-            inHand = playerTwo.getHandCard();
+            inHand = game.getPlayers()[1].getHandCard();
         }
 
         System.out.println("Connecting mouse hover");
@@ -2835,13 +2656,26 @@ public class Controller {
 
     // called by the FXML loader after the labels declared above are injected:
     public void initialize() throws Exception {
-        playerOne = new Player("ALEX");
-        playerTwo = new Player("STEVE");
+        playerOne = new Player("COW");
+        playerTwo = new Player("CREEPER");
         playerOne.setMana(9);
         playerTwo.setMana(9);
         game = new GamePlay(playerOne, playerTwo);
 
         // TODO: player one and two avatar
+
+        Image playerOneImage = new Image("com/aetherwars/card/image/PlayerOne.jpg");
+        Image playerTwoImage = new Image("com/aetherwars/card/image/PlayerTwo.jpg");
+        ImageView view = new ImageView(playerOneImage);
+        view.setFitWidth(100);
+        view.setFitHeight(100);
+        view.setPreserveRatio(true);
+        playerOneAvatar.setGraphic(view);
+        view = new ImageView(playerTwoImage);
+        view.setFitWidth(100);
+        view.setFitHeight(100);
+        view.setPreserveRatio(true);
+        playerTwoAvatar.setGraphic(view);
 
         currPlayer = game.getCurrPlayerIndex();
         playerOneName.setText(playerOne.getName());
