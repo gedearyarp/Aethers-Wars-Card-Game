@@ -153,11 +153,6 @@ Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi
                     main.fxml
 ```
 
-## Features
-![image](https://user-images.githubusercontent.com/71170262/165959218-ae6f354e-d9f7-4092-b37d-ed5714ff1573.png)
-![image](https://user-images.githubusercontent.com/71170262/165959234-c4ae8380-5264-47a8-9a0f-26e1d3d827b5.png)
-
-
 ## Screenshot
 Tampilan Game Utama
 ![image](https://user-images.githubusercontent.com/71170262/165959234-c4ae8380-5264-47a8-9a0f-26e1d3d827b5.png)
@@ -174,15 +169,17 @@ Tampilan saat Hover Board
 Tampilan saat Game Selesai
 ![image](![image](https://user-images.githubusercontent.com/79737201/165962255-86bc7a35-70f3-4951-96ea-c329508ef87e.png)
 
-## Setup
-Permainan ini membutuhkan : 
-- g++
-- make
-- Linux
+## Program Requirement 
+1. Java & JDK 11
+2. (Recommended Intellij IDEA untuk memudahkan build dan run
 
-Langkah menjalankan program :
+Untuk melakukan run pada program, dibutuhkan adanya JavaFX. Pada gradle, JavaFX sudah akan otomatis di-install.
 
-## Usage
+## How to Run
+1. Clone direktori ini menggunakan : ```git clone https://github.com/gedearyarp/TUBES-2-OOP.git```
+2. Pindah ke direktori tersebut
+3. Buka directori pada IntelliJ, lakukan Build dengan mengklik tombol "Gradle" yang ada pada kanan atas dan klik build, setelah itu lakukan run. Silahkan mainkan program :D
+4. Program ini juga bisa di-run dengan menulis ./gradlew run pada command line
 
 ## Project Status
 Project ini sudah  _selesai_ 
