@@ -7,7 +7,7 @@ Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi
 
 ## Table of Contents
 * [Authors](#authors)
-* [Technologies Used](#technologies-used)
+* [Data Structure](#data-structure)
 * [Features](#features)
 * [Setup](#setup)
 * [Usage](#usage)
@@ -23,7 +23,135 @@ Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi
 | Andhika Arta Aryanto           | 13520081 |
 | Januar Budi Ghifari            | 13520132 |
 
-## Technologies Used
+## Data Structure
+```├───java
+│   └───com
+│       └───aetherwars
+│           │   AetherWars.java     
+│           │   Controller.java     
+│           │   ControllerChild.java
+│           │   GamePlay.java       
+│           │
+│           ├───exception
+│           │       IndexOutOfBoundException.java
+│           │       InvalidBoardException.java
+│           │       InvalidHpException.java
+│           │       InvalidIDException.java
+│           │       InvalidManaException.java
+│           │
+│           ├───model
+│           │       Board.java
+│           │       Card.java
+│           │       Character.java
+│           │       Deck.java
+│           │       ITempSpell.java
+│           │       LvlSpell.java
+│           │       MorphSpell.java
+│           │       Player.java
+│           │       PtnSpell.java
+│           │       Spell.java
+│           │       SummonedCharacter.java
+│           │       SwapSpell.java
+│           │
+│           ├───service
+│           │       AttackPhase.java
+│           │       DrawPhase.java
+│           │       PlanningPhase.java
+│           │
+│           ├───type
+│           │       CardType.java
+│           │       LvlSpellType.java
+│           │       Phase.java
+│           │       SpellType.java
+│           │       StatusType.java
+│           │       Type.java
+│           │
+│           └───util
+│                   CSVReader.java
+│
+└───resources
+    └───com
+        └───aetherwars
+            ├───card
+            │   ├───data
+            │   │       character.csv
+            │   │       spell_morph.csv
+            │   │       spell_ptn.csv
+            │   │       spell_swap.csv
+            │   │
+            │   └───image
+            │       │   PlayerOne.jpg
+            │       │   PlayerTwo.jpg
+            │       │
+            │       ├───character
+            │       │       Creeper.png
+            │       │       Drowned.png
+            │       │       Ender Dragon.png
+            │       │       Enderman.png
+            │       │       Endermite.png
+            │       │       Ghast.png
+            │       │       Magma Cube.png
+            │       │       Obsidian.png
+            │       │       Piglin Brute.png
+            │       │       Sheep.png
+            │       │       Shulker.png
+            │       │       Skeleton.png
+            │       │       Slime.png
+            │       │       Villager.png
+            │       │       Warden.png
+            │       │       Wither Skeleton.png
+            │       │       Wither.png
+            │       │       Zombie.png
+            │       │
+            │       └───spell
+            │           ├───lvl
+            │           │       lvldown.png
+            │           │       lvlup.png
+            │           │
+            │           ├───morph
+            │           │       Creeper... Aw Man.png
+            │           │       Crybaby Dominion.png
+            │           │       Drowning.png
+            │           │       Malin Kundang.png
+            │           │       Sheepify.png
+            │           │       Sugondese.png
+            │           │
+            │           ├───potion
+            │           │       Aromatic Ginger Rice.png
+            │           │       Bad Alcohol.png
+            │           │       Contract of Living Space.png
+            │           │       Deathly Magic.png
+            │           │       Divine Wind.png
+            │           │       GPU Very Good.png
+            │           │       Grabkeun.png
+            │           │       Halal Porkchop.png
+            │           │       Herobrine's Blessing.png
+            │           │       Honey Bottle.png
+            │           │       Kordas' Curse.png
+            │           │       Mother's Prayer.png
+            │           │       Sadikin Elixir.png
+            │           │       SNMPTN Acceptance Letter.png
+            │           │       SNMPTN Rejection Letter.png
+            │           │       Spectral's Power.png
+            │           │       Witch's Eye.png
+            │           │       Yoasobi.png
+            │           │
+            │           └───swap
+            │                   Axolotl Blood.png
+            │                   Bone Marrow.png
+            │                   Cat Food.png
+            │                   Cooked Beef Juice.png
+            │                   Detergent.png
+            │                   Ghast Tears.png
+            │                   Morning's Blessing.png
+            │                   Potion of Bargaining.png
+            │                   Potion of Turtle Master.png
+            │                   Swab Test.png
+            │
+            └───fxml
+                    child.fxml
+                    main.fxml
+```
 
 ## Features
 
