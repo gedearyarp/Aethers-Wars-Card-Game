@@ -1,31 +1,48 @@
-# IF2210 Project Template
+# Aether Wars Card Game
+Aether Wars Card Game merupakan permainan kartu turn-based berbasis minecraft berbentuk desktop app yang memanfaatkan Library JavaFX.
 
-Here is an example of project using gradle as the build tools.
-Try running these commands:
+Program ini dibentuk menggunakan prinsip Object-Oriented Programming dengan mengimplementasikan Inheritance, Composition, Interface, Polymorphism, Method Overriding, Exception, menggunakan Java API Collection, serta memerhatikan prinsip design SOLID dan konsep Design Pattern.
 
-`./gradlew run`
+Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi salah satu Tugas Besar IF2210 Pemrograman Berorientasi Objek. 
 
-You will notice that it will open a window that display 'Minecraft: Aether Wars'.
-In the command line you can see the data that is being read by `CSVReader.java`
+## Table of Contents
+* [Authors](#authors)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Project Status](#project-status)
 
-What happen is when you use `./gradlew run`, it will start the main function in your app.
-For this app, the main function lives in `AetherWars.java`.
+## Authors
+| Nama                           | NIM      |
+| ------------------------------ | -------- |
+| I Gede Arya Raditya P          | 13520036 |
+| Arik Rayi Arkananta            | 13520048 |
+| Samuel Christopher Swandi      | 13520075 |
+| Grace Claudia                  | 13520078 |
+| Andhika Arta Aryanto           | 13520081 |
+| Januar Budi Ghifari            | 13520132 |
 
-You can explore more about gradle [here](https://guides.gradle.org/creating-new-gradle-builds/)
+## Technologies Used
 
-## JDK
+## Features
 
-As of the creation of this template, the assistant team used and tested the JDK 8 installation from OpenJDK and Amazon Corretto (since JavaFX is readily available on those installations). You can easily pick and install your desired JDK version and variant by doing it via an IDE like [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-## Credit
+## Screenshot
 
-Minecraft images and description are taken from [Minecraft Wikia](https://minecraft.fandom.com/wiki/)
-Other sources for "random" images are:
+## Setup
+Permainan ini membutuhkan : 
+- g++
+- make
+- Linux
 
-- Album Supporteran STEI 2018 :D
-- https://mobile.twitter.com/masterlimbad6
-- https://www.nationalgeographic.com/science/article/141104-kamikaze-kublai-khan-winds-typhoon-japan-invasion
-- https://open.spotify.com/album/3GzwPyPZCyrqUTaurTaS23
-- https://cdn.wccftech.com/wp-content/uploads/2021/06/nvidia-geforce-rtx-3080-ti-product-gallery-photo-003-scaled.jpg
-- https://twitter.com/GGumiliar
-- https://dota2.fandom.com/wiki/Spectre
+Langkah menjalankan program :
+
+## Usage
+
+## Project Status
+Project ini sudah  _selesai_ 
+
+### Copyright
+2022 © Muhammad Gare Deadlock. All Rights Reserved.
+
