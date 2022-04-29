@@ -16,7 +16,6 @@ public class DrawPhase {
         // remove selected card from drawCards and input to Hand
         gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].addHandCard(topThreeDeck.get(selectedCardIndex));
         topThreeDeck.remove(selectedCardIndex);
-        System.out.println(topThreeDeck.toString());
         // input ulang drawCards ke Deck
         for (Card card : topThreeDeck) {
             if(gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().getCard().size() == 0){
