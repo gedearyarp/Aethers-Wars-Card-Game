@@ -289,7 +289,7 @@ public class SummonedCharacter {
     public void checkLevelUp() {
         Integer[] required = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
         Integer i = this.level;
-        if (this.experience > required[i - 1]) {
+        if (this.experience >= required[i - 1]) {
             Integer remainder = this.experience - (required[i - 1]);
             levelUp(remainder);
             checkLevelUp();

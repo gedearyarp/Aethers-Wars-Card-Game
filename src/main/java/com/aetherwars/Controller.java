@@ -770,7 +770,7 @@ public class Controller {
 
             playerOneCardA.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "A");
@@ -791,7 +791,7 @@ public class Controller {
 
             playerOneCardB.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "B");
@@ -812,7 +812,7 @@ public class Controller {
 
             playerOneCardC.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "C");
@@ -833,7 +833,7 @@ public class Controller {
 
             playerOneCardD.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "D");
@@ -854,7 +854,7 @@ public class Controller {
 
             playerOneCardE.setOnMouseClicked(value -> {
                 if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
+                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "E");

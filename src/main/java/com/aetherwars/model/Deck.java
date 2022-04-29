@@ -84,7 +84,7 @@ public class Deck{
         List<String[]> spell_ptn_data = csvreader_spell_ptn.read();
         List<String[]> spell_swap_data = csvreader_spell_swap.read();
 
-        Integer characterSizeDeck = deckSize / 3;
+        Integer characterSizeDeck = deckSize / 2;
         Integer spellSizeDeck = deckSize - characterSizeDeck;
         Random rd = new Random();
         
