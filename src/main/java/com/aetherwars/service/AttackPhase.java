@@ -43,25 +43,26 @@ public class AttackPhase {
 
     public void attackOtherCharacter(GamePlay gamePlay, String attackingCharPos, String selectedCharPos){
 
-    
         SummonedCharacter attackingChar = gamePlay.getBoard().getCardFromBoard(gamePlay.getCurrPlayerIndex(), attackingCharPos);
         SummonedCharacter selectedChar = gamePlay.getBoard().getCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharPos);
-        System.out.println(attackingChar.toString());
         
+        Integer[] expIntegers = {1,3,5,7,9,11,13,15,17,19};        
         if(!attackingChar.getHasAttacked()) {
             attackingChar.attack(selectedChar);
 
             if (selectedChar.getTotalHp() <= 0){
                 gamePlay.getBoard().removeCardFromBoard(gamePlay.getOtherPlayerIndex(), selectedCharPos);
                 if (attackingChar.getTotalHp() > 0){
-                    attackingChar.setExperience(attackingChar.getExperience() + selectedChar.getExperience());
+                    Integer exp = expIntegers[selectedChar.getLevel()-1];
+                    attackingChar.addExperience(exp);
                     attackingChar.checkLevelUp();
                 }
             }
             if (attackingChar.getTotalHp() <= 0){
                 gamePlay.getBoard().removeCardFromBoard(gamePlay.getCurrPlayerIndex(), attackingCharPos);
                 if(selectedChar.getTotalHp() > 0){
-                    selectedChar.setExperience(selectedChar.getExperience() + attackingChar.getExperience());
+                    Integer exp = expIntegers[attackingChar.getLevel()-1];
+                    selectedChar.addExperience(exp);
                     selectedChar.checkLevelUp();
                 }
             }

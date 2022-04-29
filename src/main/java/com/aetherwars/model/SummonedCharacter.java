@@ -105,6 +105,10 @@ public class SummonedCharacter {
         this.experience = experience;
     }
 
+    public void addExperience(Integer experience) {
+        this.experience += experience;
+    }
+
     public List<PtnSpell> getActivePtnSpells() {
         return this.activePtnSpells;
     }

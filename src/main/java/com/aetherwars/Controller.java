@@ -1408,6 +1408,7 @@ public class Controller {
             currentPhaseCount = 1;
             updatePlayer();
             connectBoard();
+            connectDeck();
             connectHandInDeck();
             connectMouseHover();
             connectMana();
@@ -1419,6 +1420,7 @@ public class Controller {
             game.nextPhase();
             updatePlayer();
             connectBoard();
+            connectDeck();
             connectHandInDeck();
             connectMouseHover();
             connectMana();
@@ -2136,7 +2138,11 @@ public class Controller {
         } else {
             mana = game.getPlayers()[1].getMana();
         }
-        manaCount.setText(mana.toString() + "/" + (int) Math.ceil((double) game.getRound() / 2));
+        Integer maxMana = (int) Math.ceil((double) game.getRound() / 2);
+        if (maxMana > 10) {
+            maxMana = 10;
+        }
+        manaCount.setText(mana.toString() + "/" + maxMana);
     }
 
     public void connectRound() {
@@ -2147,12 +2153,15 @@ public class Controller {
     public void connectDeck() {
         updatePlayer();
         Deck deck;
+        Integer deckCountSize = 0;
         if (currPlayer == 0) {
             deck = playerOne.getDeck();
-            deckCount.setText(deck + "/" + playerOneTotalDeck);
+            deckCountSize = deck.getCard().size();
+            deckCount.setText(deckCountSize + "/" + playerOneTotalDeck);
         } else {
             deck = playerTwo.getDeck();
-            deckCount.setText(deck + "/" + playerTwoTotalDeck);
+            deckCountSize = deck.getCard().size();
+            deckCount.setText(deckCountSize + "/" + playerTwoTotalDeck);
         }
     }
 
@@ -2490,6 +2499,8 @@ public class Controller {
         Integer deckNumber2 = (int) (Math.random() * (60 - 40 + 1)) + 40;
         playerOne.getDeck().generateCard(deckNumber1);
         playerTwo.getDeck().generateCard(deckNumber2);
+        playerOneTotalDeck = playerOne.getDeck().getCard().size();
+        playerTwoTotalDeck = playerTwo.getDeck().getCard().size();
         ArrayList<Card> playerOneTopThree = playerOne.getDeck().getTop3();
         ArrayList<Card> playerTwoTopThree = playerTwo.getDeck().getTop3();
         for (int i = 0; i < 3; i++) {
@@ -2497,9 +2508,7 @@ public class Controller {
             playerTwo.addHandCard(playerTwoTopThree.get(i));
 
         }
-        playerOneTotalDeck = playerOne.getDeck().getCard().size();
-        playerTwoTotalDeck = playerTwo.getDeck().getCard().size();
-
+        connectDeck();
         connectBoard();
         initializeBoard();
         nextPhaseButton.setText("START");
