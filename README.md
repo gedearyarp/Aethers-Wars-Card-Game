@@ -1,5 +1,5 @@
 # Aether Wars Card Game
-Aether Wars Card Game merupakan permainan kartu turn-based berbasis minecraft berbentuk desktop app yang memanfaatkan Library JavaFX.
+Aether Wars Card Game merupakan permainan kartu turn-based berbasis minecraft berbentuk desktop app yang memanfaatkan Library JavaFX. Seseorang dapat menang di game ini dengan dua cara yaitu, menghabiskan HP musuh dengan melakukan attack kartu karakter lawan yang berada di board atau saat draw phase lawan, deck lawan kosong. Permainan terbagi menjadi beberapa fase secara berurutan yaitu draw phase, planning phase, attack phase, dan end phase. Setelah semua fase selesai dilewati maka turn akan berganti ke musuh.
 
 Program ini dibentuk menggunakan prinsip Object-Oriented Programming dengan mengimplementasikan Inheritance, Composition, Interface, Polymorphism, Method Overriding, Exception, menggunakan Java API Collection, serta memerhatikan prinsip design SOLID dan konsep Design Pattern.
 
@@ -159,6 +159,20 @@ Program ini dibentuk oleh kelompok Muhammad Gare Deadlock dengan tujuan memenuhi
 
 
 ## Screenshot
+Tampilan Game Utama
+![image](https://user-images.githubusercontent.com/71170262/165959234-c4ae8380-5264-47a8-9a0f-26e1d3d827b5.png)
+
+Tampilan Planning Phase
+![image](https://user-images.githubusercontent.com/71170262/165959218-ae6f354e-d9f7-4092-b37d-ed5714ff1573.png)
+
+Tampilan saat Hover Card
+![image](![image](https://user-images.githubusercontent.com/79737201/165962087-d94ed724-3ab4-4e5a-831b-ca1f4f0c3130.png)
+
+Tampilan saat Hover Board
+![image](![image](https://user-images.githubusercontent.com/79737201/165962232-3c54950e-7929-41db-a9ce-5ec408e0fa5f.png)
+
+Tampilan saat Game Selesai
+![image](![image](https://user-images.githubusercontent.com/79737201/165962255-86bc7a35-70f3-4951-96ea-c329508ef87e.png)
 
 ## Setup
 Permainan ini membutuhkan : 
