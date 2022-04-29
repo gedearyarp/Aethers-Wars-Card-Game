@@ -12,13 +12,18 @@ public class DrawPhase {
     }
 
     // input drawCards yang dipilih dari frontend
-    public void drawSelectedCardAndReturnRemainToDeck(GamePlay gamePlay, ArrayList<Card> topThreeDeck, int selectedCardIndex) {
+    public void drawSelectedCardAndReturnRemainToDeck(GamePlay gamePlay, ArrayList<Card> topThreeDeck, int selectedCardIndex) throws Exception {
         // remove selected card from drawCards and input to Hand
         gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].addHandCard(topThreeDeck.get(selectedCardIndex));
         topThreeDeck.remove(selectedCardIndex);
         // input ulang drawCards ke Deck
         for (Card card : topThreeDeck) {
-            gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().putCardOnDeckRandomly(card);
+            if(gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().getCard().size() == 0){
+                gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().addCard(card);
+            }
+            else{
+                gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().putCardOnDeckRandomly(card);
+            }
         }
     }
 

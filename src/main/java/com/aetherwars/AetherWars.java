@@ -35,8 +35,6 @@ public class AetherWars extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH));
             Pane root = loader.load();
-            Controller controller = loader.getController();
-            controller.setParent(root);
             stage.setScene(new Scene(root));
             stage.getScene().setRoot(root);
             stage.setTitle("Aether Wars");

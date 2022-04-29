@@ -23,8 +23,12 @@ public class Deck{
 
     public ArrayList<Card> getTop3(){
         ArrayList<Card> top3 = new ArrayList<Card>();
-        for(int i = 0; i < 3; i++){
-            if(this.deckCard.size() > i){
+        if (this.deckCard.size() < 3){
+            for (int i = 0; i < this.deckCard.size(); i++){
+                top3.add(this.deckCard.get(i));
+            }
+        } else {
+            for (int i = 0; i < 3; i++){
                 top3.add(this.deckCard.get(i));
             }
         }
@@ -91,7 +95,6 @@ public class Deck{
         for(int i = 0; i < characterSizeDeck; i++){
             Integer rd_c = rd.nextInt(character_data.size());
             String[] character_data_i = character_data.get(rd_c);
-            System.out.println(character_data_i[0]);
             Integer id = Integer.parseInt(character_data_i[0]);
             String name = character_data_i[1];
             String description = character_data_i[3];

@@ -2,6 +2,7 @@ package com.aetherwars;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -9,6 +10,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -21,27 +25,24 @@ import com.aetherwars.service.PlanningPhase;
 import com.aetherwars.type.*;
 
 public class Controller {
-    private Pane root;
 
-    public void setParent(Pane parent) {
-        this.root = parent;
-    }
+    public static ArrayList<Card> topThreeCard;
 
-    public Integer toChild(ArrayList<Card> cards) {
+    public void toChild(ArrayList<Card> cards) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/aetherwars/fxml/child.fxml"));
+            topThreeCard = cards;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/child.fxml"));
             Pane child = loader.load();
-            ControllerChild controllerChild = loader.getController();
-            controllerChild.setParent(root);
-            controllerChild.setCards(cards);
-            root.getChildren().add(child);
-            child.toFront();
-            root.toBack();
-            return controllerChild.getSelectedCard();
+            Stage drawCard = new Stage();
+            drawCard.initModality(Modality.APPLICATION_MODAL);
+            drawCard.initStyle(StageStyle.UNDECORATED);
+            drawCard.setScene(new Scene(child));
+            drawCard.centerOnScreen();
+            drawCard.showAndWait();
+            updateAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1;
     }
 
     @FXML
@@ -248,7 +249,7 @@ public class Controller {
     @FXML
     private Text commandText;
 
-    private GamePlay game;
+    public static GamePlay game;
 
     private Player playerOne;
 
@@ -263,6 +264,82 @@ public class Controller {
     private String clickedCardInBoardPlayerTwo = "";
 
     private int currentPhaseCount = 0; // 1 = draw, 2 = planning, 3 = attack, 4 = end
+
+    public void checkWin() {
+        if (playerOne.getHp() <= 0 || playerOne.getDeck().isDeckEmpty()) {
+            commandText.setText("Player Two Wins!");
+            commandText.setVisible(true);
+            nextPhaseButton.setVisible(false);
+            removeCardButton.setVisible(false);
+            addEXPbutton.setVisible(false);
+            Card1.setVisible(false);
+            Card2.setVisible(false);
+            Card3.setVisible(false);
+            Card4.setVisible(false);
+            Card5.setVisible(false);
+            playerOneAvatar.setVisible(false);
+            playerOneImageRectangle.setVisible(false);
+            playerOneCardA.setVisible(false);
+            playerOneCardB.setVisible(false);
+            playerOneCardC.setVisible(false);
+            playerOneCardD.setVisible(false);
+            playerOneCardE.setVisible(false);
+            playerOneCardAAtkLabel.setVisible(false);
+            playerOneCardAAtkCount.setVisible(false);
+            playerOneCardAHpLabel.setVisible(false);
+            playerOneCardAHpCount.setVisible(false);
+            playerOneCardAExpLabel.setVisible(false);
+            playerOneCardBAtkLabel.setVisible(false);
+            playerOneCardBAtkCount.setVisible(false);
+            playerOneCardBHpLabel.setVisible(false);
+            playerOneCardBHpCount.setVisible(false);
+            playerOneCardBExpLabel.setVisible(false);
+            playerOneCardCAtkLabel.setVisible(false);
+            playerOneCardCAtkCount.setVisible(false);
+            playerOneCardCHpLabel.setVisible(false);
+            playerOneCardCHpCount.setVisible(false);
+            playerOneCardCExpLabel.setVisible(false);
+            playerOneCardDAtkLabel.setVisible(false);
+            playerOneCardDAtkCount.setVisible(false);
+            playerOneCardDHpLabel.setVisible(false);
+        } else if (playerTwo.getHp() <= 0 || playerTwo.getDeck().isDeckEmpty()) {
+            commandText.setText("Player One Wins!");
+            commandText.setVisible(true);
+            nextPhaseButton.setVisible(false);
+            removeCardButton.setVisible(false);
+            addEXPbutton.setVisible(false);
+            Card1.setVisible(false);
+            Card2.setVisible(false);
+            Card3.setVisible(false);
+            Card4.setVisible(false);
+            Card5.setVisible(false);
+            playerOneAvatar.setVisible(false);
+            playerOneImageRectangle.setVisible(false);
+            playerOneCardA.setVisible(false);
+            playerOneCardB.setVisible(false);
+            playerOneCardC.setVisible(false);
+            playerOneCardD.setVisible(false);
+            playerOneCardE.setVisible(false);
+            playerOneCardAAtkLabel.setVisible(false);
+            playerOneCardAAtkCount.setVisible(false);
+            playerOneCardAHpLabel.setVisible(false);
+            playerOneCardAHpCount.setVisible(false);
+            playerOneCardAExpLabel.setVisible(false);
+            playerOneCardBAtkLabel.setVisible(false);
+            playerOneCardBAtkCount.setVisible(false);
+            playerOneCardBHpLabel.setVisible(false);
+            playerOneCardBHpCount.setVisible(false);
+            playerOneCardBExpLabel.setVisible(false);
+            playerOneCardCAtkLabel.setVisible(false);
+            playerOneCardCAtkCount.setVisible(false);
+            playerOneCardCHpLabel.setVisible(false);
+            playerOneCardCHpCount.setVisible(false);
+            playerOneCardCExpLabel.setVisible(false);
+            playerOneCardDAtkLabel.setVisible(false);
+            playerOneCardDAtkCount.setVisible(false);
+            playerOneCardDHpLabel.setVisible(false);
+        }
+    }
 
     public void setCommandText(String text) {
         try {
@@ -282,7 +359,7 @@ public class Controller {
     }
 
     public void drawPhase() {
-        setCommandText("Select 1 card to draw! \n(if you have more than 5 card, you will discard the leftmost card)");
+        
         updatePlayer();
         unplanningPhase();
         unattackPhase();
@@ -291,12 +368,11 @@ public class Controller {
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         endPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         DrawPhase dPhase = new DrawPhase();
-        ArrayList<Card> topThreeCards = dPhase.getTopThreeFromCurrPlayersDeck(game);
         // random integer selected card from 0 t0 2
-        int selectedCard = (int) (Math.random() * 3);
-        // Integer selectedCard = toChild(topThreeCards);
+        // int selectedCard = (int) (Math.random() * 3);
+        toChild(dPhase.getTopThreeFromCurrPlayersDeck(game));
         try {
-            dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards, selectedCard);
+            // dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards, selectedCard);
             dPhase.resetMana(game);
         } catch (Exception e) {
             System.out.println("Draw Phase Error");
@@ -380,10 +456,12 @@ public class Controller {
         updatePlayer();
         connectHandInDeck();
         connectMouseHover();
+        connectDeck();
         connectMana();
         connectRound();
         connectBoard();
         connectHoveredBoard();
+        checkWin();
     }
 
     public void planningPhase() {
@@ -1575,7 +1653,6 @@ public class Controller {
     }
 
     public void handleNextPhase() {
-        System.out.println("curr phase: " + currentPhaseCount);
         if (currentPhaseCount == 0) {
             setCommandText("Click DRAW to start the game");
             nextPhaseButton.setText("DRAW!!");
@@ -1606,7 +1683,6 @@ public class Controller {
                 drawPhase();
                 currentPhaseCount++;
                 connectRound();
-                System.out.println("CurrPlayer: " + currPlayer);
                 if (currPlayer == 0) {
                     playerOneImageRectangle.setStyle("-fx-border-color: #1c8ae1; -fx-border-width:50");
                     playerTwoImageRectangle.setStyle("-fx-border-color: black");
@@ -2347,7 +2423,6 @@ public class Controller {
         } else {
             inHand = players[1].getHandCard();
         }
-        System.out.println("Size inHand player" + currPlayer + ": " + inHand.size());
 
         if (inHand.size() == 0) {
             Card1.setGraphic(null);
@@ -2577,8 +2652,6 @@ public class Controller {
             inHand = game.getPlayers()[1].getHandCard();
         }
 
-        System.out.println("Connecting mouse hover");
-        System.out.println(inHand.size());
         if (inHand.size() == 0) {
             Card1.setOnMouseMoved(value -> {
                 backToNormalHovered();
@@ -2662,8 +2735,6 @@ public class Controller {
         playerTwo.setMana(9);
         game = new GamePlay(playerOne, playerTwo);
 
-        // TODO: player one and two avatar
-
         Image playerOneImage = new Image("com/aetherwars/card/image/PlayerOne.jpg");
         Image playerTwoImage = new Image("com/aetherwars/card/image/PlayerTwo.jpg");
         ImageView view = new ImageView(playerOneImage);
@@ -2685,6 +2756,8 @@ public class Controller {
         // make new random variable Deck Number between 40-60
         Integer deckNumber1 = (int) (Math.random() * (60 - 40 + 1)) + 40;
         Integer deckNumber2 = (int) (Math.random() * (60 - 40 + 1)) + 40;
+        deckNumber1 = 7;
+        deckNumber2 = 7;
         playerOne.getDeck().generateCard(deckNumber1);
         playerTwo.getDeck().generateCard(deckNumber2);
         playerOneTotalDeck = playerOne.getDeck().getCard().size();

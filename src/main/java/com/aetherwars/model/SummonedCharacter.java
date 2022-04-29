@@ -231,8 +231,7 @@ public class SummonedCharacter {
                 } else if (remainder > s.getBoostHP()) {
                     remainder -= s.getBoostHP();
                     this.hpAdd -= s.getBoostHP();
-                    this.attackAdd -= s.getBoostAttack();
-                    activePtnSpells.remove(s);
+                    s.setBoostHP(0);
                     index--;
                 } else {
                     s.setBoostHP(s.getBoostHP() - remainder);
@@ -309,8 +308,6 @@ public class SummonedCharacter {
         //max between 0 and damage done
         damageDone = Math.max(0, damageDone);
         damageReceived = Math.max(0, damageReceived);
-        System.out.println(damageDone);
-        System.out.println(damageReceived);
         double thisRemainder = this.ptnSpellAttackHandler(damageReceived);
         double enemyRemainder = enemy.ptnSpellAttackHandler(damageDone);
 

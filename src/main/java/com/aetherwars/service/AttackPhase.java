@@ -4,10 +4,6 @@ import com.aetherwars.*;
 import com.aetherwars.model.*;
 
 public class AttackPhase {
-    // 1. iterate tiap karakter yang player punya buat nyerang TODO : ini buat di main kali ya (?)
-    // 2. pas nyerang, musuh juga nyerang
-    // 3. bikin fungsi karakter mati
-    // 4. bikin fungsi naik level karakter
 
     public void resetAllCharAttackedState(GamePlay game) {
         Board board = game.getBoard();
