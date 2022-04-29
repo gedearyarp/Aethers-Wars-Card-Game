@@ -22,9 +22,9 @@
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="62.33333206176758" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="488.99999237060547" minHeight="10.0" prefHeight="363.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="208.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="121.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="488.99999237060547" minHeight="10.0" prefHeight="331.6666564941406" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="208.0" minHeight="0.0" prefHeight="87.33334350585938" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="387.66668701171875" minHeight="10.0" prefHeight="338.3333435058594" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -366,7 +366,7 @@
             <Text fx:id="hoveredCardDescriptionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Hovered Card Description" wrappingWidth="140.0" GridPane.columnIndex="2" />
          </children>
       </GridPane>
-      <GridPane GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
+      <GridPane prefHeight="94.0" prefWidth="1500.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -375,34 +375,37 @@
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="38.666656494140625" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="49.66668701171875" minHeight="10.0" prefHeight="43.333343505859375" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="endPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="END" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="endPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="END" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="nextPhaseButton" mnemonicParsing="false" onAction="#handleNextPhase" prefHeight="33.0" prefWidth="250.0" text="&gt;&gt;&gt;&gt;" GridPane.columnIndex="4">
+            <Button fx:id="nextPhaseButton" mnemonicParsing="false" onAction="#handleNextPhase" prefHeight="33.0" prefWidth="250.0" text="&gt;&gt;&gt;&gt;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
-            <Label fx:id="drawPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="DRAW" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="drawPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="DRAW" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="planningPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="PLAN" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+            <Label fx:id="planningPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="PLAN" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="attackPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="ATTACK" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+            <Label fx:id="attackPhaseLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #1c8ae1;" text="ATTACK" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
+            <Button fx:id="removeCardButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Remove Card" GridPane.columnIndex="4" />
+            <Button fx:id="addEXPbutton" mnemonicParsing="false" prefHeight="35.0" prefWidth="250.0" text="Add One Exp" />
          </children>
       </GridPane>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">

@@ -21,7 +21,6 @@ import com.aetherwars.service.PlanningPhase;
 import com.aetherwars.type.*;
 
 public class Controller {
-
     private Pane root;
 
     public void setParent(Pane parent) {
@@ -221,6 +220,12 @@ public class Controller {
     private Text hoveredCardDescriptionText;
 
     @FXML
+    private Button removeCardButton;
+    private boolean removeCardButtonClicked = false;
+    @FXML
+    private Button addEXPbutton;
+    private boolean addEXPbuttonClicked = false;
+    @FXML
     private Button Card1;
     @FXML
     private Button Card2;
@@ -262,7 +267,7 @@ public class Controller {
     public void setCommandText(String text) {
         try {
             commandText.setText(text);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("Error in setCommandText");
         }
     }
@@ -287,7 +292,7 @@ public class Controller {
         endPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         DrawPhase dPhase = new DrawPhase();
         ArrayList<Card> topThreeCards = dPhase.getTopThreeFromCurrPlayersDeck(game);
-        //random integer selected card from 0 t0 2
+        // random integer selected card from 0 t0 2
         int selectedCard = (int) (Math.random() * 3);
         // Integer selectedCard = toChild(topThreeCards);
         try {
@@ -298,81 +303,90 @@ public class Controller {
         }
     }
 
-    public boolean checkClickedCardInHand() {
-        return clickedCardInHandIndex != -1;
-    }
-
     public void unplanningPhase() {
         updatePlayer();
+        addEXPbutton.setDisable(true);
+
+        removeCardButton.setDisable(true);
+
+        addEXPbutton.setOnMouseClicked(value -> {
+        });
+
+        removeCardButton.setOnMouseClicked(value -> {
+        });
 
         Card1.setOnMouseClicked(value -> {
-
         });
 
         Card2.setOnMouseClicked(value -> {
-
         });
 
         Card3.setOnMouseClicked(value -> {
-
         });
 
         Card4.setOnMouseClicked(value -> {
-
         });
 
         Card5.setOnMouseClicked(value -> {
-
         });
 
         if (currPlayer == 0) {
             playerOneCardA.setOnMouseClicked(value -> {
-
             });
 
             playerOneCardB.setOnMouseClicked(value -> {
-
             });
 
             playerOneCardC.setOnMouseClicked(value -> {
-
             });
 
             playerOneCardD.setOnMouseClicked(value -> {
-
             });
 
             playerOneCardE.setOnMouseClicked(value -> {
-
             });
         } else {
             playerTwoCardA.setOnMouseClicked(value -> {
-
             });
 
             playerTwoCardB.setOnMouseClicked(value -> {
-
             });
 
             playerTwoCardC.setOnMouseClicked(value -> {
-
             });
 
             playerTwoCardD.setOnMouseClicked(value -> {
-
             });
 
             playerTwoCardE.setOnMouseClicked(value -> {
-
             });
         }
 
+    }
+
+    public boolean checkClickedCardInHand() {
+        return clickedCardInHandIndex != -1;
+    }
+
+    public boolean checkRemoveCardCommand() {
+        return removeCardButtonClicked;
+    }
+
+    public boolean checkAddExpCommand() {
+        return addEXPbuttonClicked;
     }
 
     public void planningPhase() {
         updatePlayer();
         unattackPhase();
         setCommandText("Put your card to the board!");
+        
+        connectHandInDeck();
+        connectMouseHover();
+        connectMana();
+        connectRound();
+        connectBoard();
+        connectHoveredBoard();
 
         PlanningPhase pPhase = new PlanningPhase();
 
@@ -381,155 +395,370 @@ public class Controller {
         attackPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
         endPhaseLabel.setStyle("-fx-background-color: #1c8ae1");
 
+        addEXPbutton.setDisable(false);
+        removeCardButton.setDisable(false);
+
+        addEXPbutton.setOnMouseClicked(value -> {
+            addEXPbuttonClicked = true;
+            removeCardButtonClicked = false;
+        });
+
+        removeCardButton.setOnMouseClicked(value -> {
+            addEXPbuttonClicked = false;
+            removeCardButtonClicked = true;
+        });
+
         Card1.setOnMouseClicked(value -> {
-            clickedCardInHandIndex = 0;
+            if (checkRemoveCardCommand()) {
+                try {
+                    pPhase.removeCardFromHand(game, 0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else if (checkAddExpCommand()) {
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else {
+                clickedCardInHandIndex = 0;
+            }
+            updatePlayer();
+            connectHandInDeck();
+            connectMouseHover();
+            connectMana();
+            connectRound();
+            connectBoard();
+            connectHoveredBoard();
         });
 
         Card2.setOnMouseClicked(value -> {
-            clickedCardInHandIndex = 1;
+            if (checkRemoveCardCommand()) {
+                try {
+                    pPhase.removeCardFromHand(game, 1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else if (checkAddExpCommand()) {
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else {
+                clickedCardInHandIndex = 1;
+            }
+            updatePlayer();
+            connectHandInDeck();
+            connectMouseHover();
+            connectMana();
+            connectRound();
+            connectBoard();
+            connectHoveredBoard();
         });
 
         Card3.setOnMouseClicked(value -> {
-            clickedCardInHandIndex = 2;
+            if (checkRemoveCardCommand()) {
+                try {
+                    pPhase.removeCardFromHand(game, 2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else if (checkAddExpCommand()) {
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else {
+                clickedCardInHandIndex = 2;
+            }
+            updatePlayer();
+            connectHandInDeck();
+            connectMouseHover();
+            connectMana();
+            connectRound();
+            connectBoard();
+            connectHoveredBoard();
         });
 
         Card4.setOnMouseClicked(value -> {
-            clickedCardInHandIndex = 3;
+            if (checkRemoveCardCommand()) {
+                try {
+                    pPhase.removeCardFromHand(game, 3);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else if (checkAddExpCommand()) {
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else {
+                clickedCardInHandIndex = 3;
+            }
+            updatePlayer();
+            connectHandInDeck();
+            connectMouseHover();
+            connectMana();
+            connectRound();
+            connectBoard();
+            connectHoveredBoard();
         });
 
         Card5.setOnMouseClicked(value -> {
-            clickedCardInHandIndex = 4;
+            if (checkRemoveCardCommand()) {
+                try {
+                    pPhase.removeCardFromHand(game, 4);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else if (checkAddExpCommand()) {
+                addEXPbuttonClicked = false;
+                removeCardButtonClicked = false;
+            } else {
+                clickedCardInHandIndex = 4;
+            }
+            updatePlayer();
+            connectHandInDeck();
+            connectMouseHover();
+            connectMana();
+            connectRound();
+            connectBoard();
+            connectHoveredBoard();
         });
 
+        // ================ PLAYER ONE ======================
         if (currPlayer == 0) {
             playerOneCardA.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "A");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "A");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "A", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "A");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "A");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "A");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "A");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerOneCardB.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "B");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "B");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "B", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "B");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "B");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "B");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "B");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerOneCardC.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "C");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "C");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "C", 1);
                         }
-                    } else {
-                        try {
+                        pPhase.useMana(game, "C", 1);
+                    } else if (checkClickedCardInHand()) {
+                        if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "C");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "C");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "C");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "C");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerOneCardD.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "D");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "D");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "D", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "D");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "D");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "D");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "D");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerOneCardE.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "E");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "E");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "E", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerOne.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "E");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "E");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "E");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "E");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerTwoCardA.setOnMouseClicked(value -> {
@@ -538,13 +767,18 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "A");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "A");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -559,13 +793,18 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "B");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "B");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -580,13 +819,18 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "C");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "C");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -601,13 +845,18 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "D");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "D");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -622,13 +871,18 @@ public class Controller {
                     } else {
                         try {
                             pPhase.placeSpellEnemy(game, clickedCardInHandIndex, "E");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "E");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -637,135 +891,237 @@ public class Controller {
                 connectHoveredBoard();
             });
 
+            // ====================== PLAYER TWO PLANNING PHASE INTERACTION ===============
         } else {
             playerTwoCardA.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "A");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "A");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "A", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "A");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "A");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "A");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "A");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerTwoCardB.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "B");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "B");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "B", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "B");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "B");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "B");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "B");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerTwoCardC.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "C");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "C");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "C", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "C");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "C");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "C");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "C");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerTwoCardD.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "D");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "D");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "D", 1);
                         }
-                    } else {
-                        try {
+                    } else if (checkClickedCardInHand()) {
+                        if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "D");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "D");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "D");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "D");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerTwoCardE.setOnMouseClicked(value -> {
-                if (checkClickedCardInHand()) {
-                    if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType().equals(CardType.CHARACTER)) {
-                        try {
-                            pPhase.placeCharCard(game, clickedCardInHandIndex, "E");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                try {
+                    if (checkRemoveCardCommand()) {
+                        pPhase.removeCardFromBoard(game, "E");
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                    } else if (checkAddExpCommand()) {
+                        addEXPbuttonClicked = false;
+                        removeCardButtonClicked = false;
+                        if (playerOne.getMana() < 1) {
+                            setCommandText("Mana is not enough to use");
+                        } else {
+                            pPhase.useMana(game, "E", 1);
                         }
-                    } else {
-                        try {
+                        ;
+                    } else if (checkClickedCardInHand()) {
+                        if (playerTwo.getHandCard().get(clickedCardInHandIndex).getCardType()
+                                .equals(CardType.CHARACTER)) {
+                            pPhase.placeCharCard(game, clickedCardInHandIndex, "E");
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "E");
+                            if (!state) {
+                                setCommandText("Mana is not enough to summon");
+                            }
+                        } else {
                             pPhase.placeSpell(game, clickedCardInHandIndex, "E");
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            boolean state = pPhase.checkManaAndReduceMana(game,
+                                    game.getPlayers()[game.getCurrPlayerIndex()].getHandCard(clickedCardInHandIndex),
+                                    "E");
+                            if (!state) {
+                                setCommandText("Mana is not enough to activate spell");
+                            }
                         }
                     }
+                    updatePlayer();
+                    connectHandInDeck();
+                    connectMouseHover();
+                    connectMana();
+                    connectRound();
+                    connectBoard();
+                    connectHoveredBoard();
+                } catch (Exception e) {
+                    // e.printStackTrace();
                 }
-                updatePlayer();
-                connectBoard();
-                connectHandInDeck();
-                connectMouseHover();
-                connectMana();
-                connectRound();
-                connectBoard();
-                connectHoveredBoard();
             });
 
             playerOneCardA.setOnMouseClicked(value -> {
@@ -780,7 +1136,6 @@ public class Controller {
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -801,7 +1156,6 @@ public class Controller {
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -822,7 +1176,6 @@ public class Controller {
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -864,7 +1217,6 @@ public class Controller {
                     }
                 }
                 updatePlayer();
-                connectBoard();
                 connectHandInDeck();
                 connectMouseHover();
                 connectMana();
@@ -960,7 +1312,8 @@ public class Controller {
 
     public void attackPhase() {
         unplanningPhase();
-        setCommandText("Attack your opponent by clicking on your card(attacker) and your opponent's card(defender). \nAttacker card can only attack once per round");
+        setCommandText(
+                "Attack your opponent by clicking on your card(attacker) and your opponent's card(defender). \nAttacker card can only attack once per round");
 
         clickedCardInHandIndex = -1;
         attackPhaseLabel.setStyle("-fx-background-color: #00ff00");
@@ -2273,7 +2626,8 @@ public class Controller {
             Type charType = temp.getType();
             String attack = temp.getAttack().toString();
             String mana = temp.getmanaCost().toString();
-            String details = "Name: " + name + "\nHealth: " + health + "\nType: " + charType + "\nAttack: " + attack + "\nMana Cost: " + mana;
+            String details = "Name: " + name + "\nHealth: " + health + "\nType: " + charType + "\nAttack: " + attack
+                    + "\nMana Cost: " + mana;
             hoveredCardDetailText.setText(details);
         } else {
             Spell temp = (Spell) inHand.get(pos);

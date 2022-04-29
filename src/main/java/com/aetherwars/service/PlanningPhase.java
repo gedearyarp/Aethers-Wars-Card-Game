@@ -68,6 +68,8 @@ public class PlanningPhase {
     public void useMana(GamePlay gamePlay, String selectedBoardPosition, Integer mana) throws Exception {
         // 5. Menggunakan 0 atau lebih mana untuk meningkatkan exp karakter di board.;
         gamePlay.getBoard().get(gamePlay.getCurrPlayerIndex()).get(selectedBoardPosition).setExperience(gamePlay.getBoard().get(gamePlay.getCurrPlayerIndex()).get(selectedBoardPosition).getExperience() + mana);
+
+        gamePlay.getBoard().get(gamePlay.getCurrPlayerIndex()).get(selectedBoardPosition).checkLevelUp();
         gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].setMana(gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getMana() - mana);
     }
 }
