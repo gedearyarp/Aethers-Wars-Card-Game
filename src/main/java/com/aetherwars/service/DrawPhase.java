@@ -16,10 +16,11 @@ public class DrawPhase {
         // remove selected card from drawCards and input to Hand
         gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].addHandCard(topThreeDeck.get(selectedCardIndex));
         topThreeDeck.remove(selectedCardIndex);
+        System.out.println(topThreeDeck.toString());
         // input ulang drawCards ke Deck
         for (Card card : topThreeDeck) {
             if(gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().getCard().size() == 0){
-                gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().addCard(card);
+                gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().getCard().add(card);
             }
             else{
                 gamePlay.getPlayers()[gamePlay.getCurrPlayerIndex()].getDeck().putCardOnDeckRandomly(card);
@@ -33,8 +34,7 @@ public class DrawPhase {
 
     public void resetMana(GamePlay gamePlay) throws Exception {
         // reset mana
-        //int newMana = (int) Math.ceil((double)gamePlay.getRound()/2);
-        int newMana = 10;
+        int newMana = (int) Math.ceil((double)gamePlay.getRound()/2);
         if (newMana > 10){
             newMana = 10;
         }

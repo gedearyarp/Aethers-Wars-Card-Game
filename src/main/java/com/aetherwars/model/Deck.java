@@ -27,13 +27,21 @@ public class Deck{
             for (int i = 0; i < this.deckCard.size(); i++){
                 top3.add(this.deckCard.get(i));
             }
+            if(this.deckCard.size() == 2){
+                for(int i = 0 ; i < 2 ; i++) {
+                    this.deckCard.remove(0);
+                }
+            }
+            if(this.deckCard.size() == 1){
+                this.deckCard.remove(0);
+            }
         } else {
             for (int i = 0; i < 3; i++){
                 top3.add(this.deckCard.get(i));
             }
-        }
-        for(int i = 0; i < 3; i++){
-            this.deckCard.remove(0);
+            for(int i = 0; i < 3; i++){
+                this.deckCard.remove(0);
+            }
         }
         return top3;
     }

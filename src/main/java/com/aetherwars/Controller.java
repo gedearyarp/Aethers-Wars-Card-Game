@@ -313,31 +313,31 @@ public class Controller {
             Card3.setVisible(false);
             Card4.setVisible(false);
             Card5.setVisible(false);
-            playerOneAvatar.setVisible(false);
-            playerOneImageRectangle.setVisible(false);
-            playerOneCardA.setVisible(false);
+            playerTwoAvatar.setVisible(false);
+            playerTwoImageRectangle.setVisible(false);
+            playerTwoCardA.setVisible(false);
             playerOneCardB.setVisible(false);
             playerOneCardC.setVisible(false);
-            playerOneCardD.setVisible(false);
-            playerOneCardE.setVisible(false);
-            playerOneCardAAtkLabel.setVisible(false);
-            playerOneCardAAtkCount.setVisible(false);
-            playerOneCardAHpLabel.setVisible(false);
-            playerOneCardAHpCount.setVisible(false);
-            playerOneCardAExpLabel.setVisible(false);
-            playerOneCardBAtkLabel.setVisible(false);
-            playerOneCardBAtkCount.setVisible(false);
-            playerOneCardBHpLabel.setVisible(false);
-            playerOneCardBHpCount.setVisible(false);
-            playerOneCardBExpLabel.setVisible(false);
-            playerOneCardCAtkLabel.setVisible(false);
-            playerOneCardCAtkCount.setVisible(false);
-            playerOneCardCHpLabel.setVisible(false);
-            playerOneCardCHpCount.setVisible(false);
-            playerOneCardCExpLabel.setVisible(false);
-            playerOneCardDAtkLabel.setVisible(false);
-            playerOneCardDAtkCount.setVisible(false);
-            playerOneCardDHpLabel.setVisible(false);
+            playerTwoCardD.setVisible(false);
+            playerTwoCardE.setVisible(false);
+            playerTwoCardAAtkLabel.setVisible(false);
+            playerTwoCardAAtkCount.setVisible(false);
+            playerTwoCardAHpLabel.setVisible(false);
+            playerTwoCardAHpCount.setVisible(false);
+            playerTwoCardAExpLabel.setVisible(false);
+            playerTwoCardBAtkLabel.setVisible(false);
+            playerTwoCardBAtkCount.setVisible(false);
+            playerTwoCardBHpLabel.setVisible(false);
+            playerTwoCardBHpCount.setVisible(false);
+            playerTwoCardBExpLabel.setVisible(false);
+            playerTwoCardCAtkLabel.setVisible(false);
+            playerTwoCardCAtkCount.setVisible(false);
+            playerTwoCardCHpLabel.setVisible(false);
+            playerTwoCardCHpCount.setVisible(false);
+            playerTwoCardCExpLabel.setVisible(false);
+            playerTwoCardDAtkLabel.setVisible(false);
+            playerTwoCardDAtkCount.setVisible(false);
+            playerTwoCardDHpLabel.setVisible(false);
         }
     }
 
@@ -358,7 +358,7 @@ public class Controller {
         playerTwoHealth.setWidth(playerTwo.getHp() * 5);
     }
 
-    public void drawPhase() {
+    public void drawPhase() throws Exception {
         
         updatePlayer();
         unplanningPhase();
@@ -370,10 +370,18 @@ public class Controller {
         DrawPhase dPhase = new DrawPhase();
         // random integer selected card from 0 t0 2
         // int selectedCard = (int) (Math.random() * 3);
+
+        // check player hand
+        if (game.getPlayers()[game.getCurrPlayerIndex()].getHandCard().size() == 5) {
+            game.getPlayers()[game.getCurrPlayerIndex()].removeHandCard(0);
+        }
         toChild(dPhase.getTopThreeFromCurrPlayersDeck(game));
+        updateAll();
         try {
-            // dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards, selectedCard);
+            // dPhase.drawSelectedCardAndReturnRemainToDeck(game, topThreeCards,
+            // selectedCard);
             dPhase.resetMana(game);
+            updateAll();
         } catch (Exception e) {
             System.out.println("Draw Phase Error");
         }
@@ -1560,11 +1568,12 @@ public class Controller {
             });
 
             playerOneAvatar.setOnMouseClicked(value -> {
-                if (clickedCardInBoardPlayerOne != "") {
+                if (clickedCardInBoardPlayerTwo != "") {
                     if (game.getBoard().isBoardEmpty(0)) {
                         try {
                             aPhase.attackOtherPlayer(game, clickedCardInBoardPlayerTwo.toString());
                             updateBoardBackground(clickedCardInBoardPlayerTwo);
+                            updateAll();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -1652,7 +1661,7 @@ public class Controller {
         setCommandText("");
     }
 
-    public void handleNextPhase() {
+    public void handleNextPhase() throws Exception {
         if (currentPhaseCount == 0) {
             setCommandText("Click DRAW to start the game");
             nextPhaseButton.setText("DRAW!!");
@@ -1702,7 +1711,6 @@ public class Controller {
                 currentPhaseCount = 1;
                 currPlayer = game.getCurrPlayerIndex();
             }
-
         }
     }
 
@@ -2731,8 +2739,6 @@ public class Controller {
     public void initialize() throws Exception {
         playerOne = new Player("COW");
         playerTwo = new Player("CREEPER");
-        playerOne.setMana(9);
-        playerTwo.setMana(9);
         game = new GamePlay(playerOne, playerTwo);
 
         Image playerOneImage = new Image("com/aetherwars/card/image/PlayerOne.jpg");

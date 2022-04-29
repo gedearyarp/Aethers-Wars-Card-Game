@@ -66,28 +66,44 @@ public class ControllerChild implements Initializable {
 
         ArrayList<Card> cards = Controller.topThreeCard;
         // set all image
-        ImageView view = new ImageView(new Image("com/aetherwars/" + cards.get(0).getImagePath()));
-        view.setFitHeight(100);
-        view.setFitWidth(100);
-        view.setPreserveRatio(true);
-        card1.setGraphic(view);
-        view = new ImageView(new Image("com/aetherwars/" + cards.get(1).getImagePath()));
-        view.setFitHeight(100);
-        view.setFitWidth(100);
-        view.setPreserveRatio(true);
-        card2.setGraphic(view);
-        view = new ImageView(new Image("com/aetherwars/" + cards.get(2).getImagePath()));
-        view.setFitHeight(100);
-        view.setFitWidth(100);
-        view.setPreserveRatio(true);
-        card3.setGraphic(view);
-
-
+        
         if (cards.size() == 1) {
             card2draw.setVisible(false);
             card3draw.setVisible(false);
+            ImageView view = new ImageView(new Image("com/aetherwars/" + cards.get(0).getImagePath()));
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            view.setPreserveRatio(true);
+            card1.setGraphic(view);
         } else if (cards.size() == 2) {
             card3draw.setVisible(false);
+            ImageView view = new ImageView(new Image("com/aetherwars/" + cards.get(0).getImagePath()));
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            view.setPreserveRatio(true);
+            card1.setGraphic(view);
+            view = new ImageView(new Image("com/aetherwars/" + cards.get(1).getImagePath()));
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            view.setPreserveRatio(true);
+            card2.setGraphic(view);
+        }
+        else {
+            ImageView view = new ImageView(new Image("com/aetherwars/" + cards.get(0).getImagePath()));
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            view.setPreserveRatio(true);
+            card1.setGraphic(view);
+            view = new ImageView(new Image("com/aetherwars/" + cards.get(1).getImagePath()));
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            view.setPreserveRatio(true);
+            card2.setGraphic(view);
+            view = new ImageView(new Image("com/aetherwars/" + cards.get(2).getImagePath()));
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            view.setPreserveRatio(true);
+            card3.setGraphic(view);
         }
         // =========== card 1 ===========
         if (cards.get(0).getCardType().equals(CardType.CHARACTER)) {
